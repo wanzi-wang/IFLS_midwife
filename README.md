@@ -18,8 +18,10 @@ This repo stores datasets and codes for my (master's) thesis
 
 ## Midwife, health, cognitive, educational outcomes data source: 
 [Indonesia Family Life Survey (IFLS)](https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html)
+
 Planning to use waves 1, 2, and 5.
 
 Goal:
 Identify the monthly rainfall deviations for each person during the estimated gestation period and the first year of life.
-Calculate the long-run district-average-monthly rainfall
+
+Calculate the long-run district-average-monthly rainfall.
