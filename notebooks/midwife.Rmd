@@ -1,0 +1,356 @@
+---
+title: "Untitled"
+author: "Wang Wanzi"
+date: "2025-10-07"
+output: beamer_presentation
+---
+
+```{r}
+setwd("/Users/wwz/Academic/Thesis_Data/IFLS")
+```
+
+```{r}
+pacman::p_load(haven,readstata13, dplyr)
+```
+
+
+```{r}
+data_path_sar <-"/Users/wwz/Academic/Thesis_Data/IFLS"
+# List all .dta files
+file_list_sar <- list.files(path = data_path_sar , pattern = "\\.dta$", full.names = TRUE)
+
+load_sar <- function(filename) {
+  read_dta(file.path(data_path_sar, filename))
+}
+```
+
+```{r}
+# read sar file from each wave
+
+# Wave 5
+sar_14 <- load_sar("W5/cf14_all_dta/sar.dta") 
+pkk_14 <- load_sar("W5/cf14_all_dta/pkk.dta")
+
+sar_14 <- sar_14 |> as_tibble()
+pkk_14 <- pkk_14 |> as_tibble()
+
+# Wave 4               
+sar_07 <- load_sar("W4/cf07_all_dta/sar.dta")
+pkk_07<- load_sar("W4/cf07_all_dta/pkk.dta")
+
+sar_07 <- sar_07 |> as_tibble()
+pkk_07 <- pkk_07 |> as_tibble()
+
+# Wave 3
+sar_00 <- load_sar("W3/cf00_all_dta/sar.dta")
+pkk_00<- load_sar("W3/cf00_all_dta/pkk.dta")
+
+sar_00 <- sar_00 |> as_tibble()
+pkk_00 <- pkk_00 |> as_tibble()
+
+# Wave 2 
+sar_97 <- load_sar("W2/cf97dta/sar.dta") 
+
+pkk_97<- load_sar("W2/cf97dta/pkk.dta")
+
+sar_97 <- sar_97 |> as_tibble()
+pkk_97<- pkk_97|> as_tibble()
+
+
+
+sar_93 <- load_sar("W1/cf14_all_dta/sar.dta")
+
+```
+
+# W5 (sar_14)
+```{r}
+survey_year <- 2015L #year of interview is 2015
+
+# SAR facility statistics
+sar_14 %>%
+  summarise(
+    n=n(),                                    # total number of obs
+    n_midwife = sum(x14b1 == 8, na.rm=TRUE),  # number of facilities
+    still_open = sum(x07==1, na.rm=TRUE),     # number of facilities operating in subdistrict
+    closed_or_moved = sum(x07 %in% c(2,3), na.rm=TRUE),    # facilities moved or left
+    have_close_year = sum(!is.na(x08yr)),     # facilities that have year of closure
+    have_close_years_ago = sum(!is.na(x08b))  # facilities that have number of year of closure
+  )
+```
+```{r}
+# village midwife facilities only (x14b1 == 8)
+sar_14 |>
+  filter(x14b1 == 8) |>        # village midwife posts
+  summarise(
+    n                    = n(),
+    still_open           = sum(x07 == 1, na.rm = TRUE),
+    closed_or_moved      = sum(x07 %in% c(2,3), na.rm = TRUE),
+    # among closed/moved, how many gave a year vs years-ago vs don't-know
+    year             = sum(x07 %in% c(2,3) & x08bx == 1, na.rm = TRUE),
+    years_ago        = sum(x07 %in% c(2,3) & x08bx == 3, na.rm = TRUE),
+    dont_know        = sum(x07 %in% c(2,3) & x08bx == 8, na.rm = TRUE),
+    have_close_year      = sum(x07 %in% c(2,3) & x08bx == 1 & !is.na(x08yr), na.rm = TRUE),
+    have_close_years_ago = sum(x07 %in% c(2,3) & x08bx == 3 & !is.na(x08b),  na.rm = TRUE)
+  )
+
+```
+not many midwife moved from villages
+
+```{r}
+names(sar_14)
+sar_14_select <- sar_14 |> 
+  select(ea,fascode, commid14,          # enumertion area, facility code, community ID 2014
+         x02b_cd, x02c_cd, x02d_cd,      # code of kecamatan, kabupaten, province
+         x12yr, x12b, x07, x08b, x08yr,  # open, years of operation, still operating, number of years, year of close
+         x09, x10, x11,                  # distance to facility from desa office, cost of transfer, time, 
+         x14b1) |>            # facility type
+  # no community level code, how to link the subdistrict with district? 
+  mutate(is_village_midwife = if_else(x14b1 == 8, 1,0)) |>
+  filter(!is.na(commid14)) 
+
+# write.csv(sar_14_select,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/sar_14_select.csv")
+```
+
+```{r}
+sar_14_select |> 
+  distinct(ea) |>
+  count() # 320 EA 
+```
+
+```{r}
+sar_14_fac <- sar_14_select |>
+  filter(x14b1 == 8) |>  # 8 = village midwife; 7 = private midwife
+  mutate(
+    open_year_fac  = coalesce(as.integer(x12yr),
+                              if_else(!is.na(x12b), survey_year - as.integer(x12b), NA_integer_)),
+    # coalesce() returns the first non-missing among its arguments. So it picks x12yr when available; 
+    # otherwise it picks the fallback from x12b.
+    close_year_fac = case_when(
+      x07 == 1 ~ NA_integer_,                         # still operating
+      !is.na(x08yr) ~ as.integer(x08yr),              # if closure year exists, then use it 
+      !is.na(x08b)  ~ survey_year - as.integer(x08b), # if number of years exists, but exact closure year doesn't exist, use survey to minus the number of years to get the closure year
+      TRUE ~ NA_integer_),      
+    open_year_fac  = if_else(open_year_fac  >= 1989 & open_year_fac  <= 2015, open_year_fac,  NA_integer_),
+    close_year_fac = if_else(is.na(close_year_fac) | (close_year_fac >= 1989 & close_year_fac <= 2015),
+                             close_year_fac, NA_integer_)
+  ) |>
+  group_by(commid14) |>
+  summarise(
+    start_year_sar = suppressWarnings(min(open_year_fac, na.rm = TRUE)),
+    present_sar    = as.integer(any(x07 ==1 |
+                                      !is.na(open_year_fac) &           # still operating
+                                      open_year_fac <= survey_year &  # operating within survey year
+                                      (is.na(close_year_fac) | close_year_fac >= survey_year))) # no closure year or closure year is greater than the survey year 
+  ) |>
+  ungroup() |>
+  mutate(start_year_sar = ifelse(is.infinite(start_year_sar), NA, start_year_sar))
+
+sar_14_fac
+```
+
+
+```{r}
+# For checking: no midwife left the village 
+sar_14_select |>
+  filter(x14b1 == 8, !is.na(x08yr)) |>
+  select(x14b1, x08yr, x08b) |>
+  print()   # 0
+```
+```{r}
+# SAR many starting year of village midwife is missing, shall I use PKK???
+sar_14_select |>
+  group_by(commid14) |>
+  select(x14b1, x12yr) |>
+  filter(x14b1 == 8)|>
+  summarise(min(x12yr))
+
+```
+
+
+# PKK_14
+```{r}
+pkk_14_select <- 
+  pkk_14 |> 
+  filter(!is.na(commid14)) |>
+  select(commid14, ea, 
+         j10a,j10a1, # is there village midwife, ever been a village midwife
+         j10a2bln, j10a2th, # month, year of leaving
+         j10b, # number of village midwife 
+         j10c, # in what years the first village midwife began 
+         j10d, # years of practice in the village; survey year - years = start_year
+         j10e # type of support village midwife provide
+         )
+pkk_14_select <- 
+  pkk_14_select |> 
+  mutate(midwife_present = as.integer(if_else(j10a == 1, 1, 0)),
+         star_year_pkk = if_else(as.integer(j10c) >= 1989 & as.integer(j10c) <= 2015, j10c, NA_integer_))
+pkk_14_select
+
+pkk_14_select$j10c |> as.integer(as.character()) |> summary() # earliest midwife is 1969???; latest is 2014
+sum(as.integer(pkk_14_select$midwife_present))/320 # 0.740625 of the communities have midwives
+
+# write.csv(pkk_14_select,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/pkk_14_select.csv")
+
+```
+
+
+```{r}
+# Merge SAR and PKK (need to double-check, the numbers cannot match)
+sar_pkk_14 <- 
+  full_join(sar_14_fac, pkk_14_select, by = "commid14") |>
+  relocate(star_year_pkk, .before = 03)
+sar_pkk_14
+
+#write.csv(sar_pkk_14,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/sar_pkk_14.csv")
+```
+
+
+# W4 (sar_07)
+```{r}
+names(sar_07)
+sar_07_select <- sar_07 |> 
+  select(fascode, commid07,          # enumertion area, facility code, community ID 2014
+         #x02b_cd, x02c_cd, x02d_cd,      # code of kecamatan, kabupaten, province
+         x12yr, x12b, x07, x08b, x08yr,  # open, years of operation, still operating, number of years, year of close
+         x09, x10, x11,                  # distance to facility from desa office, cost of transfer, time, 
+         x14b1) |>            # facility type, book type
+  mutate(is_village_midwife = if_else(x14b1 == 8, 1,0)) |>
+  filter(!is.na(commid07)) 
+
+sar_07_select
+```
+```{r}
+sar_07_fac <- sar_07_select |>
+  filter(x14b1 == 8) |>  # 8 = village midwife; 7 = private midwife
+  mutate(
+    open_year_fac  = coalesce(as.integer(x12yr),
+                              if_else(!is.na(x12b), survey_year - as.integer(x12b), NA_integer_)),
+    close_year_fac = case_when(
+      x07 == 1 ~ NA_integer_,                         # still operating
+      !is.na(x08yr) ~ as.integer(x08yr),              # if closure year exists, then use it 
+      !is.na(x08b)  ~ survey_year - as.integer(x08b), # if number of years exists, but exact closure year doesn't exist, use survey to minus the number of years to get the closure year
+      TRUE ~ NA_integer_),      
+    open_year_fac  = if_else(open_year_fac  >= 1989 & open_year_fac  <= 2007, open_year_fac,  NA_integer_),
+    close_year_fac = if_else(is.na(close_year_fac) | (close_year_fac >= 1989 & close_year_fac <= 2007),
+                             close_year_fac, NA_integer_)
+  ) |>
+  group_by(commid07) |>
+  summarise(
+    start_year_sar = suppressWarnings(min(open_year_fac, na.rm = TRUE)),
+    present_sar    = as.integer(any(x07 ==1 |
+                                      !is.na(open_year_fac) &           # still operating
+                                      open_year_fac <= survey_year &  # operating within survey year
+                                      (is.na(close_year_fac) | close_year_fac >= survey_year))) # no closure year or closure year is greater than the survey year 
+  ) |>
+  ungroup() |>
+  mutate(start_year_sar = ifelse(is.infinite(start_year_sar), NA, start_year_sar))
+
+sar_07_fac
+
+#write.csv(sar_07_fac,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/sar_07_fac.csv")
+
+```
+# PKK_07
+
+```{r}
+pkk_07_select <- 
+  pkk_07 |> 
+  filter(!is.na(commid07)) |>
+  select(commid07, 
+         j10a,j10a1, # is there village midwife, ever been a village midwife
+         j10a2bln, j10a2th, # month, year of leaving
+         j10b, # number of village midwife 
+         j10c, # in what years the first village midwife began 
+         j10d, # years of practice in the village; survey year - years = start_year
+         )
+pkk_07_select <- 
+  pkk_07_select |> 
+  mutate(midwife_present = as.integer(if_else(j10a == 1, 1, 0)),
+         star_year_pkk = if_else(as.integer(j10c) >= 1989 & as.integer(j10c) <= 2007, j10c, NA_integer_))
+pkk_07_select
+
+pkk_07_select$j10c |> as.integer(as.character()) |> summary() # earliest midwife is 1969???; latest is 2014
+sum(as.integer(pkk_07_select$midwife_present))/320 # 0.740625 of the communities have midwives
+
+#write.csv(pkk_07_select,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/pkk_07_select.csv")
+
+```
+
+```{r}
+# Merge SAR and PKK (need to double-check, the numbers cannot match)
+sar_pkk_07 <- 
+  full_join(sar_07_fac, pkk_07_select, by = "commid07") |>
+  relocate(star_year_pkk, .before = 03)
+sar_pkk_07
+
+#write.csv(sar_pkk_07,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/sar_pkk_07.csv")
+```
+
+# W3 (SAR_00)
+
+```{r}
+# delete this later (no information on the type of facility in IFLS 3)
+names(sar_00)
+sar_00_select <- sar_00 |> 
+  select(fascode, commid00,          # enumertion area, facility code, community ID 2014
+         #x02b_cd, x02c_cd, x02d_cd,      # code of kecamatan, kabupaten, province
+         calyropn, operates, calyrend,  # open, still operating, year of close
+         km2kd, rp2kd, min2kd                 # distance to facility from desa office, cost of transfer, time, 
+      ) 
+sar_00_select
+|>            # facility type, book type
+  mutate(is_village_midwife = if_else(x14b1 == 8, 1,0)) |>
+  filter(!is.na(commid07)) 
+
+sar_07_select
+
+sar_00 |>
+  select(facility) |>
+  unique()
+
+```
+
+# PKK_00
+```{r}
+pkk_00_select <- 
+  pkk_00 |> 
+  filter(!is.na(commid00)) |>
+  select(commid00, 
+         j10a,j10a1, # is there village midwife, ever been a village midwife
+         j10a2mth, j10a2yr, # month, year of leaving
+         j10b, # number of village midwife 
+         j10c, # in what years the first village midwife began 
+         j10d, # years of practice in the village; survey year - years = start_year
+         lk01, lk02, lk03 # Province, Kabupaten, Kecamatan
+         )
+
+pkk_00_select <- 
+  pkk_00_select |> 
+  mutate(midwife_present = as.integer(if_else(j10a == 1, 1, 0)),
+         star_year_pkk = if_else(as.integer(j10c) >= 1989 & as.integer(j10c) <= 2000, j10c, NA_integer_))
+pkk_00_select
+
+#write.csv(pkk_00_select,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/pkk_00_select.csv")
+
+```
+
+# W2 (SAR_97)
+```{r}
+names(sar_97)
+sar_97_select <- sar_97 |>
+  select(fcode, commid97,          # enumertion area, facility code, community ID 2014
+         #x02b_cd, x02c_cd, x02d_cd,      # code of kecamatan, kabupaten, province
+         calyropn, operates, calyrend,  # open, still operating, year of close
+         km2kd, rp2kd, min2kd,                  # distance to facility from desa office, cost of transfer, time, 
+         factpint) |>            # facility type, book type
+  mutate(is_village_midwife = if_else(factpint == 8, 1,0)) |>
+  filter(!is.na(commid97)) 
+
+sar_97_select
+
+#write.csv(sar_97_select,"/Users/wwz/Academic/Thesis_Data/Intermediate/Midwife/sar_97_select.csv")
+
+```
+
+
+
