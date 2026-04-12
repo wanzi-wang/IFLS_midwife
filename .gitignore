@@ -1,0 +1,66 @@
+# =====================================================================
+# .gitignore — Indonesia Village Midwife Project
+# =====================================================================
+
+# --- OS / editor ---
+.DS_Store
+.Rproj.user/
+.Rhistory
+.RData
+.Rapp.history
+*.swp
+*~
+
+# --- Claude harness / local state ---
+
+# --- Data (restricted IFLS, large, or regenerable) ---
+data/raw/
+data/intermediate/*
+!data/intermediate/.gitkeep
+*.dta
+*.sav
+*.sas7bdat
+# .rds is intermediate-data-only; keep tracked if explicitly added under code/R/lib/
+data/intermediate/*.rds
+
+# --- R build / cache ---
+renv/library/
+renv/staging/
+renv/local/
+.Rproj.user/
+*.rds.bak
+
+# --- LaTeX auxiliary ---
+*.aux
+*.bbl
+*.blg
+*.bcf
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.idx
+*.ind
+*.ilg
+*-blx.bib
+
+# --- Build output (PDFs are typically re-built; un-comment to track) ---
+output/**/*.pdf
+output/**/*.log
+output/**/*.aux
+output/**/*.synctex.gz
+
+# --- Frozen legacy project — do NOT commit. Contains restricted IFLS data ---
+old/
+
+# --- ~temp Office lock files ---
+~$*
