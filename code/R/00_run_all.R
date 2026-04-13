@@ -1,37 +1,34 @@
 # =====================================================================
-# Master orchestrator — Indonesia Village Midwife Program
+# Master orchestrator — Indonesia Village Midwife Programme upgrade
 # Author: Wanzi Wang
 #
-# Runs the full data-construction and analysis pipeline end to end.
-# Individual stage scripts to be written in the data-pipeline plan.
-#
 # Usage:  Rscript code/R/00_run_all.R
-# Prereq: set IFLS_DATA_ROOT env var (default: ~/Academic/Thesis_Data_IFLS/old/IFLS)
+# Prereq: IFLS_DATA_ROOT env var (default: old/IFLS under project root)
+#
 # =====================================================================
 
 set.seed(20260412)
 
-# --- Environment ------------------------------------------------------
-IFLS_DATA_ROOT <- Sys.getenv(
-  "IFLS_DATA_ROOT",
-  unset = "/Users/wwz/Academic/Thesis_Data_IFLS/old/IFLS"
-)
-stopifnot(dir.exists(IFLS_DATA_ROOT))
+suppressPackageStartupMessages({
+  library(here)
+})
 
-PROJECT_ROOT <- normalizePath(file.path(dirname(sys.frame(1)$ofile %||% "."), "..", ".."))
+# Sanity: the raw root must exist. `ifls_root()` hard-fails otherwise,
+# but we also want to verify before sourcing stages so error messages
+# don't mention a stage the user hasn't gotten to yet.
+source(here::here("code", "R", "lib", "paths.R"))
+invisible(ifls_root())
 
-# --- Pipeline stages (to be implemented) ------------------------------
-# source("code/R/01_load_ifls.R")
-# source("code/R/02_construct_treatment.R")
-# source("code/R/03_birth_roster.R")
-# source("code/R/04_outcomes.R")
-# source("code/R/05_merge_analysis_df.R")
-# source("code/R/06_descriptives.R")
-# source("code/R/07_main_regressions.R")
-# source("code/R/08_event_study.R")
-# source("code/R/09_robustness.R")
-# source("code/R/10_heterogeneity.R")
-# source("code/R/11_tables.R")
-# source("code/R/12_figures.R")
+# ---------------------------------------------------------------------
+# Pipeline stages. Commented stages are not yet implemented.
+# ---------------------------------------------------------------------
+t0 <- Sys.time()
 
-message("Pipeline scaffolding loaded. Stage scripts are stubs — see data-pipeline plan.")
+source(here::here("code", "R", "01_load_ifls.R"))
+source(here::here("code", "R", "02_birth_roster.R"))
+source(here::here("code", "R", "03_midwife_rollout.R"))
+source(here::here("code", "R", "04_outcomes.R"))
+source(here::here("code", "R", "05_analysis_frame.R"))
+
+elapsed <- round(as.numeric(difftime(Sys.time(), t0, units = "secs")), 1)
+message(sprintf("Pipeline finished in %s s.", elapsed))
