@@ -72,6 +72,9 @@ output/**/*.log
 output/**/*.aux
 output/**/*.synctex.gz
 
+# --- Fitted-model objects (large, regenerable from pipeline) ---
+data/output/regressions/*.rds
+
 # --- Frozen legacy project — do NOT commit. Contains restricted IFLS data ---
 old/
 

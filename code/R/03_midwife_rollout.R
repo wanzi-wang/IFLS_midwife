@@ -314,9 +314,13 @@ other_facility_wave <- function(sar, commid_col, survey_year) {
       ),
       open_year = if_else(open_year >= 1970 & open_year <= survey_year,
                           open_year, NA_integer_),
+      # Note: `x == 7` returns NA when x14b1 is NA, which propagates
+      # through group-wise max() and makes has_private_midwife all-NA.
+      # Use %in% (returns FALSE for NA) for consistency with the
+      # other type flags.
       type_doctor              = as.integer(x14b1 %in% c(1, 6, 9)),
       type_clinic              = as.integer(x14b1 %in% c(2, 3, 4, 5)),
-      type_private_midwife     = as.integer(x14b1 == 7),
+      type_private_midwife     = as.integer(x14b1 %in% 7),
       type_traditional_midwife = as.integer(x14b1 %in% c(11, 12))
     ) |>
     group_by(.data[[commid_col]]) |>

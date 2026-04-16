@@ -30,5 +30,13 @@ source(here::here("code", "R", "03_midwife_rollout.R"))
 source(here::here("code", "R", "04_outcomes.R"))
 source(here::here("code", "R", "05_analysis_frame.R"))
 
+source(here::here("code", "R", "06_sample_weights_indices.R"))
+source(here::here("code", "R", "07_balance_descriptives.R"))
+source(here::here("code", "R", "08_main_regressions.R"))
+source(here::here("code", "R", "09_event_study.R"))
+source(here::here("code", "R", "10_sibling_fe.R"))
+source(here::here("code", "R", "11_robustness.R"))
+source(here::here("code", "R", "12_heterogeneity_finalize.R"))
+
 elapsed <- round(as.numeric(difftime(Sys.time(), t0, units = "secs")), 1)
 message(sprintf("Pipeline finished in %s s.", elapsed))
