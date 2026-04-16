@@ -1,30 +1,61 @@
 % =====================================================================
-% Paper stub — Early-Life Exposure to Indonesia's Village Midwife Program
-% Author: Wanzi Wang
-% Content to be filled by the paper plan (subsequent session).
-% Build:  latexmk -xelatex -outdir=../output/paper paper.tex
+% paper.tex — long version (journal submission, ~40-50 pages).
+% Compile:  cd paper && latexmk -xelatex -outdir=../output/paper paper.tex
 % =====================================================================
-\documentclass[12pt]{article}
-\input{../Preambles/header.tex}   % TODO: populate preamble in paper plan
-\title{Early-Life Exposure to Indonesia's Village Midwife Program \\ and Child Human Capital}
-\author{Wanzi Wang}
-\date{\today}
+
+\input{../Preambles/header.tex}
+
 \begin{document}
+
 \maketitle
+
 \begin{abstract}
-% TODO: abstract (drafted in paper plan).
-Placeholder abstract.
+\noindent This paper revisits the long-term effects of early-life exposure
+to Indonesia's Village Midwife Program (\emph{Bidan di Desa}) on adult
+human capital, using \NPrimary~individuals across \NVillages~communities
+born in 1984--1999 from the Indonesia Family Life Survey waves 1--5.
+Treatment is exposure to a village midwife in utero or before age three,
+identified from staggered community-level rollout dating from 1989.
+The two-way fixed-effects estimator finds small and statistically
+imprecise main effects across composite indices for adult health,
+cognition, depression, and Big-Five personality. Pre-trend tests reject
+parallel-trends in three of four outcome families, and Oster (2019)
+sensitivity bounds suggest the main estimates are fragile to selection on
+unobservables. Two findings nonetheless survive a layered identification
+stack. First, a within-mother specification that exploits sibling
+differences in exposure timing produces a depression-index point estimate
+of \CoefDepSibFE\ standard deviations (SE \SEDepSibFE), nearly twice the
+naïve TWFE estimate; this pattern is consistent with downward bias in
+TWFE coming from non-random program placement in poorer or sicker
+villages. Second, the gender-specific pattern documented in earlier work
+holds: health-index gains concentrate among girls. Together, the results
+suggest that the program's effects on later-life human capital are
+real but smaller than recent staggered-DiD estimates have implied,
+and that within-family designs offer a useful corrective when
+program-placement bias is severe.\\
+
+\noindent \textbf{Keywords:} early-life intervention; Indonesia;
+village midwife; difference-in-differences; sibling fixed effects;
+human capital.\\
+
+\noindent \textbf{JEL codes:} I18, I15, J13, O15.
 \end{abstract}
 
-% \input{sections/01_introduction.tex}
-% \input{sections/02_background.tex}
-% \input{sections/03_data.tex}
-% \input{sections/04_empirical_strategy.tex}
-% \input{sections/05_results.tex}
-% \input{sections/06_robustness.tex}
-% \input{sections/07_discussion.tex}
-% \input{sections/08_conclusion.tex}
+\newpage
+\input{sections/intro_long}
+\input{sections/background}
+\input{sections/literature}
+\input{sections/data}
+\input{sections/empirical}
+\input{sections/results}
+\input{sections/robustness_long}
+\input{sections/heterogeneity}
+\input{sections/discussion_long}
+\input{sections/conclusion}
 
-\bibliographystyle{aea}
-\bibliography{../Bibliography_base}
+\printbibliography[title={References}]
+
+\appendix
+\input{sections/appendix}
+
 \end{document}

@@ -1,0 +1,134 @@
+% =====================================================================
+% sections/intro_long.tex — long version (~3-4 pages)
+% =====================================================================
+
+\section{Introduction}
+\label{sec:intro}
+
+Indonesia entered the 1990s with one of Southeast Asia's highest
+maternal mortality ratios. In 1990 roughly 450 women died for every
+100{,}000 live births \autocite{unicef}, a rate driven largely by
+unattended deliveries in rural communities where the only birth
+attendants were untrained traditional midwives (\emph{dukun bayi}).
+Mothers without access to skilled care were exposed to the standard
+catastrophic complications of childbirth---obstructed labor,
+postpartum hemorrhage, eclampsia---that are largely preventable when
+a trained provider is present \autocite{geefhuysen1999,
+makowiecka2008}. In 1989 the Indonesian government responded with a
+national program, \emph{Bidan di Desa} (``Village Midwife''), that
+trained and deployed tens of thousands of midwives, one per village,
+across rural Indonesia. By 1996 some \num{54000} village midwives had
+been placed; each served the village population for at least three
+years on a guaranteed government salary, after which she could
+transition to private practice in the same community
+\autocite{gani1996}.
+
+Because village midwives provided not only skilled delivery care but
+also antenatal and postnatal services, family planning, nutrition
+counseling, and supplementation of iron and Vitamin A
+\autocite{frankenberg2005,makowiecka2008}, the program is
+naturally interpreted as a bundle of early-life interventions. A large
+literature in development economics has documented that early-life
+shocks---in utero and the first three years of life---have effects on
+human capital that persist into adulthood
+\autocite{barker1995,duflo2001,maccini2009,majid2015}. The Village
+Midwife Program is, in effect, a positive shock to the prenatal and
+infancy environment for cohorts born after the midwife's arrival in
+their community. Documenting its long-run effects on child
+human capital is the natural empirical question.
+
+\paragraph{Research question.}
+Does early-life exposure to the Village Midwife Program have
+detectable effects on adult cognitive, health, depression, and
+personality outcomes? If so, are the effects concentrated in
+particular domains, subgroups, or developmental windows, in ways that
+discriminate among competing mechanisms?
+
+The empirical setting has two features that help answer this question.
+First, the rollout was staggered across communities over the 1989--2007
+window, so the same calendar cohort can have different exposure
+status depending on when its community received its midwife. Second,
+the IFLS panel includes wave~5 (2014) outcomes for cohorts born in
+1984--1999, who at survey were aged 15--30---late enough to observe
+adult human-capital outcomes but recent enough that the youngest
+cohort was potentially in utero when the midwife arrived.
+
+\paragraph{Prior work and contribution.}
+The closest predecessor papers are \textcite{frankenberg2005}, who
+document a positive effect on children's height-for-age within ten
+years of program rollout; \textcite{triyana2016}, who finds that the
+effect on prenatal-care use persists at the ten-year mark but most
+adult-health effects do not; and \textcite{ahsan2021}, who use a
+larger window and report long-run effects of in-utero exposure on
+men's adult health, cognition, and economic outcomes. The present
+study departs from this lineage in three ways.
+
+First, the identification stack is materially stronger than the
+\textcite{ahsan2021} \texttt{areg}-with-community-absorbed design,
+which predates the now-standard concerns about staggered-DiD bias
+articulated by \textcite{goodmanbacon2021}. I report the canonical
+TWFE estimator alongside the \textcite{callawaysantanna2021}
+heterogeneity-robust estimator, the
+\textcite{dechaisemartin2021} alternative, and the Sun--Abraham
+event study. More importantly, the principal robustness check is a
+\emph{within-mother} specification that exploits sibling differences
+in exposure timing within a single household. Comparing siblings born
+to the same mother in the same village before versus after midwife
+arrival sweeps out every time-invariant village
+characteristic---poverty, remoteness, baseline infrastructure---that
+drove the non-random program rollout and that an inverse-probability
+weighting strategy on baseline observables (the predecessor DEPII
+analysis's correction) cannot fully address.
+
+Second, I extend the outcome set in two directions that earlier work
+did not pursue at this scale. Adult mental health is captured by a
+standardized index of CESD-10 depression symptoms, the same instrument
+used in the IFLS adult module since wave~3. Personality is captured by
+a Big-Five personality index built from the fifteen Big-Five Inventory
+items in IFLS wave~5. Both extensions are motivated by a recent
+literature that has begun to document the long-run consequences of
+early-life environments on socioemotional and psychological outcomes
+\autocite{casepaxson2008,premand2022,sorrenti2025,webb2024,headstart}.
+These outcomes plausibly capture program impacts that show up neither
+in physical health nor in fluid cognition.
+
+Third, the analysis is honest about identification weaknesses that the
+predecessor literature has tended to bury. Pre-trend tests reject
+parallel trends for three of four outcome families. Oster (2019)
+sensitivity bounds indicate that the headline TWFE estimates can be
+overturned by selection on unobservables that is small relative to
+selection on observables. Reporting these diagnostics explicitly
+strengthens the claims that do survive (the within-mother depression
+estimate, the gender heterogeneity in health) by clarifying which
+parts of the story are robust and which are not.
+
+\paragraph{Findings.}
+The headline TWFE estimates of the program's effect on adult outcomes
+are small and statistically indistinguishable from zero across all four
+composite indices. Pre-trend tests reject for three of four outcomes,
+and Oster bounds suggest the estimates are fragile. Two findings
+nonetheless survive the layered identification stack. First, the
+within-mother specification produces a depression-index point estimate
+of \CoefDepSibFE~SD (SE \SEDepSibFE), nearly twice the naïve TWFE
+estimate---consistent with the program raising adult mental-health
+margins, with TWFE biased downward by non-random placement in
+poorer or sicker villages. Second, health-index gains are concentrated
+among girls. The pattern of effects across age windows is consistent
+with a critical-period interpretation, with the largest point
+estimates in the in-utero and 0--3 windows.
+
+\paragraph{Roadmap.}
+Section~\ref{sec:background} reviews the institutional context of the
+Village Midwife Program. Section~\ref{sec:literature} positions the
+study against the empirical literatures on early-life shocks, the
+program itself, and staggered-DiD methodology.
+Section~\ref{sec:data} describes the IFLS data, sample construction,
+and the four composite outcome indices. Section~\ref{sec:empirical}
+develops the identification strategy. Section~\ref{sec:results}
+presents the main estimates and event-study figures.
+Section~\ref{sec:robustness} reports the robustness suite, including
+the within-mother specification and Oster sensitivity bounds.
+Section~\ref{sec:heterogeneity} reports heterogeneity by sex,
+mother's education, and exposure window. Section~\ref{sec:discussion}
+interprets the findings and discusses limitations.
+Section~\ref{sec:conclusion} concludes.

@@ -1,0 +1,197 @@
+% =====================================================================
+% sections/empirical.tex — shared (long + short)
+% =====================================================================
+
+\section{Empirical strategy}
+\label{sec:empirical}
+
+\subsection{The identification problem}
+
+The Village Midwife Program was not rolled out at random.
+Provincial health departments deliberately prioritized poor and remote
+communities with the weakest existing health infrastructure when
+allocating midwife graduates \autocite{frankenberg2005,gani1996,
+makowiecka2008}. As a result, the year a community first received a
+village midwife, $\text{start}_c$, is mechanically correlated with
+village-level characteristics---baseline poverty, distance to the
+nearest clinic, ethnic composition---that themselves affect child
+outcomes through channels other than the program. A naïve comparison
+of cohorts treated early to those treated late conflates the program's
+effect with the consequences of these confounders. Inverse-probability
+weighting on observable village characteristics
+\autocite{cas2012}, the approach used in the predecessor DEPII analysis,
+is one defense, but it cannot correct for unobserved village
+attributes that drove placement decisions.
+
+A second concern, distinct from placement bias, is that the canonical
+two-way fixed-effects estimator is known to be biased in the presence
+of staggered treatment timing with heterogeneous effects, because it
+implicitly uses already-treated units as controls for later-treated
+ones \autocite{goodmanbacon2021}. \textcite{ahsan2021} estimate the
+program's effects using a single OLS regression with community fixed
+effects absorbed; their framework does not separate cohort-level
+heterogeneity from staggered-treatment bias.
+
+The empirical design responds to both concerns with a layered
+strategy. The headline TWFE estimate is reported alongside the
+\textcite{callawaysantanna2021} estimator, which uses never-treated
+communities as a clean control group, and the
+\textcite{dechaisemartin2021} estimator. Pre-trends are tested by an
+event-study following the Sun--Abraham aggregation. The placement-bias
+problem is addressed via a within-mother specification that sweeps out
+all time-invariant village characteristics that drove rollout order.
+\textcite{anderson2008}-style composite indices reduce multiple-testing
+inflation across closely related outcomes within a domain. Finally,
+\textcite{frankenberg2005}'s observation that the rollout was
+demand-driven by community characteristics motivates the
+\textcite{ahsan2021} sensitivity tests that I revisit in
+Section~\ref{sec:robustness}.
+
+\subsection{Baseline two-way fixed-effects specification}
+
+Let $i$ index individuals, $c$ their community of birth, and $b$ their
+year of birth. The baseline specification is
+\begin{equation}
+Y_{ic} \;=\; \beta\, E_{ic} \;+\; X_{ic}'\theta \;+\; \eta_c \;+\;
+\gamma_b \;+\; \varepsilon_{ic},
+\label{eq:twfe}
+\end{equation}
+where $Y_{ic}$ is one of the four standardized outcome indices, $E_{ic}$
+is an indicator equal to one if individual $i$ was in utero or aged
+0--3 at the time the village midwife arrived in $c$,
+$X_{ic}$ is a vector of pre-determined controls (sex, mother's
+years of schooling, mother's age at birth), $\eta_c$ and $\gamma_b$ are
+community-of-birth and birth-year fixed effects, and standard errors
+are clustered at the community-of-birth level (\NVillages~clusters).
+The age-three threshold is motivated by the developmental window
+literature: the prenatal period and the first three years of life are
+when nutrition, infection control, and preventive care have the
+largest documented long-run consequences \autocite{barker1995}.
+
+Two extensions of equation~\eqref{eq:twfe} are reported in the main
+results table. The first adds the pre-determined controls listed above.
+The second additionally absorbs province-by-birth-year fixed effects,
+which allow each province to have its own arbitrary cohort trend and
+guards against confounding from province-specific shocks.
+
+\subsection{Heterogeneity-robust estimators}
+
+The \textcite{callawaysantanna2021} estimator computes
+group-time average treatment effects $ATT(g,t)$ for each
+cohort group $g$ and each calendar period $t$, using never-treated
+communities as the control group, and then aggregates them. I report
+the dynamic aggregation
+\[
+ATT^{\text{dyn}}(e) \;=\; \frac{1}{|G_e|}\sum_{g \in G_e}
+ATT\bigl(g,\, g+e\bigr),
+\]
+averaged over event times $e = 0, 1, 2, 3$, to match the same
+``in-utero or age 0--3'' window as $E_{ic}$. The
+\textcite{dechaisemartin2021} estimator follows a similar logic
+but with a different aggregation scheme; both serve as a check that
+the headline TWFE estimate is not driven by forbidden comparisons of
+the kind highlighted by \textcite{goodmanbacon2021}.
+
+\subsection{Event study}
+
+The Sun--Abraham specification estimates a cohort-aggregated
+event-study version of equation~\eqref{eq:twfe} via
+\texttt{fixest::sunab}, with $-1$ as the omitted reference event time:
+\begin{equation}
+Y_{ic} \;=\; \sum_{e \neq -1} \delta_e \,\mathbf{1}\{b_i - g_c = e\}
+\;+\; \eta_c \;+\; \gamma_b \;+\; u_{ic}.
+\label{eq:sunab}
+\end{equation}
+A joint Wald test of $\delta_{-4} = \delta_{-3} = \delta_{-2} = 0$
+provides a parallel-trends diagnostic. The displayed event-time window
+is $[-4, +8]$; cohorts more than four years before rollout are folded
+into the omitted reference because their identification rests on a
+small number of villages whose rollout was very late.
+
+\subsection{Sibling fixed effects: the headline robustness}
+
+If placement bias operates through time-invariant village
+characteristics---poverty, remoteness, baseline health
+infrastructure---then comparing siblings born to the same mother in
+the same village but with different exposure to the village midwife
+sweeps out every such confounder, observable or unobservable. The
+within-mother specification is
+\begin{equation}
+Y_{ic} \;=\; \beta\, E_{ic} \;+\; X_{ic}'\theta \;+\; \alpha_{m(i)}
+\;+\; \gamma_b \;+\; \varepsilon_{ic},
+\label{eq:sibfe}
+\end{equation}
+where $\alpha_{m(i)}$ is a fixed effect for the mother of $i$, $X_{ic}$
+adds birth order and mother's age at birth (siblings differ on these
+even within mother), and standard errors remain clustered at the
+community-of-birth level. Identification comes from differential
+exposure across siblings born to the same mother before versus after
+the midwife's arrival. The DEPII version of this study (Section~6,
+``Extensions'') flagged sibling fixed effects as a natural next step
+that the analysis frame supports; the present pipeline observes
+\num{2796} mothers with two or more children in the analysis sample,
+of whom \num{1153} have three or more.
+
+What sibling fixed effects do \emph{not} solve is also worth stating
+explicitly. Time-varying village shocks correlated with rollout
+year---for instance, the simultaneous arrival of a midwife and a
+paved road---will load on $\beta$ as if they were the program. The
+empirical strategy addresses this by including controls for the
+arrival of other health facilities (Section~\ref{sec:robustness},
+column~R2). Compositional shifts in fertility induced by the midwife's
+arrival---for example, if mothers time births around the program---are
+a separate threat that I check in Section~\ref{sec:robustness}.
+
+\subsection{Inverse-probability weighting (demoted)}
+
+The DEPII version of this analysis used inverse-probability weighting
+on baseline community characteristics as the principal correction for
+non-random rollout. In light of the layered strategy above I demote
+IPW to a single robustness column (Section~\ref{sec:robustness},
+column~R1). Weights are constructed from a logistic propensity score
+of an early-treatment indicator on province dummies and post-period
+other-facility presence, then trimmed at the 1st and 99th percentiles
+and rescaled so $\bar{w} = 1$. The mechanical weakness of IPW in this
+setting---it cannot correct for selection on unobservables---is one of
+the motivations for adopting sibling fixed effects as the primary
+robustness check.
+
+\subsection{Identifying assumptions}
+
+The TWFE estimator in equation~\eqref{eq:twfe} requires a
+parallel-trends assumption: in the absence of the program, treated and
+control cohorts within a community would have evolved similarly.
+The Callaway--Sant'Anna estimator weakens this to parallel trends
+between each cohort group and the never-treated, with no
+extrapolation across cohort groups. Sibling fixed effects in
+equation~\eqref{eq:sibfe} additionally require that the variation in
+sibling exposure within mother is exogenous to the outcome conditional
+on $\alpha_m$, $\gamma_b$, birth order, and maternal age---roughly,
+that mothers do not time births in anticipation of the midwife's
+arrival in a way that correlates with child outcomes through channels
+other than midwife exposure. The fertility-selection check in
+Section~\ref{sec:robustness} examines this. SUTVA requires that
+treatment of one community does not affect outcomes in another, which
+\textcite{ahsan2021} discuss in the context of midwife mobility across
+village boundaries.
+
+The balance test reported in Table~\ref{tab:balance} regresses
+pre-program village covariates on early-treatment status and confirms
+that placement was not random---a feature, not a bug: the test exists
+to document the very confounding the rest of the empirical strategy
+seeks to address.
+
+\begin{table}[!htbp]
+\centering
+\caption{Balance: pre-program village covariates by early- vs.\
+late-treatment status.}
+\label{tab:balance}
+\input{tables/balance.tex}
+\begin{minipage}{0.85\textwidth}
+\footnotesize
+\emph{Notes.} Sample is at the community-of-birth level
+($\NVillages$ communities). Early-treated communities are those whose
+SAR rollout year is at or below the median across treated communities.
+$p$-values are from two-sample $t$-tests.
+\end{minipage}
+\end{table}

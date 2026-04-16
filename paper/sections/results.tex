@@ -1,0 +1,179 @@
+% =====================================================================
+% sections/results.tex — shared (long + short)
+% =====================================================================
+
+\section{Main results}
+\label{sec:results}
+
+\subsection{Pooled estimates}
+
+Table~\ref{tab:main_results} reports the main estimates of $\beta$ in
+equation~\eqref{eq:twfe}. Each row is one of the four composite
+indices; column~(1) is the bare TWFE, column~(2) adds pre-determined
+controls, column~(3) adds province-by-birth-year fixed effects,
+column~(4) reports the Callaway--Sant'Anna dynamic ATT averaged over
+event-times $0$--$3$, and column~(5) reports the analogous
+de Chaisemartin--D'Haultf{\oe}uille estimator.
+
+\begin{table}[!htbp]
+\centering
+\caption{Main results: effect of early-life village-midwife exposure on
+adult outcome indices.}
+\label{tab:main_results}
+\input{tables/main_results.tex}
+\begin{minipage}{0.95\textwidth}
+\footnotesize
+\emph{Notes.} Sample is the primary analysis sample (cohorts
+1984--1999, $N=\NPrimary$, $\NVillages$ communities). The dependent
+variable in each row is one of the four standardized
+inverse-covariance-weighted composite indices; positive values
+indicate better outcomes (higher health, higher cognition, less
+depression, more positive Big-Five traits). Treatment is exposure to
+the village midwife in utero or aged 0--3. All TWFE columns include
+community-of-birth and birth-year fixed effects. Standard errors
+clustered at the community-of-birth level reported in parentheses.
+Columns (4) and (5) report the average ATT for event-times 0--3 from
+the \textcite{callawaysantanna2021} and \textcite{dechaisemartin2021}
+estimators with never-treated controls.
+\end{minipage}
+\end{table}
+
+The headline TWFE estimate for the health index is
+\CoefHealthTWFE\ standard deviations (SE \SEHealthTWFE), statistically
+indistinguishable from zero at conventional levels. Adding controls
+and province-by-birth-year fixed effects barely shifts the point
+estimate. The Callaway--Sant'Anna dynamic ATT is somewhat larger in
+magnitude, reflecting the contribution of the never-treated comparison
+group, but the standard error widens enough that statistical
+significance is not achieved. This is a substantively weaker headline
+than the predecessor DEPII analysis, which reported a marginally
+significant point estimate of 0.055 SD on a more restricted
+non-migrant sample.
+
+The cognition index is essentially zero in every column. Bigfive shows
+small positive point estimates of similar magnitude across
+specifications, never reaching significance. The depression index is
+the most consistent: a positive estimate of \CoefDepTWFE\ SD
+(SE \SEDepTWFE) under TWFE---meaning fewer depressive symptoms among
+exposed cohorts---that grows to about 0.10 SD with controls and remains
+within standard-error bands of the staggered-DID-robust estimators.
+None of the four indices is statistically distinguishable from zero in
+any specification.
+
+The pattern that does survive the multiple-testing imprecision of
+Table~\ref{tab:main_results} is the gender split, reported in
+Table~\ref{tab:main_results_by_sex}. Health-index gains are concentrated
+among girls, replicating the central finding of the predecessor DEPII
+analysis. The female-only TWFE estimate for the health index is
+substantially larger than the male-only estimate, consistent with
+\textcite{frankenberg2005}'s evidence that midwife services
+disproportionately reach female infants and with the broader
+literature on differential access to maternal and child health
+services in South and Southeast Asia. The Big-Five and depression
+indices show similar but smaller gender splits.
+
+\begin{table}[!htbp]
+\centering
+\caption{Heterogeneity by sex: TWFE estimates with controls.}
+\label{tab:main_results_by_sex}
+\input{tables/main_results_by_sex.tex}
+\begin{minipage}{0.85\textwidth}
+\footnotesize
+\emph{Notes.} Each cell reports the TWFE estimate of equation
+\eqref{eq:twfe} with controls (mother's education and age at birth),
+estimated separately on the male ($N=\num{5359}$) and female
+($N=\num{5209}$) subsamples. Standard errors clustered at the
+community-of-birth level in parentheses.
+\end{minipage}
+\end{table}
+
+\subsection{Event study and pre-trends}
+
+Figure~\ref{fig:event_study} reports the Sun--Abraham event study
+defined in equation~\eqref{eq:sunab} for the four primary outcomes.
+The omitted reference event time is $-1$. The displayed window is
+truncated at $-4$ on the lead side, both because cohorts more than four
+years before rollout are identified by relatively few late-treated
+communities and because the pre-trend test is naturally read against
+the cohorts immediately preceding the program.
+
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/event_study_health_index.pdf}
+\caption{Health index}
+\end{subfigure}
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/event_study_depression_index.pdf}
+\caption{Depression index (higher = better)}
+\end{subfigure}\\[1ex]
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/event_study_cognition_index.pdf}
+\caption{Cognition index}
+\end{subfigure}
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/event_study_bigfive_index.pdf}
+\caption{Big-Five index}
+\end{subfigure}
+\caption{Sun--Abraham event-study coefficients with 95\% confidence
+intervals. Reference event time is $-1$.}
+\label{fig:event_study}
+\end{figure}
+
+The post-treatment coefficients display the same pattern as the pooled
+TWFE estimates: small positive effects on health (point estimates
+around 0.1--0.25 SD across event times 0--7, almost always within their
+own confidence intervals), near-zero effects on cognition and Big-Five,
+and small positive effects on depression that fluctuate across event
+times. None of the post-treatment dynamics looks like the steady,
+monotone pattern that would be expected from a powerful treatment
+effect.
+
+The pre-period dynamics are less reassuring.
+Table~\ref{tab:pretrend} reports a joint Wald test of the hypothesis
+that $\delta_{-4} = \delta_{-3} = \delta_{-2} = 0$. The test rejects at
+conventional levels for three of the four outcomes. The visual
+inspection of Figure~\ref{fig:event_study} suggests that the rejection
+is driven by noisy pre-period coefficients straddling zero rather than
+by a systematic pre-period trend in any one direction; nonetheless, a
+strict reading of the parallel-trends assumption is rejected. This is
+one of the principal motivations for the within-mother design that
+follows in Section~\ref{sec:robustness}: pre-trends in TWFE need not
+contaminate sibling-FE estimates because the latter sweep out
+time-invariant village confounders.
+
+\begin{table}[!htbp]
+\centering
+\caption{Pre-trend joint Wald tests, event-times $-4$ to $-2$.}
+\label{tab:pretrend}
+\input{tables/event_study_pretrend_tests.tex}
+\begin{minipage}{0.85\textwidth}
+\footnotesize
+\emph{Notes.} Joint Wald test of zero pre-period coefficients in the
+Sun--Abraham specification of equation~\eqref{eq:sunab}, restricted to
+event-times $\{-4, -3, -2\}$ (event-time $-1$ is the omitted
+reference). Standard errors clustered at the community-of-birth level.
+\end{minipage}
+\end{table}
+
+\subsection{Magnitude interpretation}
+
+The point estimates above are reported in standard-deviation units of
+the relevant Anderson index. To translate the depression-index estimate
+into raw CESD-10 units, the cross-sectional standard deviation of the
+CESD-10 sum in the analysis sample is approximately 5 points (range
+0--30); a 0.07~SD effect therefore corresponds to about a third of one
+CESD-10 point---small in absolute terms but on the same order as
+short-term effects of cash transfer programs in similar settings
+\autocite{premand2022}. The health-index estimate, which is a composite
+of height (in centimeters), weight, and other measures, does not
+translate cleanly into a single physical unit. A 0.1~SD effect on
+the height component alone, by contrast, would correspond to roughly
+0.7~cm. None of the headline point estimates is statistically
+distinguishable from zero, so these magnitude calculations should be
+read as an indication of what the data could reject rather than as
+inference about a parameter.
