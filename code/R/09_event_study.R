@@ -26,6 +26,7 @@ suppressPackageStartupMessages({
 
 source(here::here("code", "R", "lib", "paths.R"))
 source(here::here("code", "R", "lib", "io.R"))
+source(here::here("code", "R", "lib", "labels.R"))
 
 log_stage("stage09", "begin")
 
@@ -43,8 +44,8 @@ palette_oi <- c(blue = "#0072B2", vermilion = "#D55E00", black = "#000000")
 df <- frame |>
   filter(primary_sample == 1) |>
   mutate(
-    G = if_else(!is.na(start_sar_preceding),
-                as.integer(start_sar_preceding) - 1L, 0L),
+    G = if_else(!is.na(start_sar_legacy),
+                as.integer(start_sar_legacy) - 1L, 0L),
     # Sun-Abraham `sunab()` wants first_treat = NA for never-treated.
     first_treat = if_else(G > 0, G, NA_integer_)
   )
@@ -69,9 +70,9 @@ for (y in outcomes) {
   log_stage("stage09", sprintf("Sun-Abraham event study for %s", y))
   m <- feols(
     as.formula(sprintf(
-      "%s ~ sunab(first_treat, birth_year, ref.p = -1) | commid_birth_preceding + birth_year",
+      "%s ~ sunab(first_treat, birth_year, ref.p = -1) | commid_birth_legacy + birth_year",
       y)),
-    data = df, cluster = ~ commid_birth_preceding
+    data = df, cluster = ~ commid_birth_legacy
   )
   # Per-event-time (cohort-aggregated) coefficients from iplot data.
   ip <- iplot(m, only.params = TRUE)$prms
@@ -133,9 +134,8 @@ for (y in outcomes) {
     scale_x_continuous(breaks = seq(ET_MIN, ET_MAX, by = 1),
                        limits = c(ET_MIN - 0.5, ET_MAX + 0.5)) +
     labs(x = "Birth cohort relative to VM rollout (years)",
-         y = sprintf("Effect on %s",
-                     gsub("_", " ", y))) +
-    theme_minimal(base_size = 11) +
+         y = sprintf("Effect on %s", pretty_label(y))) +
+    theme_bw(base_size = 11) +
     theme(panel.grid.minor = element_blank())
 
   ggsave(file.path(figures_dir, sprintf("event_study_%s.pdf", y)),
@@ -153,7 +153,7 @@ writeLines(c(
   "\\midrule",
   apply(pretrend_tbl, 1, function(r) sprintf(
     "%s & %.2f & %d & %.3f \\\\",
-    gsub("_", "\\\\_", r["outcome"]),
+    pretty_label(r["outcome"]),
     as.numeric(r["chi2"]),
     as.integer(r["df"]),
     as.numeric(r["p_value"])
@@ -197,8 +197,8 @@ for (y in outcomes) {
     scale_x_continuous(breaks = seq(ET_MIN, ET_MAX, by = 1),
                        limits = c(ET_MIN - 0.5, ET_MAX + 0.5)) +
     labs(x = "Birth cohort relative to VM rollout (years)",
-         y = sprintf("CS dynamic ATT: %s", gsub("_", " ", y))) +
-    theme_minimal(base_size = 11) +
+         y = sprintf("CS dynamic ATT: %s", pretty_label(y))) +
+    theme_bw(base_size = 11) +
     theme(panel.grid.minor = element_blank())
 
   ggsave(file.path(figures_dir, sprintf("event_study_CS_%s.pdf", y)),

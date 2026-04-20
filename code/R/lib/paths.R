@@ -59,12 +59,14 @@ ifls_file_catalog <- function() {
     "W1",  "individual",  "roster_alt",  "W1/hh93dta/bukkar2.dta",
     "W1",  "individual",  "height",      "W1/hh93dta/bukcca2.dta",
     "W1",  "individual",  "smoke",       "W1/hh93dta/buk3km1.dta",
+    "W1",  "mediator",    "preg_hist",   "W1/hh93dta/buk4ch1.dta",
     "W1",  "community",   "sar",         "W1/cf93dta/bkps_cf.dta",
     # --- W2 (1997): individual roster + tracking + community ---
     "W2",  "individual",  "roster_main", "W2/hh97dta/hh97bk/bk_ar1.dta",
     "W2",  "individual",  "roster_hh",   "W2/hh97dta/hh97bk/bk_ar0.dta",
     "W2",  "tracking",    "ptrack",      "W2/hh97dta/hh97bk/ptrack.dta",
     "W2",  "tracking",    "htrack",      "W2/hh97dta/hh97bk/htrack.dta",
+    "W2",  "mediator",    "preg_hist",   "W2/hh97dta/hh97b4/b4_ch1.dta",
     "W2",  "community",   "sar",         "W2/cf97dta/sar_v12.dta",
     "W2",  "community",   "pkk",         "W2/cf97dta/pkk_v12.dta",
     # --- W3 (2000) ---
@@ -72,6 +74,7 @@ ifls_file_catalog <- function() {
     "W3",  "individual",  "roster_hh",   "W3/hh00_all_dta/bk_ar0.dta",
     "W3",  "tracking",    "ptrack",      "W3/hh00_all_dta/ptrack.dta",
     "W3",  "tracking",    "htrack",      "W3/hh00_all_dta/htrack.dta",
+    "W3",  "mediator",    "preg_hist",   "W3/hh00_all_dta/b4_ch1.dta",
     "W3",  "community",   "sar",         "W3/cf00_all_dta/sar.dta",
     "W3",  "community",   "pkk",         "W3/cf00_all_dta/pkk.dta",
     # --- W4 (2007): tracking + community only (outcomes come from W5) ---

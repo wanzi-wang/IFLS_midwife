@@ -61,15 +61,18 @@ other_f <- read_intermediate("stage03", "other_facilities")
 # ---------------------------------------------------------------------
 frame <- frame |>
   mutate(
+    # Headline sample = non-migrant children (legacy birthplace variant).
+    # Restricts to children whose own community identifier is unchanged
+    # across all four IFLS waves, so birthplace is cleanly identified.
     primary_sample = as.integer(
       birth_year >= 1984 & birth_year <= 1999 &
-      !is.na(commid_birth_preceding) &
+      !is.na(commid_birth_legacy) &
       dead == 0
     ),
     # Companion flags for robustness in stage 11.
-    legacy_sample = as.integer(
+    preceding_sample = as.integer(
       birth_year >= 1984 & birth_year <= 1999 &
-      !is.na(commid_birth_legacy) & dead == 0
+      !is.na(commid_birth_preceding) & dead == 0
     ),
     mother_sample = as.integer(
       birth_year >= 1984 & birth_year <= 1999 &

@@ -1,73 +1,21 @@
-% =====================================================================
-% sections/data.tex — shared (long + short)
-% =====================================================================
+% ===================================================================== % sections/data.tex — shared (long + short) % =====================================================================
 
-\section{Data}
-\label{sec:data}
+\section{Data} \label{sec:data}
 
 \subsection{The Indonesia Family Life Survey}
 
-The analysis uses all five waves of the Indonesia Family Life Survey
-(IFLS), an ongoing longitudinal household survey conducted between 1993
-and 2014. The IFLS sample is representative of approximately 83 percent
-of the Indonesian population and originally covered roughly
-\num{30000} individuals in 13 of the country's 27 provinces
-\autocite{strauss2016}. Re-contact rates across waves are unusually
-high for a long panel: 94 percent of wave-1 households were
-reinterviewed in wave 2, and \textcite{thomas2000} document that
-attrition over the first three waves was largely uncorrelated with
-baseline observables that predict outcomes. \textcite{ahsan2021} report
-that 23 percent attrition over thirty years does not threaten
-identification in the village-midwife setting; in the present analysis
-sample, attrition since wave 1 is 21 percent and is uncorrelated with
-the timing of village-midwife arrival.
+The analysis uses all five waves of the Indonesia Family Life Survey (IFLS), an ongoing longitudinal household survey conducted between 1993 and 2014. The IFLS sample is representative of approximately 83 percent of the Indonesian population and originally covered roughly \num{30000} individuals in 13 of the country's 27 provinces \autocite{strauss2016}. Re-contact rates across waves are unusually high for a long panel: 94 percent of wave-1 households were reinterviewed in wave 2, and \textcite{thomas2000} document that attrition over the first three waves was largely uncorrelated with baseline observables that predict outcomes. \textcite{ahsan2021} report that 23 percent attrition over thirty years does not threaten identification in the village-midwife setting; in the present analysis sample, attrition since wave 1 is 21 percent and is uncorrelated with the timing of village-midwife arrival.
 
-Three IFLS modules are central to the analysis. The Service
-Availability Roster (SAR), administered to community informants in
-waves 2--5, records the type, opening year, and operating status of
-every health facility serving each community. The community-government
-(PKK) module independently asks village leaders whether a midwife is
-present and, if so, in what year she first arrived. Together these two
-modules yield two parallel measures of program rollout that I describe
-in Section~\ref{sec:empirical}. Individual-level demographic and outcome
-data come from the household questionnaire (Books AR, US, 3A, 3B, EK).
+Three IFLS modules are central to the analysis. The Service Availability Roster (SAR), administered to community informants in waves 2--5, records the type, opening year, and operating status of every health facility serving each community. The community-government (PKK) module independently asks village leaders whether a midwife is present and, if so, in what year she first arrived. Together these two modules yield two parallel measures of program rollout that I describe in Section~\ref{sec:empirical}. Individual-level demographic and outcome data come from the household questionnaire (Books AR, US, 3A, 3B, EK).
 
 \subsection{Sample construction}
 
-Treatment is assigned at the level of an individual's community of
-birth. Because IFLS does not record birthplace directly, I reconstruct
-it from migration histories. Three reconstructions are computed and
-preserved in the analysis frame so that downstream specifications can
-compare them: (i)~the legacy convention used by \textcite{cas2012} and
-\textcite{ahsan2021} that restricts to children whose own community
-identifier is unchanged across all four waves; (ii)~a variant that
-restricts on the mother's never-mover status rather than the child's;
-and (iii)~the headline variant used in the main results, which assigns
-the mother's community at the wave nearest preceding the child's birth.
-The three variants yield analytic samples of \num{5565}, \num{5638},
-and \NPrimary~individuals respectively. The headline (preceding-wave)
-variant nearly doubles the sample relative to the legacy convention by
-including children whose mothers moved across waves, at the cost of a
-modestly noisier birthplace assignment for births before wave 1.
+Treatment is assigned at the level of an individual's community of birth. Because IFLS does not record birthplace directly, I reconstruct it from migration histories. Three reconstructions are computed and preserved in the analysis frame so that downstream specifications can compare them: (i)~the legacy convention used by \textcite{cas2012} and \textcite{ahsan2021} that restricts to children whose own community identifier is unchanged across all four waves; (ii)~a variant that restricts on the mother's never-mover status rather than the child's; and (iii)~the headline variant used in the main results, which assigns the mother's community at the wave nearest preceding the child's birth. The three variants yield analytic samples of \num{5565}, \num{5638}, and \NPrimary~individuals respectively. The headline (preceding-wave) variant nearly doubles the sample relative to the legacy convention by including children whose mothers moved across waves, at the cost of a modestly noisier birthplace assignment for births before wave 1.
 
-The headline analysis sample includes individuals born in 1984--1999
-(aged 15--30 in 2014) who are alive at wave 5 and have a non-missing
-preceding-wave community identifier. Restricting to non-migrant
-households as in the original DEPII version of this analysis would
-roughly halve the sample at substantial cost in statistical power; the
-headline specification keeps both migrant and non-migrant individuals
-and treats migration as a robustness consideration rather than a sample
-restriction. The implications of this choice are revisited in
-Section~\ref{sec:discussion}. Internal migration in Indonesia rose
-substantially over the relevant period---rural-to-urban migration
-moved from 17 to 31 percent of the population between 1971 and 1990
-\autocite{alatas1993}---making sample-restriction by mover status a
-non-trivial source of selection.
+The headline analysis sample includes individuals born in 1984--1999 (aged 15--30 in 2014) who are alive at wave 5 and have a non-missing preceding-wave community identifier. Restricting the sample to non-migrant households would cleanly identify birthplace at the cost of dropping roughly half the cohort, which is a non-trivial source of selection in a country that experienced substantial internal migration over the relevant period, rural-to-urban migration moved from 17 to 31 percent of the population between 1971 and 1990 \autocite{alatas1993}. The headline specification therefore keeps both migrant and non-migrant individuals and treats migration as a robustness consideration rather than as a sample restriction; the alternative non-migrant and mother-never-mover samples are reported in the robustness columns of Table~\ref{tab:robustness}.
 
-Table~\ref{tab:descriptives} reports descriptive statistics for the
-analysis sample.
+Table~\ref{tab:descriptives} reports descriptive statistics for the analysis sample.
 
-% Wrap in resizebox to fit width — modelsummary tabular is otherwise too wide.
 \begingroup
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{0.95}
@@ -78,48 +26,16 @@ analysis sample.
 
 \subsection{Outcome measures}
 
-The analysis collapses outcomes into four families. Each is summarized
-by a single inverse-covariance-weighted composite index following
-\textcite{anderson2008}, with raw items retained for sensitivity
-analysis. By convention, signs are oriented so that higher values of
-each index indicate a better outcome.
+The analysis collapses outcomes into four families. Each is summarized by a single inverse-covariance-weighted composite index following \textcite{anderson2008}, with raw items retained for sensitivity analysis. By convention, signs are oriented so that higher values of each index indicate a better outcome.
 
-\paragraph{Health.}
-The health index combines six wave-5 measurements: standing height in
-centimeters, an indicator for not being underweight (BMI $\geq 18.5$),
-log-transformed peak expiratory flow, an indicator for not having
-hypertension, a retrospective indicator for good early-life health, and
-a self-rated general health rating (re-coded so higher is better).
+\paragraph{Health.} The health index combines six wave-5 measurements: standing height in centimeters, an indicator for not being underweight (BMI $\geq 18.5$), log-transformed peak expiratory flow, an indicator for not having hypertension, a retrospective indicator for good early-life health, and a self-rated general health rating (re-coded so higher is better).
 
-\paragraph{Cognition.}
-The cognition index combines wave-5 adult cognitive measures from
-Book~3B: the IRT-scored adaptive number-series score \texttt{w\_abil},
-the serial-7 subtraction count, and immediate and delayed
-word-recall counts. This departs from the DEPII version of the analysis,
-which used the child Raven module from Book~EK; the latter is
-administered only to respondents aged 7--14 and therefore captures only
-the youngest cohort in the 1984--1999 window, with insufficient
-statistical power. The adult IRT score covers the entire cohort.
+\paragraph{Cognition.} The cognition index combines wave-5 adult cognitive measures from Book~3B: the IRT-scored adaptive number-series score, the serial-7 subtraction count, and immediate and delayed word-recall counts. The adult IRT score covers the entire 1984--1999 cohort; the alternative child Raven score from Book~EK is administered only to respondents aged 7--14 at wave~5 and so is reported as an auxiliary outcome only in the long-paper robustness suite.
 
-\paragraph{Depression.}
-The depression index is the standardized sum of the ten CESD-10 items
-in module \texttt{b3b\_kp}, sign-flipped so that higher values mean
-fewer depressive symptoms.
+\paragraph{Depression.} The depression index is the standardised sum of the ten CESD-10 items administered in the IFLS wave-5 adult module, sign-flipped so that higher values mean fewer depressive symptoms.
 
-\paragraph{Personality.}
-The Big-Five index averages five trait scores constructed from the
-fifteen Big-Five Inventory items in module \texttt{b3b\_psn}; each
-trait score is itself standardized within the wave-5 sample.
+\paragraph{Socioemotional traits.} The socioemotional index averages five trait scores constructed from the fifteen Big-Five Inventory items in the IFLS wave-5 adult module; each trait score is standardised within the wave-5 sample.
 
-Figure~\ref{fig:rollout} shows the distribution of village-midwife
-rollout years across the \NVillages~communities in the analysis sample,
-with the program-launch year (1989) and the onset of the Asian
-Financial Crisis (1997) marked.
+Figure~\ref{fig:rollout} shows the distribution of village-midwife rollout years across the \NVillages~communities in the analysis sample, with the program-launch year (1989) and the onset of the Asian Financial Crisis (1997) marked.
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/rollout_histogram.pdf}
-\caption{Distribution of SAR-recorded village-midwife rollout years
-across communities in the analysis sample.}
-\label{fig:rollout}
-\end{figure}
+\begin{figure}[!htbp] \centering \includegraphics[width=0.9\textwidth]{figures/rollout_histogram.pdf} \caption{Distribution of SAR-recorded village-midwife rollout years across communities in the analysis sample.} \label{fig:rollout} \end{figure}

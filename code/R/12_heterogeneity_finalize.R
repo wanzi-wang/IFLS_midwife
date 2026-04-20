@@ -29,6 +29,7 @@ suppressPackageStartupMessages({
 
 source(here::here("code", "R", "lib", "paths.R"))
 source(here::here("code", "R", "lib", "io.R"))
+source(here::here("code", "R", "lib", "labels.R"))
 
 log_stage("stage12", "begin")
 
@@ -47,11 +48,11 @@ df <- frame |>
                              stats::median(mother_edu_years,
                                            na.rm = TRUE)),
     age_win = case_when(
-      inutero_sar_preceding   == 1 ~ "in utero",
-      within_3_sar_preceding  == 1 ~ "age 0-3",
-      within_46_sar_preceding == 1 ~ "age 4-6",
-      !is.na(age_at_rollout_sar_preceding) &
-        age_at_rollout_sar_preceding >= 7 ~ "age 7+",
+      inutero_sar_legacy   == 1 ~ "in utero",
+      within_3_sar_legacy  == 1 ~ "age 0-3",
+      within_46_sar_legacy == 1 ~ "age 4-6",
+      !is.na(age_at_rollout_sar_legacy) &
+        age_at_rollout_sar_legacy >= 7 ~ "age 7+",
       TRUE ~ "never / pre-VM"
     ) |> factor(levels = c("never / pre-VM", "in utero",
                            "age 0-3", "age 4-6", "age 7+"))
@@ -75,17 +76,17 @@ fmt <- function(est, se) {
 # ---------------------------------------------------------------------
 rows_edu <- lapply(outcomes, function(y) {
   ml <- feols(as.formula(sprintf(paste0(
-    "%s ~ exposure_early_sar_preceding | ",
-    "commid_birth_preceding + birth_year"), y)),
+    "%s ~ exposure_early_sar_legacy | ",
+    "commid_birth_legacy + birth_year"), y)),
     data = df |> filter(high_medu == 0),
-    cluster = ~ commid_birth_preceding)
+    cluster = ~ commid_birth_legacy)
   mh <- feols(as.formula(sprintf(paste0(
-    "%s ~ exposure_early_sar_preceding | ",
-    "commid_birth_preceding + birth_year"), y)),
+    "%s ~ exposure_early_sar_legacy | ",
+    "commid_birth_legacy + birth_year"), y)),
     data = df |> filter(high_medu == 1),
-    cluster = ~ commid_birth_preceding)
-  pl <- coef_se(ml, "exposure_early_sar_preceding")
-  ph <- coef_se(mh, "exposure_early_sar_preceding")
+    cluster = ~ commid_birth_legacy)
+  pl <- coef_se(ml, "exposure_early_sar_legacy")
+  ph <- coef_se(mh, "exposure_early_sar_legacy")
   tibble(outcome = y,
          `Low-edu`  = fmt(pl[1], pl[2]),
          `High-edu` = fmt(ph[1], ph[2]))
@@ -102,7 +103,7 @@ writeLines(c(
     cells <- vapply(r[-1], function(cell)
       paste0("\\makecell{", gsub("\n", "\\\\\\\\", cell), "}"),
       character(1))
-    sprintf("%s & %s \\\\", gsub("_", "\\\\_", r["outcome"]),
+    sprintf("%s & %s \\\\", pretty_label(r["outcome"]),
             paste(cells, collapse = " & "))
   }),
   "\\bottomrule",
@@ -116,8 +117,8 @@ writeLines(c(
 rows_age <- lapply(outcomes, function(y) {
   m <- feols(as.formula(sprintf(paste0(
     "%s ~ i(age_win, ref = 'never / pre-VM') | ",
-    "commid_birth_preceding + birth_year"), y)),
-    data = df, cluster = ~ commid_birth_preceding)
+    "commid_birth_legacy + birth_year"), y)),
+    data = df, cluster = ~ commid_birth_legacy)
   co <- coef(m); vc <- vcov(m)
   get <- function(lbl) {
     nm <- grep(paste0("age_win::", lbl, "$"), names(co), value = TRUE)
@@ -144,7 +145,7 @@ writeLines(c(
     cells <- vapply(r[-1], function(cell)
       paste0("\\makecell{", gsub("\n", "\\\\\\\\", cell), "}"),
       character(1))
-    sprintf("%s & %s \\\\", gsub("_", "\\\\_", r["outcome"]),
+    sprintf("%s & %s \\\\", pretty_label(r["outcome"]),
             paste(cells, collapse = " & "))
   }),
   "\\bottomrule",
@@ -167,10 +168,10 @@ for (y in outcomes) {
   for (nm in names(subsets)) {
     d <- subsets[[nm]]
     m <- feols(as.formula(sprintf(paste0(
-      "%s ~ exposure_early_sar_preceding | ",
-      "commid_birth_preceding + birth_year"), y)),
-      data = d, cluster = ~ commid_birth_preceding)
-    p <- coef_se(m, "exposure_early_sar_preceding")
+      "%s ~ exposure_early_sar_legacy | ",
+      "commid_birth_legacy + birth_year"), y)),
+      data = d, cluster = ~ commid_birth_legacy)
+    p <- coef_se(m, "exposure_early_sar_legacy")
     forest_rows[[paste(y, nm)]] <- tibble(
       outcome = y, subgroup = nm,
       estimate = p[1], se = p[2],
@@ -182,7 +183,7 @@ forest <- bind_rows(forest_rows) |>
   mutate(
     outcome = factor(outcome, levels = outcomes,
                      labels = c("Health", "Cognition",
-                                "Depression (- )", "Big Five")),
+                                "Depression (- )", "Socioemotional")),
     subgroup = factor(subgroup, levels = rev(c("Full sample",
                                                "Male", "Female",
                                                "Low-edu", "High-edu")))
@@ -193,15 +194,25 @@ palette_oi <- c(blue = "#0072B2", vermilion = "#D55E00", black = "#000000")
 p_forest <- ggplot(forest,
                    aes(x = estimate, y = subgroup)) +
   geom_vline(xintercept = 0, linetype = "dashed",
-             colour = palette_oi["black"], alpha = 0.5) +
-  geom_errorbarh(aes(xmin = ci_lo, xmax = ci_hi), height = 0.2,
-                 colour = palette_oi["blue"]) +
-  geom_point(size = 2, colour = palette_oi["blue"]) +
+             colour = "grey40", alpha = 0.7) +
+  geom_errorbar(aes(xmin = ci_lo, xmax = ci_hi),
+                orientation = "y", width = 0.15,
+                colour = "black", linewidth = 0.4) +
+  geom_point(size = 2.2, colour = "black") +
   facet_wrap(~ outcome, ncol = 2, scales = "free_x") +
   labs(x = "Effect of VM exposure (SD)", y = NULL) +
-  theme_minimal(base_size = 11) +
-  theme(panel.grid.minor = element_blank(),
-        strip.text = element_text(face = "bold"))
+  theme_classic(base_size = 11) +
+  theme(
+    panel.background = element_rect(fill = "white", colour = NA),
+    plot.background  = element_rect(fill = "white", colour = NA),
+    strip.background = element_rect(fill = "white", colour = "black",
+                                    linewidth = 0.4),
+    strip.text       = element_text(face = "bold"),
+    panel.grid.major.x = element_line(colour = "grey92", linewidth = 0.3),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(colour = "black", linewidth = 0.4)
+  )
 
 ggsave(file.path(figures_dir, "heterogeneity_forest.pdf"),
        plot = p_forest, width = 6.5, height = 4.0, units = "in",
@@ -210,19 +221,19 @@ ggsave(file.path(figures_dir, "heterogeneity_forest.pdf"),
 # ---------------------------------------------------------------------
 # 4. numbers.tex — in-text macros for the paper.
 # ---------------------------------------------------------------------
-main_m <- feols(health_index ~ exposure_early_sar_preceding |
-                  commid_birth_preceding + birth_year,
-                data = df, cluster = ~ commid_birth_preceding)
-dep_m  <- feols(depression_index ~ exposure_early_sar_preceding |
-                  commid_birth_preceding + birth_year,
-                data = df, cluster = ~ commid_birth_preceding)
+main_m <- feols(health_index ~ exposure_early_sar_legacy |
+                  commid_birth_legacy + birth_year,
+                data = df, cluster = ~ commid_birth_legacy)
+dep_m  <- feols(depression_index ~ exposure_early_sar_legacy |
+                  commid_birth_legacy + birth_year,
+                data = df, cluster = ~ commid_birth_legacy)
 # Female-only depression (abstract claim: effect particularly in girls).
-dep_f  <- feols(depression_index ~ exposure_early_sar_preceding |
-                  commid_birth_preceding + birth_year,
+dep_f  <- feols(depression_index ~ exposure_early_sar_legacy |
+                  commid_birth_legacy + birth_year,
                 data = df |> filter(sex == 3),
-                cluster = ~ commid_birth_preceding)
+                cluster = ~ commid_birth_legacy)
 
-sib_m <- feols(depression_index ~ exposure_early_sar_preceding +
+sib_m <- feols(depression_index ~ exposure_early_sar_legacy +
                  birth_order + mother_age_birth |
                  mother_pidlink + birth_year,
                data = df |>
@@ -232,7 +243,7 @@ sib_m <- feols(depression_index ~ exposure_early_sar_preceding +
                  mutate(birth_order = rank(birth_year,
                                            ties.method = "first")) |>
                  ungroup(),
-               cluster = ~ commid_birth_preceding)
+               cluster = ~ commid_birth_legacy)
 
 sig3 <- function(x) sprintf("%.3f", x)
 writeLines(c(
@@ -241,27 +252,27 @@ writeLines(c(
   sprintf("\\newcommand{\\NPrimary}{%s}",
           format(nrow(df), big.mark = ",")),
   sprintf("\\newcommand{\\NVillages}{%s}",
-          format(dplyr::n_distinct(df$commid_birth_preceding),
+          format(dplyr::n_distinct(df$commid_birth_legacy),
                  big.mark = ",")),
   sprintf("\\newcommand{\\NNeverTreated}{%s}",
-          format(sum(is.na(df$start_sar_preceding)), big.mark = ",")),
+          format(sum(is.na(df$start_sar_legacy)), big.mark = ",")),
   sprintf("\\newcommand{\\CoefHealthTWFE}{%s}",
-          sig3(unname(coef(main_m)["exposure_early_sar_preceding"]))),
+          sig3(unname(coef(main_m)["exposure_early_sar_legacy"]))),
   sprintf("\\newcommand{\\SEHealthTWFE}{%s}",
           sig3(sqrt(vcov(main_m)[1,1]))),
   sprintf("\\newcommand{\\CoefDepTWFE}{%s}",
-          sig3(unname(coef(dep_m)["exposure_early_sar_preceding"]))),
+          sig3(unname(coef(dep_m)["exposure_early_sar_legacy"]))),
   sprintf("\\newcommand{\\SEDepTWFE}{%s}",
           sig3(sqrt(vcov(dep_m)[1,1]))),
   sprintf("\\newcommand{\\CoefDepFemale}{%s}",
-          sig3(unname(coef(dep_f)["exposure_early_sar_preceding"]))),
+          sig3(unname(coef(dep_f)["exposure_early_sar_legacy"]))),
   sprintf("\\newcommand{\\SEDepFemale}{%s}",
           sig3(sqrt(vcov(dep_f)[1,1]))),
   sprintf("\\newcommand{\\CoefDepSibFE}{%s}",
-          sig3(unname(coef(sib_m)["exposure_early_sar_preceding"]))),
+          sig3(unname(coef(sib_m)["exposure_early_sar_legacy"]))),
   sprintf("\\newcommand{\\SEDepSibFE}{%s}",
-          sig3(sqrt(vcov(sib_m)["exposure_early_sar_preceding",
-                                "exposure_early_sar_preceding"])))
+          sig3(sqrt(vcov(sib_m)["exposure_early_sar_legacy",
+                                "exposure_early_sar_legacy"])))
 ), file.path(here::here("paper"), "numbers.tex"))
 
 log_stage("stage12", "numbers.tex written.")

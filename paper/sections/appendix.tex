@@ -1,153 +1,30 @@
-% =====================================================================
-% sections/appendix.tex — long version only (~5-8 pages)
-% =====================================================================
+% ===================================================================== % sections/appendix.tex — long version only (~5-8 pages) % =====================================================================
 
-\section{SAR vs.\ PKK rollout disagreement}
-\label{app:rollout}
+\section{SAR vs.\ PKK rollout disagreement} \label{app:rollout}
 
-The IFLS contains two independent measures of the year a village
-midwife first arrived in each community: the SAR module, completed by
-the facility informant, and the PKK module, completed by the village
-leader. Both are recorded in waves 2--5 (PKK additionally in wave~3).
-Table~\ref{tab:rollout_compare} reports diagnostic statistics on the
-agreement between the two measures across the 153 communities for
-which both are recorded.
+The IFLS contains two independent measures of the year a village midwife first arrived in each community: the SAR module, completed by the facility informant, and the PKK module, completed by the village leader. Both are recorded in waves 2--5 (PKK additionally in wave~3). Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement between the two measures across the 153 communities for which both are recorded.
 
-\begin{table}[!htbp]
-\centering
-\caption{SAR vs.\ PKK rollout-year agreement.}
-\label{tab:rollout_compare}
-\input{tables/rollout_sar_vs_pkk.tex}
-\end{table}
+\begin{table}[!htbp] \centering \caption{SAR vs.\ PKK rollout-year agreement.} \label{tab:rollout_compare} \input{tables/rollout_sar_vs_pkk.tex} \end{table}
 
-The disagreement is severe. The Pearson correlation between the two
-measures is essentially zero ($\rho = 0.02$), and the two measures
-disagree on the rollout year for 83 percent of the communities for
-which both are recorded. The mean absolute disagreement is over four
-years. The headline analysis uses the SAR measure on the rationale
-that the SAR informant (typically a facility staff member) is closer
-to the operational record than the village leader, and the alternative
-PKK estimates appear in column~R4 of the robustness table.
+The disagreement is severe. The Pearson correlation between the two measures is essentially zero ($\rho = 0.02$), and the two measures disagree on the rollout year for 83 percent of the communities for which both are recorded. The mean absolute disagreement is over four years. The headline analysis uses the SAR measure on the rationale that the SAR informant (typically a facility staff member) is closer to the operational record than the village leader, and the alternative PKK estimates appear in column~R4 of the robustness table.
 
-The implication of this disagreement for the headline estimates is
-classical attenuation toward zero: if the true rollout year were
-measured perfectly we would expect tighter point estimates and
-narrower confidence intervals. The size of the attenuation cannot be
-recovered without an independent benchmark. The disagreement is also a
-feature of the data itself rather than a coding artifact: both
-measures pass the same internal consistency checks (range, monotonic
-within-village across waves) and the disagreement is not concentrated
-in any one province or rollout-year bin.
+The implication of this disagreement for the headline estimates is classical attenuation toward zero: if the true rollout year were measured perfectly we would expect tighter point estimates and narrower confidence intervals. The size of the attenuation cannot be recovered without an independent benchmark. The disagreement is also a feature of the data itself rather than a coding artifact: both measures pass the same internal consistency checks (range, monotonic within-village across waves) and the disagreement is not concentrated in any one province or rollout-year bin.
 
-\section{Callaway--Sant'Anna event-study figures}
-\label{app:cs_event}
+\section{Sun--Abraham event-study figures} \label{app:sa_event}
 
-Figure~\ref{fig:cs_event_study} reports the
-\textcite{callawaysantanna2021} dynamic-aggregation event-study
-coefficients with 95-percent confidence intervals for the four primary
-outcomes, complementing the Sun--Abraham figures in
-Section~\ref{sec:results}. The qualitative patterns are similar.
+Figure~\ref{fig:sa_event_study} reports the Sun--Abraham cohort-aggregated event-study coefficients with 95-percent confidence intervals for the four primary outcomes, as a complement to the Callaway--Sant'Anna event-study figures in Section~\ref{sec:results}.
 
-\begin{figure}[!htbp]
-\centering
-\begin{subfigure}[t]{0.49\textwidth}
-\centering
-\includegraphics[width=\linewidth]{figures/event_study_CS_health_index.pdf}
-\caption{Health index}
-\end{subfigure}
-\begin{subfigure}[t]{0.49\textwidth}
-\centering
-\includegraphics[width=\linewidth]{figures/event_study_CS_depression_index.pdf}
-\caption{Depression index (higher = better)}
-\end{subfigure}\\[1ex]
-\begin{subfigure}[t]{0.49\textwidth}
-\centering
-\includegraphics[width=\linewidth]{figures/event_study_CS_cognition_index.pdf}
-\caption{Cognition index}
-\end{subfigure}
-\begin{subfigure}[t]{0.49\textwidth}
-\centering
-\includegraphics[width=\linewidth]{figures/event_study_CS_bigfive_index.pdf}
-\caption{Big-Five index}
-\end{subfigure}
-\caption{Callaway--Sant'Anna dynamic-aggregation event-study
-coefficients with 95\% confidence intervals.}
-\label{fig:cs_event_study}
-\end{figure}
+\begin{figure}[!htbp] \centering \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_health_index.pdf} \caption{Health index} \end{subfigure} \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_depression_index.pdf} \caption{Depression index (higher = better)} \end{subfigure}\\[1ex] \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_cognition_index.pdf} \caption{Cognition index} \end{subfigure} \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_bigfive_index.pdf} \caption{Socioemotional index} \end{subfigure} \caption{Sun--Abraham cohort-aggregated event-study coefficients with 95\% confidence intervals.} \label{fig:sa_event_study} \end{figure}
 
-\section{Event-study coefficient tables}
-\label{app:event_tables}
+\section{Event-study coefficient tables} \label{app:event_tables}
 
-Tables~\ref{tab:es_health} through~\ref{tab:es_bigfive} report the
-event-time coefficients underlying the Sun--Abraham figures in
-Section~\ref{sec:results}.
+Tables~\ref{tab:es_health} through~\ref{tab:es_bigfive} report the event-time coefficients underlying the Sun--Abraham figures.
 
-\begin{table}[!htbp]
-\centering
-\caption{Sun--Abraham event-study coefficients: health index.}
-\label{tab:es_health}
-\input{tables/event_study_health_index.tex}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: health index.} \label{tab:es_health} \input{tables/event_study_health_index.tex} \end{table}
 
-\begin{table}[!htbp]
-\centering
-\caption{Sun--Abraham event-study coefficients: cognition index.}
-\label{tab:es_cognition}
-\input{tables/event_study_cognition_index.tex}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: cognition index.} \label{tab:es_cognition} \input{tables/event_study_cognition_index.tex} \end{table}
 
-\begin{table}[!htbp]
-\centering
-\caption{Sun--Abraham event-study coefficients: depression index.}
-\label{tab:es_depression}
-\input{tables/event_study_depression_index.tex}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: depression index.} \label{tab:es_depression} \input{tables/event_study_depression_index.tex} \end{table}
 
-\begin{table}[!htbp]
-\centering
-\caption{Sun--Abraham event-study coefficients: Big-Five index.}
-\label{tab:es_bigfive}
-\input{tables/event_study_bigfive_index.tex}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: Socioemotional index.} \label{tab:es_bigfive} \input{tables/event_study_bigfive_index.tex} \end{table}
 
-\section{Data pipeline}
-\label{app:pipeline}
-
-The analysis is fully reproducible from raw IFLS data. The pipeline
-is implemented in twelve numbered R scripts orchestrated by
-\texttt{code/R/00\_run\_all.R} and runs end-to-end in approximately
-one minute on a modern laptop.
-
-\begin{description}
-\item[Stages 01--05 (data construction).]
-Stage 01 reads the raw Stata files for IFLS waves 1--5 and writes
-typed \texttt{.rds} caches. Stage 02 builds the individual-level birth
-roster for cohorts 1984--1999, attaches mother covariates, computes
-the three \texttt{commid\_birth} variants, and flags movers and
-deaths. Stage 03 computes the SAR and PKK rollout years and the
-SAR/PKK comparison diagnostic. Stage 04 extracts the wave-5 outcome
-modules. Stage 05 merges these into the analysis frame and runs an
-audit against the legacy DEPII analysis frame.
-
-\item[Stages 06--12 (analysis).]
-Stage 06 applies sample restrictions, constructs the four
-\textcite{anderson2008} composite indices, and computes the
-inverse-probability weights used in robustness column~R1. Stage 07
-produces the balance table, the SAR/PKK diagnostic table, and the
-descriptive Table~1. Stage 08 fits the main TWFE, Callaway--Sant'Anna,
-and de Chaisemartin--D'Haultf{\oe}uille specifications. Stage 09
-fits the Sun--Abraham event-study specification and the corresponding
-CS dynamic aggregations. Stage 10 fits the within-mother
-specifications and the fertility-selection check. Stage 11 fits the
-remaining robustness columns. Stage 12 fits the heterogeneity
-specifications and writes the in-text macros to
-\texttt{paper/numbers.tex}.
-\end{description}
-
-The repository is organized so that all numerical content in the paper
-flows from the pipeline: tables under \texttt{paper/tables/} are
-produced by R scripts and included via \texttt{\textbackslash input};
-figures under \texttt{paper/figures/} are produced by R scripts and
-included via \texttt{\textbackslash includegraphics}; in-text numbers
-flow through the \texttt{numbers.tex} macros. No numbers in the paper
-are typed by hand.

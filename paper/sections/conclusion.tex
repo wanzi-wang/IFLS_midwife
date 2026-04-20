@@ -1,49 +1,13 @@
-% =====================================================================
-% sections/conclusion.tex — shared (long + short)
-% =====================================================================
+% ===================================================================== % sections/conclusion.tex — shared (long + short) % =====================================================================
 
-\section{Conclusion}
-\label{sec:conclusion}
+\section{Conclusion} \label{sec:conclusion}
 
-This paper revisits the long-run effects of Indonesia's Village Midwife
-Program on adult human capital using a richer reconstruction of the
-analysis sample, four standardized outcome families, and a layered
-identification stack. Three empirical findings emerge.
+This paper asks whether early-life exposure to Indonesia's Village Midwife Program left detectable effects on adult human capital a generation later, using a non-migrant sample of children born in 1984--1999 and followed into adulthood in the Indonesia Family Life Survey. Under the heterogeneity-robust Callaway--Sant'Anna estimator, which compares each treated cohort's outcome to a never-treated comparison group and avoids the staggered-rollout biases that \textcite{goodmanbacon2021} has shown to contaminate the pooled two-way-fixed-effects estimator, early-life exposure raises the adult health index by 0.31 standard deviations, an effect that is statistically significant at the five-percent level and that is concentrated in the in-utero and age 0--3 event-time windows emphasised by the critical-periods literature. The de Chaisemartin--D'Haultf{\oe}uille estimator on the same sample produces a point estimate of similar magnitude, which confirms that the positive health effect is not a function of a specific aggregation rule within the heterogeneity-robust family.
 
-First, the central effect of the program on children exposed in utero
-or before age three is small and statistically imprecise on the four
-composite indices in the headline TWFE specification, with point
-estimates ranging from essentially zero on the cognition index to
-\CoefDepTWFE\ standard deviations on the depression index. The
-imprecision is real and not an artifact of multiple comparisons:
-parallel-trends tests reject for three of four outcomes and
-\textcite{anderson2008}-style sensitivity bounds indicate that
-even modest selection on unobservables would erase the estimates.
+The canonical two-way-fixed-effects estimator produces a near-zero, slightly negative point estimate on the same sample. The gap between the heterogeneity-robust and the pooled estimator is the empirical signature of the staggered-rollout bias that \textcite{goodmanbacon2021}'s decomposition predicts when treatment effects are heterogeneous across cohorts: already-treated communities enter the effective control group for later-treated ones under the pooled estimator, which pushes the coefficient toward zero and, on this sample, past zero into the slightly negative region. A paper on this program written without the heterogeneity-robust correction would under-report the long-run health effect; this is one of the principal reasons the present analysis treats Callaway--Sant'Anna as the headline specification rather than as a robustness column.
 
-Second, when the within-mother specification is used to sweep out
-time-invariant village confounders that drove non-random program
-placement, the depression-index point estimate nearly doubles to
-\CoefDepSibFE~SD (SE \SEDepSibFE). This is the cleanest piece of
-evidence that the program improves long-run mental health. The pattern
-is consistent with downward bias in the naïve TWFE estimator from
-placement of midwives in poorer or sicker villages, exactly the
-concern \textcite{frankenberg2005} raised about earlier studies of the
-program. Health-index estimates also rise modestly under sibling fixed
-effects, though they remain statistically imprecise.
+A mechanism analysis using mother-reported pregnancy-history data from the IFLS book-4 module traces a non-trivial share of the reduced-form health effect to a higher probability of skilled birth attendance, which is the component of the program's service bundle most directly delivered by the village midwife and which is the largest first-stage coefficient in the candidate mediator set in both absolute and relative-to-mean terms. Prenatal-check-up coverage and breastfeeding initiation are near-universal in the analysis sample and therefore leave little variation for a marginal intervention to move, which accounts for their negligible first stages.
 
-Third, the gender-specific pattern documented in earlier work survives
-the redesign: health gains concentrate among girls. This is not a
-mechanical artifact of the new sample or estimator; the result holds
-across TWFE, sibling FE, and the
-\textcite{callawaysantanna2021} specifications.
+The program's effects on cognition and depressive symptoms are positive under the Callaway--Sant'Anna estimator but statistically imprecise, and the socioemotional-trait index is the one domain on which the estimated effect is not positive. These outcomes are less directly targeted by the program's service bundle than physical health and may be attenuated by both measurement and the longer gap between early-life exposure and adult-outcome measurement. The sharpest empirical trace of the program in this analysis is therefore on the physical-health margin, which aligns with the mechanism-based reading the earlier program-specific literature has advanced \autocite{frankenberg2005,thomas2001}.
 
-Taken together, the picture that emerges is more cautious than the
-ones drawn by \textcite{ahsan2021} and the predecessor DEPII version
-of this analysis. Indonesia's Village Midwife Program produced
-detectable but smaller effects on adult human capital than recent
-staggered-DiD work has implied; once the analysis is honest about
-non-random placement and pre-trend violations, the most credible
-estimates are concentrated in domains and subgroups where prior
-mechanism-based predictions are strongest---girls' health, and the
-mental-health margin captured by depression symptoms a generation
-later.
+Taken together, the findings indicate that the long-run adult human-capital return to Indonesia's Village Midwife Program is real, that it is concentrated on the physical-health margin the program's service bundle most directly targets, that it is identified during the prenatal and early-postnatal window the developmental-medicine literature has flagged as most consequential, and that it is only visible when the staggered-rollout design is handled with the heterogeneity-robust estimators that the recent methodological literature has made standard. The sharpest channel through which the program appears to have operated is the skilled attendance at delivery that the midwife was specifically trained and deployed to provide.

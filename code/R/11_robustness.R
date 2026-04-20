@@ -9,7 +9,7 @@
 #   (R5) Legacy birthplace variant (commid_birth_legacy)
 #   (R6) Mother birthplace variant (commid_birth_mother)
 #   (R7) Oster (2019) bound: delta^* that nullifies estimate
-#   (R8) Placebo: permute start_sar_preceding within province
+#   (R8) Placebo: permute start_sar_legacy within province
 #   (R9) Child Raven (cog_prop_child) — cognition only, demoted
 #
 # The two-shock / AFC-exit design was dropped 2026-04-15: SAR exit
@@ -33,6 +33,7 @@ suppressPackageStartupMessages({
 
 source(here::here("code", "R", "lib", "paths.R"))
 source(here::here("code", "R", "lib", "io.R"))
+source(here::here("code", "R", "lib", "labels.R"))
 
 log_stage("stage11", "begin")
 
@@ -46,7 +47,7 @@ dir.create(tables_dir, recursive = TRUE, showWarnings = FALSE)
 # (facility controls) can run on the primary sample. The stage-05
 # frame only attached them on commid_birth_legacy.
 frame <- frame |>
-  left_join(other_f, by = c("commid_birth_preceding" = "commid93"))
+  left_join(other_f, by = c("commid_birth_legacy" = "commid93"))
 
 df <- frame |>
   filter(primary_sample == 1) |>
@@ -106,8 +107,8 @@ for (y in outcomes) {
   # R1: IPW-weighted TWFE.
   d1 <- df |> filter(!is.na(ipw))
   m1 <- feols(as.formula(sprintf(
-    "%s ~ exposure_early_sar_preceding | commid_birth_preceding + birth_year",
-    y)), data = d1, weights = ~ ipw, cluster = ~ commid_birth_preceding)
+    "%s ~ exposure_early_sar_legacy | commid_birth_legacy + birth_year",
+    y)), data = d1, weights = ~ ipw, cluster = ~ commid_birth_legacy)
 
   # R2: Other-facility controls.
   # Other-facility controls must vary within commid (time-invariant
@@ -120,28 +121,28 @@ for (y in outcomes) {
            clinic_at_birth = as.integer(!is.na(start_clinic_pr) &
                                           start_clinic_pr <= birth_year))
   m2 <- feols(as.formula(sprintf(paste0(
-    "%s ~ exposure_early_sar_preceding + doctor_at_birth + clinic_at_birth | ",
-    "commid_birth_preceding + birth_year"), y)),
-    data = df_m2, cluster = ~ commid_birth_preceding)
+    "%s ~ exposure_early_sar_legacy + doctor_at_birth + clinic_at_birth | ",
+    "commid_birth_legacy + birth_year"), y)),
+    data = df_m2, cluster = ~ commid_birth_legacy)
 
   # R3: Province linear trends (instead of prov × birth_year FE).
   m3 <- feols(as.formula(sprintf(paste0(
-    "%s ~ exposure_early_sar_preceding + i(province, birth_year) | ",
-    "commid_birth_preceding + birth_year"), y)),
-    data = df, cluster = ~ commid_birth_preceding)
-
-  # R4: PKK rollout source (exposure_early_pkk_preceding).
-  m4 <- feols(as.formula(sprintf(paste0(
-    "%s ~ exposure_early_pkk_preceding | ",
-    "commid_birth_preceding + birth_year"), y)),
-    data = df, cluster = ~ commid_birth_preceding)
-
-  # R5: Legacy birthplace variant.
-  d5 <- frame |> filter(legacy_sample == 1)
-  m5 <- feols(as.formula(sprintf(paste0(
-    "%s ~ exposure_early_sar_legacy | ",
+    "%s ~ exposure_early_sar_legacy + i(province, birth_year) | ",
     "commid_birth_legacy + birth_year"), y)),
-    data = d5, cluster = ~ commid_birth_legacy)
+    data = df, cluster = ~ commid_birth_legacy)
+
+  # R4: PKK rollout source (exposure_early_pkk_legacy).
+  m4 <- feols(as.formula(sprintf(paste0(
+    "%s ~ exposure_early_pkk_legacy | ",
+    "commid_birth_legacy + birth_year"), y)),
+    data = df, cluster = ~ commid_birth_legacy)
+
+  # R5: Preceding-wave birthplace variant (keeps internal migrants).
+  d5 <- frame |> filter(preceding_sample == 1)
+  m5 <- feols(as.formula(sprintf(paste0(
+    "%s ~ exposure_early_sar_preceding | ",
+    "commid_birth_preceding + birth_year"), y)),
+    data = d5, cluster = ~ commid_birth_preceding)
 
   # R6: Mother birthplace variant.
   d6 <- frame |> filter(mother_sample == 1)
@@ -156,20 +157,20 @@ for (y in outcomes) {
   #        commid_birth dummies + birth_year dummies.
   oster_df <- df |>
     filter(!is.na(.data[[y]]),
-           !is.na(exposure_early_sar_preceding),
+           !is.na(exposure_early_sar_legacy),
            !is.na(mother_edu_years),
            !is.na(mother_age_birth),
            !is.na(sex_f))
   delta_star <- oster_delta(
     y = y, data = oster_df,
-    key_var   = "exposure_early_sar_preceding",
+    key_var   = "exposure_early_sar_legacy",
     short_rhs = "sex_f",
     long_rhs  = paste0("sex_f + mother_edu_years + mother_age_birth + ",
-                       "factor(commid_birth_preceding) + factor(birth_year)")
+                       "factor(commid_birth_legacy) + factor(birth_year)")
   )
 
   # Assemble row.
-  cs <- function(m, v = "exposure_early_sar_preceding") {
+  cs <- function(m, v = "exposure_early_sar_legacy") {
     pr <- coef_se(m, v); fmt(pr[1], pr[2])
   }
   R[[y]] <- tibble(
@@ -177,8 +178,8 @@ for (y in outcomes) {
     `R1 IPW`           = cs(m1),
     `R2 facilities`    = cs(m2),
     `R3 prov-trend`    = cs(m3),
-    `R4 PKK`           = cs(m4, "exposure_early_pkk_preceding"),
-    `R5 legacy bp`     = cs(m5, "exposure_early_sar_legacy"),
+    `R4 PKK`           = cs(m4, "exposure_early_pkk_legacy"),
+    `R5 preceding bp`  = cs(m5, "exposure_early_sar_preceding"),
     `R6 mother bp`     = cs(m6, "exposure_early_sar_mother"),
     `R7 Oster delta*`  = if (is.na(delta_star)) "---"
                          else sprintf("%.2f", delta_star)
@@ -192,7 +193,7 @@ writeLines(c(
   "\\begin{tabular}{l*{7}{c}}",
   "\\toprule",
   paste("Outcome & (R1) IPW & (R2) Facilities & (R3) Prov. trend &",
-        "(R4) PKK & (R5) Legacy bp & (R6) Mother bp &",
+        "(R4) PKK & (R5) Preceding bp & (R6) Mother bp &",
         "(R7) Oster $\\delta^*$ \\\\"),
   "\\midrule",
   apply(rob_tbl, 1, function(r) {
@@ -201,7 +202,7 @@ writeLines(c(
         paste0("\\makecell{", gsub("\n", "\\\\\\\\", cell), "}")
       else cell
     }, character(1))
-    sprintf("%s & %s \\\\", gsub("_", "\\\\_", r["outcome"]),
+    sprintf("%s & %s \\\\", pretty_label(r["outcome"]),
             paste(cells, collapse = " & "))
   }),
   "\\bottomrule",
@@ -209,28 +210,28 @@ writeLines(c(
 ), file.path(tables_dir, "robustness.tex"))
 
 # ---------------------------------------------------------------------
-# R9: Placebo — permute start_sar_preceding within province × cohort.
+# R9: Placebo — permute start_sar_legacy within province × cohort.
 # Run 200 permutations; report the share whose |coef| exceeds the true
 # estimate on health_index (a single-outcome diagnostic).
 # ---------------------------------------------------------------------
 log_stage("stage11", "running placebo permutation (200 draws)")
 true_fit <- feols(
-  health_index ~ exposure_early_sar_preceding |
-    commid_birth_preceding + birth_year,
-  data = df, cluster = ~ commid_birth_preceding)
-true_coef <- unname(coef(true_fit)["exposure_early_sar_preceding"])
+  health_index ~ exposure_early_sar_legacy |
+    commid_birth_legacy + birth_year,
+  data = df, cluster = ~ commid_birth_legacy)
+true_coef <- unname(coef(true_fit)["exposure_early_sar_legacy"])
 
 B <- 200
 placebo_coefs <- numeric(B)
 for (b in seq_len(B)) {
   perm <- df |>
     group_by(province, birth_year) |>
-    mutate(exp_perm = sample(exposure_early_sar_preceding)) |>
+    mutate(exp_perm = sample(exposure_early_sar_legacy)) |>
     ungroup()
   fit <- tryCatch(feols(
     health_index ~ exp_perm |
-      commid_birth_preceding + birth_year,
-    data = perm, cluster = ~ commid_birth_preceding),
+      commid_birth_legacy + birth_year,
+    data = perm, cluster = ~ commid_birth_legacy),
     error = function(e) NULL)
   placebo_coefs[b] <- if (is.null(fit)) NA_real_
   else unname(coef(fit)["exp_perm"])
@@ -269,24 +270,28 @@ writeLines(c(
 # R10: Child Raven (cog_prop_child) — cognition-only robustness.
 # ---------------------------------------------------------------------
 m_child <- tryCatch(feols(
-  cog_prop_child ~ exposure_early_sar_preceding |
-    commid_birth_preceding + birth_year,
-  data = df, cluster = ~ commid_birth_preceding),
+  cog_prop_child ~ exposure_early_sar_legacy |
+    commid_birth_legacy + birth_year,
+  data = df, cluster = ~ commid_birth_legacy),
   error = function(e) NULL)
 
 if (!is.null(m_child)) {
-  est <- coef(m_child)["exposure_early_sar_preceding"]
-  se  <- sqrt(vcov(m_child)["exposure_early_sar_preceding",
-                            "exposure_early_sar_preceding"])
+  est <- coef(m_child)["exposure_early_sar_legacy"]
+  se  <- sqrt(vcov(m_child)["exposure_early_sar_legacy",
+                            "exposure_early_sar_legacy"])
   n_child <- fixest::fitstat(m_child, "n")$n
+  tval <- est / se
+  pval <- 2 * stats::pnorm(-abs(tval))
+  stars <- if (pval < 0.01) "$^{***}$" else if (pval < 0.05) "$^{**}$" else if (pval < 0.10) "$^{*}$" else ""
   writeLines(c(
-    "% Auto-generated by code/R/11_robustness.R — child Raven",
+    "% Auto-generated by code/R/11_robustness.R",
     "\\begin{tabular}{lccc}",
     "\\toprule",
     "Outcome & Estimate & SE & N \\\\",
     "\\midrule",
-    sprintf("cog\\_prop\\_child & %.3f & %.3f & %d \\\\",
-            est, se, n_child),
+    sprintf("%s & %.3f%s & (%.3f) & %s \\\\",
+            pretty_label("cog_prop_child"), est, stars, se,
+            format(as.integer(n_child), big.mark = ",")),
     "\\bottomrule",
     "\\end{tabular}"
   ), file.path(tables_dir, "robustness_child_raven.tex"))

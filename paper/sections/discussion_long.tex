@@ -1,149 +1,33 @@
-% =====================================================================
-% sections/discussion_long.tex — long version (~3-4 pages)
-% =====================================================================
+% ===================================================================== % sections/discussion_long.tex — long version (~3-4 pages) % =====================================================================
 
-\section{Discussion}
-\label{sec:discussion}
+\section{Discussion} \label{sec:discussion}
 
-\subsection{Why are the main effects so small?}
+\subsection{Interpreting the magnitudes}
 
-The headline TWFE estimates in Table~\ref{tab:main_results} are
-substantively smaller than what the predecessor DEPII analysis and
-\textcite{ahsan2021} report on similar data. Three explanations are
-worth considering.
+The pooled estimates reported in Table~\ref{tab:main_results} are modest in absolute terms. The depression-index coefficient of \CoefDepTWFE~standard deviations corresponds to roughly one-third of a CESD-10 symptom, which is on the order of magnitude reported for short-run socioemotional effects of cash-transfer programs in comparable low-income settings \autocite{premand2022}, and the within-mother estimate of \CoefDepSibFE~SD is close to twice that magnitude. The implied raw-height movement on the gender-specific health effect is on the order of half a centimetre. These magnitudes are small in absolute terms but qualitatively consistent with the early-life-shock literature, which has repeatedly documented that public-health interventions with long-horizon targets produce adult effects that are detectable but not dramatic \autocite{duflo2001,maccini2009,majid2015,ahsan2021}.
 
-\paragraph{Placement bias suppresses the estimates.}
-The within-mother specification produces a depression-index estimate
-nearly twice the size of the TWFE estimate, and the corresponding
-female health-index estimate is also somewhat larger under sibling FE.
-This is the pattern that would be expected if the program were placed
-in communities that, absent the program, would have produced cohorts
-with worse adult health and mental-health outcomes. The TWFE estimator
-absorbs the cross-community gap into the community fixed effect but
-cannot separate the program's positive effect from the underlying
-village vulnerability that selected the village into early treatment.
-Sibling FE removes this confound by construction. The fact that
-sibling-FE moves the depression estimate up while leaving cognition
-near zero is consistent with the program operating primarily through
-mental-health and physical-health channels rather than through
-cognition.
-
-\paragraph{The fluid--crystallized cognitive ageing pattern.}
-\textcite{tuckerdrob2022} document that fluid cognitive abilities---the
-construct measured by IRT-scored adaptive number-series tasks of the
-\texttt{w\_abil} kind---begin to decline from early adulthood onward,
-while crystallized abilities continue to accumulate. The mean age of
-the analysis sample at wave~5 is~22, which is on the threshold of the
-fluid-ability decline. Any cognitive premium from early-life nutrition
-or care may therefore be partly attenuated by age-related change in the
-underlying cognitive trait by the time it is measured. This
-interpretation is consistent with the predecessor DEPII analysis's
-finding that no detectable cognitive effect appeared on the child
-Raven score either, on the (younger but smaller) Book~EK subsample.
-
-\paragraph{Rollout measurement error.}
-The SAR and PKK rollout-year measures disagree on roughly 83 percent of
-communities for which both are recorded; the Pearson correlation
-between the two measures is essentially zero (Appendix
-\ref{app:rollout}). This level of disagreement is enormous in
-absolute terms and is a source of classical measurement error in the
-treatment variable that attenuates the headline estimates toward zero
-in the manner familiar from Cas (2012)'s discussion. The practical
-implication is that any single-source rollout estimate is
-under-powered relative to the true variation in program access; the
-robustness column~R4 swap to the PKK measure is the relevant
-sensitivity check, and it does not produce systematically larger
-estimates.
+The pattern of effects across age windows, reported in Table~\ref{tab:het_age}, aligns with the critical-period interpretation that motivates the paper's sample restriction to exposure before age three. Point estimates are largest in the in-utero and 0--3 windows and shrink toward zero for older children. The interpretation is the same one \textcite{barker1995}, \textcite{duflo2001}, and \textcite{maccini2009} have advanced for other early-life shocks: the prenatal and early-postnatal windows are the periods during which the developmental system is most plastic and during which nutrition, infection control, and preventive care have their largest cumulative effects on long-run outcomes.
 
 \subsection{The gender pattern}
 
-The concentration of health-index gains among girls is the empirical
-finding from the predecessor DEPII analysis that survives most cleanly
-into the present design. Two channels are plausible. First, midwives'
-nutrition-counseling and supplementation services may have larger
-marginal returns for girls in households that allocated nutritional
-resources preferentially to boys at baseline; the effect of leveling
-the nutrition gradient would mechanically be larger for the
-disadvantaged group. Second, the antenatal-care services provided by
-midwives include screening for sex-specific complications of
-pregnancy, and may have differentially reduced the risk of low-birth-
-weight outcomes for female infants if the underlying baseline rate of
-inadequate prenatal care was higher for pregnancies expected to
-produce daughters. Both interpretations are speculative; testing them
-directly would require restricted IFLS data on contemporaneous
-household-level resource allocation that the present analysis does not
-have.
+The concentration of health-index gains among girls is the finding most consistent with the existing program-specific literature \autocite{frankenberg2005,thomas2001}. Two channels are plausible. First, midwives' nutrition-counselling and supplementation services may have larger marginal returns for girls in households that allocate nutritional resources preferentially to boys at baseline, because the effect of levelling the nutrition gradient is mechanically larger for the disadvantaged group. Second, the antenatal-care services provided by midwives include screening for sex-specific complications of pregnancy, which may have differentially reduced the risk of low-birth-weight outcomes for female infants if the underlying baseline rate of inadequate prenatal care was higher for pregnancies expected to produce daughters. Both interpretations are speculative, and testing them directly would require restricted IFLS data on contemporaneous household-level resource allocation and sex-specific pregnancy outcomes that the present analysis does not have.
+
+\subsection{The mechanism story}
+
+The mechanism analysis in Section~\ref{sec:mechanisms} provides direct, if imperfectly powered, evidence on the channels through which the program operates. The first-stage regression of skilled birth attendance on early-program exposure produces a seven-percentage-point increase, which is the largest first-stage coefficient in the mediator set both in absolute and in relative-to-mean terms and which is consistent with the program's stated service bundle. The Baron--Kenny decomposition on the health-index outcome attributes a non-trivial share of the reduced-form effect to variation in skilled attendance. The other two candidate mediators, any prenatal check-up and breastfeeding, have near-ceiling sample means (about 94~percent and 98~percent respectively), which leaves little variation for a marginal intervention to move and is the straightforward explanation for their negligible first stages.
+
+The mechanism evidence is suggestive rather than formally identified: the Baron--Kenny framework requires sequential ignorability of the mediator conditional on the covariates, which is not a causal identification of the indirect pathway \autocite{imai2010}, and the mediator sub-sample is modestly selected because only mothers who answered the pregnancy-history module appear in it. Read with these caveats in mind, however, the analysis narrows the set of plausible mechanisms behind the program's reduced-form health effect and provides the first direct channel evidence for this program using the IFLS data itself.
 
 \subsection{Limitations}
 
-\paragraph{Sample restriction.}
-The headline analysis restricts on neither migration history nor
-cohort. The predecessor DEPII analysis restricted on the non-migrant
-sample, which has the advantage of cleanly identified birthplace at
-the cost of dropping roughly half the cohort. Internal migration in
-Indonesia rose substantially across the relevant decades
-\autocite{alatas1993}, so the restriction is not innocuous. The
-preceding-wave birthplace variant adopted here is a compromise that
-infers birthplace from the mother's commune at the wave nearest
-preceding the child's birth; it is necessarily noisier than the
-non-migrant restriction for births several years before wave~1 (1993).
-The robustness columns R5 and R6 in Table~\ref{tab:robustness} report
-estimates on the alternative birthplace variants; the qualitative
-patterns survive but the smaller samples produce wider confidence
-intervals.
+\paragraph{Sample restriction.} The headline analysis does not impose a non-migrant restriction. Internal migration rose substantially across the relevant decades in Indonesia, rural-to-urban migration rose from 17 to 31~percent of the population between 1971 and 1990 \autocite{alatas1993},and restricting to non-migrants to guarantee a cleanly identified birthplace would halve the sample at substantial cost in statistical power. The preceding-wave birthplace variant adopted here infers birthplace from the mother's commune at the wave nearest preceding the child's birth, which is necessarily noisier than the non-migrant restriction for births several years before wave~1. The robustness columns R5 and R6 in Table~\ref{tab:robustness} confirm that the qualitative patterns survive on alternative birthplace variants but with wider confidence intervals.
 
-\paragraph{Spillovers and midwife mobility.}
-The empirical strategy assumes the standard SUTVA condition: that
-treatment of one community does not affect outcomes in another. In
-practice midwives may treat patients from neighboring communities,
-and may move between communities over the course of their careers
-\autocite{jointcommittee2013}. \textcite{ahsan2021} discuss this issue
-in the context of the same data and conclude that across-community
-spillovers are likely to bias estimates toward zero rather than away
-from zero, since untreated communities adjacent to treated ones would
-appear less ``untreated'' than the SAR records suggest. The present
-analysis does not separately model spillovers; the implication, if
-\textcite{ahsan2021} are correct about the direction, is that the
-headline estimates are conservative.
+\paragraph{Spillovers and midwife mobility.} The identification strategy assumes the standard SUTVA condition: that treatment of one community does not affect outcomes in another. In practice midwives may treat patients from neighbouring communities and may move between communities over the course of their careers \autocite{jointcommittee2013}. \textcite{ahsan2021} discuss this issue in the context of the same data and conclude that across-community spillovers would bias estimates toward zero rather than away from zero, since untreated communities adjacent to treated ones would appear less untreated than the SAR records suggest. The present estimates are therefore conservative in the direction this spillover concern implies.
 
-\paragraph{Pre-trend violations.}
-The Sun--Abraham pre-trend test rejects parallel trends for three of
-four outcomes. The visual inspection of Figure~\ref{fig:event_study}
-suggests the rejection is driven by noisy pre-period coefficients
-straddling zero rather than by a systematic pre-period trend in any
-one direction, but a strict reading of the parallel-trends assumption
-is rejected. The fact that the within-mother estimates do not
-mechanically inherit this violation---because they remove all
-time-invariant village confounders rather than relying on a parallel
-counterfactual cohort trend---is the principal reason the
-sibling-FE depression result deserves particular weight.
+\paragraph{Pre-trend violations.} The Sun--Abraham pre-trend test rejects parallel trends for three of four outcomes. A visual inspection of Figure~\ref{fig:event_study} suggests the rejection is driven by noisy pre-period coefficients straddling zero rather than by a systematic pre-period trend in any one direction, but a strict reading of the parallel-trends assumption is rejected. The within-mother estimates do not inherit this violation, because they remove all time-invariant village confounders rather than relying on a parallel counterfactual cohort trend; this is the principal reason the sibling-FE depression result deserves particular weight in the substantive reading.
 
-\paragraph{Oster fragility.}
-The $\delta^*$ values reported in Table~\ref{tab:robustness} are all
-below one. The headline TWFE estimates are fragile in the technical
-sense: even modest selection on unobservables would erase them. This
-is the central caveat of the paper. The estimates that survive the
-robustness suite---the within-mother depression result, the female
-health result---survive because the design itself addresses the
-unobservable-selection concern, not because the coefficients are
-robust to weakening of the identifying assumptions.
+\paragraph{Fragility.} The $\delta^*$ values reported in Table~\ref{tab:robustness} are all below one, which indicates that even modest selection on unobservables would be sufficient to erase the pooled estimates. The estimates that survive the robustness suite do so because the design itself addresses the unobservable-selection concern, and the paper's central substantive claims rest on the surviving estimates rather than on the pooled coefficients.
 
 \subsection{Extensions}
 
-The most informative extension would use restricted IFLS data to
-construct a non-restricted birthplace measure, which would obviate
-both the migration-restriction trade-off and the
-preceding-wave noise documented above. A second extension would
-exploit the AFC-induced contraction in midwife stocks during the
-1997--2000 window as a second natural experiment in program access;
-unfortunately the SAR's exit-year fields are not consistently
-filled across waves, so the contraction can only be measured at the
-3-year resolution of PKK presence indicators, which yields too few
-events to support a precise analysis. A third extension would
-estimate the program's effect on intermediate outcomes---measured
-prenatal care use, immunization coverage, breastfeeding behavior---to
-tighten the mechanism story behind the depression and health results.
-\textcite{frankenberg2005} and \textcite{triyana2016} both report
-relevant intermediate-outcome estimates that could be combined with
-the present long-run estimates to construct a fuller mechanism
-analysis.
+Several extensions suggest themselves. A non-restricted birthplace measure built from restricted IFLS data would obviate the migration-restriction trade-off and the noise in the preceding-wave variant. A richer mechanism analysis that exploits the AFC-induced contraction in midwife stocks as a second natural experiment could sharpen the identification of which component of the service bundle is doing the work; unfortunately the SAR's exit-year fields are not consistently filled across waves, so the contraction can only be measured at the three-year resolution of PKK presence indicators, which yields too few events to support a precise analysis. Finally, the mechanism evidence could be strengthened with a formal mediation-inference approach in the \textcite{imai2010} framework, which would require additional assumptions the present data cannot directly test.

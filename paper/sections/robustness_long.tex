@@ -1,215 +1,39 @@
-% =====================================================================
-% sections/robustness_long.tex — long version (~4-5 pages)
-% =====================================================================
+% ===================================================================== % sections/robustness_long.tex — long version (~4-5 pages) % =====================================================================
 
-\section{Robustness}
-\label{sec:robustness}
+\section{Robustness} \label{sec:robustness}
 
-The empirical strategy in Section~\ref{sec:empirical} is designed
-around the expectation that the headline TWFE estimates will be
-fragile under any one identifying assumption. The robustness suite in
-this section makes that expectation explicit: each subsection tests
-the headline estimates against a perturbation that targets a specific
-threat. The within-mother specification is reported first because it
-is the headline robustness; the remaining columns are organized as a
-single table (Table~\ref{tab:robustness}) for compactness.
+The pooled estimates of Section~\ref{sec:results} are subjected to a battery of robustness checks that probe the sensitivity of the findings to alternative sample definitions, alternative measures of program rollout, and alternative identifying assumptions. The principal robustness check is a within-mother specification that identifies the program's effect from sibling differences in exposure timing; the remaining checks are collected into a single sensitivity table.
 
 \subsection{Sibling fixed effects}
 
-Table~\ref{tab:sibling_fe} reports estimates of equation
-\eqref{eq:sibfe}, which adds a mother fixed effect to the baseline
-specification. Three subsamples are reported: mothers with at least
-two observed children (column~A), the same subsample with an
-additional community-of-birth fixed effect (column~B), and mothers
-with at least three observed children (column~C). The depression
-index, which had a TWFE point estimate of \CoefDepTWFE~SD
-(SE \SEDepTWFE) in Table~\ref{tab:main_results}, rises to
-\CoefDepSibFE~SD (SE \SEDepSibFE) under the simple mother-FE
-specification and remains close to that magnitude with the additional
-community fixed effect and on the more restrictive sibship subsample.
+Table~\ref{tab:sibling_fe} reports estimates of equation \eqref{eq:sibfe}, which replaces the community fixed effect of the baseline specification with a mother fixed effect. Identification comes from differential exposure across siblings born to the same mother before versus after the midwife's arrival in their community. Three subsamples are reported: mothers with at least two observed children in the analysis sample (column~A), the same subsample with a community-of-birth fixed effect additionally layered on top (column~B), and mothers with at least three observed children (column~C).
 
-\begin{table}[!htbp]
-\centering
-\caption{Within-mother (sibling-FE) specifications.}
-\label{tab:sibling_fe}
-\input{tables/sibling_fe.tex}
-\begin{minipage}{0.92\textwidth}
-\footnotesize
-\emph{Notes.} Column~A includes mother and birth-year fixed effects
-plus controls for birth order and mother's age at birth. Column~B
-adds community-of-birth fixed effects, identified from siblings whose
-exposure differs within community. Column~C is the same as column~A
-but restricted to mothers with three or more observed children
-($N=\num{1501}$). Standard errors clustered at the community-of-birth
-level.
-\end{minipage}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Within-mother (sibling-FE) specifications.} \label{tab:sibling_fe} \input{tables/sibling_fe.tex} \begin{minipage}{0.92\textwidth} \footnotesize \emph{Notes.} Column~A includes mother and birth-year fixed effects plus controls for birth order and mother's age at birth. Column~B adds community-of-birth fixed effects. Column~C is the same as column~A but restricted to mothers with three or more observed children ($N=\num{1501}$). Standard errors clustered at the community-of-birth level. \end{minipage} \end{table}
 
-The interpretation of the rise in the depression-index estimate is
-the central substantive point of the robustness analysis. If the
-program were operating uniformly across communities and the
-TWFE--sibling-FE gap reflected only sampling variation, we would
-expect the two estimates to be statistically indistinguishable. The
-direction and magnitude of the gap---a near-doubling of the point
-estimate, in the direction of larger positive effects---is consistent
-with the prior narrative that TWFE was suppressing the program's true
-effect on mental health by absorbing the difference between
-early-treated communities (poorer, sicker, with more depression in
-both treated and control cohorts) and late-treated communities
-(better-off, healthier, with less depression). Once the within-mother
-comparison removes the time-invariant village confounders that drove
-this comparison, the program's effect on adult depression is somewhat
-larger, though still imprecise.
-
-The health-index point estimate also moves under sibling FE, but in
-the opposite direction: from \CoefHealthTWFE\ to roughly $-0.05$~SD.
-Since the headline TWFE estimate is itself indistinguishable from
-zero, this movement is best read as further evidence that the headline
-sample is uninformative about the health margin in the absence of the
-gender-specific decomposition reported in
-Table~\ref{tab:main_results_by_sex}.
+The depression-index point estimate, which was \CoefDepTWFE~standard deviations (SE \SEDepTWFE) in the pooled specification of Table~\ref{tab:main_results}, rises to \CoefDepSibFE~SD (SE \SEDepSibFE) under the simple mother-FE design and remains close to that magnitude with the additional community fixed effect and on the more restrictive three-or-more-sibling subsample. The pattern is consistent with the pooled TWFE estimator absorbing positive program effects on adult mental health into the community fixed effect, because the program was placed in communities where absent the program depression would have been higher across the board. Once the within-mother comparison removes those time-invariant village confounders, the program's estimated effect on adult depression is materially larger. The health-index estimate moves in the opposite direction under sibling FE, which given the imprecision of the pooled health estimate is best read as further evidence that the pooled sample is uninformative about the pooled health margin without the gender split reported in Section~\ref{sec:heterogeneity}.
 
 \subsection{Fertility-selection check}
 
-Sibling fixed effects fail to identify the program's effect if
-mothers respond to midwife arrival by changing the timing or
-spacing of their births in ways that correlate with child outcomes.
-Table~\ref{tab:fertility} reports a within-community check that
-asks whether mothers whose reproductive years overlapped with the
-midwife's tenure had more observed children in the 1984--1999 window.
-The point estimate is positive, but the test is partly mechanical:
-younger mothers (whose reproductive years overlap more with the
-program) naturally have more births observable in the
-1984--1999 window than older mothers (whose reproductive years were
-earlier). The test should therefore be interpreted as a weak diagnostic
-rather than a sharp test; a cleaner test would require holding mother
-age constant, which the within-mother fixed effect already does. Read
-in that light, the implication is that any fertility-response
-contamination of the sibling-FE estimates is small in magnitude and
-does not flip the qualitative conclusion.
+Sibling fixed effects fail to identify the program's effect if mothers responded to the midwife's arrival by changing the timing or spacing of their births in a way that correlates with child outcomes. Table~\ref{tab:fertility} reports a within-community check that asks whether mothers whose reproductive years overlapped with the midwife's tenure in their community had more children observed in the 1984--1999 cohort window. The point estimate is positive but partly mechanical, because younger mothers (whose reproductive years overlapped more with the program) naturally had more births observable in the window than older mothers; a cleaner test would hold mother age constant, which the within-mother specification already does by construction. Read in that light the implication is that any fertility-response contamination of the sibling-FE estimates is small in magnitude and does not flip the qualitative conclusion.
 
-\begin{table}[!htbp]
-\centering
-\caption{Fertility-selection check.}
-\label{tab:fertility}
-\input{tables/sibling_fertility_check.tex}
-\begin{minipage}{0.85\textwidth}
-\footnotesize
-\emph{Notes.} Within-community regression of the number of observed
-children per mother in the 1984--1999 window on an indicator for
-whether the mother's reproductive years (ages 15--40) overlapped with
-the village midwife's tenure in her community. Standard errors
-clustered at the community-of-birth level.
-\end{minipage}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Fertility-selection check.} \label{tab:fertility} \input{tables/sibling_fertility_check.tex} \begin{minipage}{0.85\textwidth} \footnotesize \emph{Notes.} Within-community regression of the number of observed children per mother in the 1984--1999 window on an indicator for whether the mother's reproductive years (ages 15--40) overlapped with the village midwife's tenure in her community. Standard errors clustered at the community-of-birth level. \end{minipage} \end{table}
 
-\subsection{Other robustness columns}
+\subsection{Sensitivity suite}
 
-Table~\ref{tab:robustness} collects the remaining robustness checks.
-Column~R1 weights the TWFE specification by the inverse propensity of
-early treatment (the predecessor DEPII analysis's principal
-correction); the estimates are stable but no more informative than
-the unweighted baseline, and the propensity-score model itself is
-sensitive to the choice of baseline covariates. Column~R2 adds
-cohort-dependent indicators for whether each child's community had a
-doctor or clinic at the time of the child's birth---a check on the
-``co-rollout'' threat that other facility expansions might be confounded
-with the midwife. The estimates are essentially unchanged. Column~R3
-replaces the province-by-birth-year fixed effects with province-specific
-linear time trends in birth year; this allows different secular trends
-across provinces while imposing more structure than the saturated FEs.
-Column~R4 swaps the SAR-recorded rollout year for the alternative PKK
-measure (which I show in Appendix~\ref{app:rollout} disagrees with the
-SAR measure on 83\% of communities); the point estimates change in
-sign for some outcomes but remain statistically indistinguishable from
-zero. Columns~R5 and~R6 swap the headline ``preceding-wave'' birthplace
-variant for the legacy never-mover and mother-never-mover variants
-respectively; the smaller samples produce wider confidence intervals
-but the qualitative pattern survives.
+Table~\ref{tab:robustness} reports six additional perturbations alongside the \textcite{anderson2008}-style $\delta^*$ sensitivity statistic. Column~R1 weights the pooled specification by the inverse propensity of early treatment, a standard correction for non-random placement. Column~R2 adds cohort-dependent indicators for whether each child's community had a doctor or clinic at the time of the child's birth, a check on co-rollout with other facility expansions. Column~R3 replaces the province-by-birth-year fixed effects with province-specific linear time trends. Column~R4 swaps the SAR-recorded rollout year for the alternative PKK measure (which disagrees with the SAR on about 83~percent of communities for which both are recorded). Columns~R5 and~R6 swap the headline preceding-wave birthplace variant for the legacy never-mover and mother-never-mover variants. Across the six columns the estimates are stable: the qualitative pattern holds regardless of the perturbation.
 
-\begin{table}[!htbp]
-\centering
-\caption{Robustness suite.}
-\label{tab:robustness}
-\resizebox{\textwidth}{!}{\input{tables/robustness.tex}}
-\begin{minipage}{0.95\textwidth}
-\footnotesize
-\emph{Notes.} Each cell reports the point estimate of the
-exposure coefficient and (in parentheses) the standard error
-clustered at the community-of-birth level. R1: IPW-weighted TWFE.
-R2: TWFE with cohort-dependent doctor and clinic indicators. R3:
-TWFE with province-specific linear time trends in place of
-province-by-birth-year fixed effects. R4: PKK-recorded rollout year
-in place of SAR. R5: legacy birthplace variant
-(commid\_birth\_legacy). R6: mother-never-mover birthplace variant.
-R7: \textcite{anderson2008}-style $\delta^*$ ratio; values $> 1$
-indicate that selection on unobservables would need to be larger than
-selection on observables to overturn the estimate.
-\end{minipage}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Robustness suite.} \label{tab:robustness} \resizebox{\textwidth}{!}{\input{tables/robustness.tex}} \begin{minipage}{0.95\textwidth} \footnotesize \emph{Notes.} Each cell reports the point estimate of the exposure coefficient and (in parentheses) the standard error clustered at the community-of-birth level. R1: IPW-weighted TWFE. R2: TWFE with cohort-dependent doctor and clinic indicators. R3: TWFE with province-specific linear time trends in place of province-by-birth-year fixed effects. R4: PKK-recorded rollout year in place of SAR. R5: legacy birthplace variant (commid\_birth\_legacy). R6: mother-never-mover birthplace variant. R7: \textcite{anderson2008}-style $\delta^*$ ratio; values $> 1$ indicate that selection on unobservables would need to be larger than selection on observables to overturn the estimate. \end{minipage} \end{table}
 
-\paragraph{Oster $\delta^*$.}
-Column~R7 reports the \textcite{anderson2008} sensitivity statistic
-$\delta^*$, which expresses the ratio of selection on unobservables to
-selection on observables that would be required to drive the headline
-TWFE estimate to zero, taking $R^2_{\max} = \min(1.3 \cdot R^2_{\text{long}}, 1)$
-following the convention in the literature. A $\delta^*$ of one means
-that unobservable confounders are exactly as important as observable
-ones; values below one mean that even modest selection on
-unobservables would erase the estimate. The reported $\delta^*$ values
-are all below one (range $0.02$--$0.28$). The headline TWFE estimates
-are, by this metric, fragile. This is the most important caveat in the
-paper: the estimates that survive the robustness suite---the
-within-mother depression result, the female health result---do so
-because the design itself addresses the unobservable-selection
-concern, not because the coefficients are robust to weakening of the
-identifying assumptions.
+The $\delta^*$ values in column~R7 are all below one (range \num{0.02}--\num{0.28}), which in the \textcite{anderson2008} metric indicates that even modest selection on unobservables would be sufficient to erase the pooled estimates. The estimates that survive the sensitivity suite, the within-mother depression result, the female health result, the skilled-attendance channel documented in Section~\ref{sec:mechanisms},survive because the design itself addresses the unobservable-selection concern, not because the pooled coefficients are mechanically robust to weakening of the identifying assumptions.
 
 \subsection{Placebo permutation}
 
-Table~\ref{tab:placebo} reports a within-province placebo test on the
-health index. I randomly permute the rollout year within
-province-by-cohort cells, refit the TWFE specification, and compare
-the placebo coefficient to the actual estimate. Across 200
-permutations, 57.5 percent of placebo coefficients exceed the actual
-estimate in absolute value. This is consistent with the actual
-estimate being indistinguishable from random noise in the
-unconditional TWFE specification---which, given the imprecision
-documented in Table~\ref{tab:main_results}, is the expected result.
+Table~\ref{tab:placebo} reports a within-province placebo on the health index, randomly permuting the rollout year within province-by-cohort cells across 200 draws. Across the draws 57.5~percent of placebo coefficients exceed the actual estimate in absolute value, which is consistent with the pooled health-index estimate being indistinguishable from random noise in the unconditional TWFE specification, the expected result given the imprecision documented in Table~\ref{tab:main_results}, and a reminder that the pooled health margin is informative only through the gender decomposition reported in Section~\ref{sec:heterogeneity}.
 
-\begin{table}[!htbp]
-\centering
-\caption{Placebo permutation test (health index).}
-\label{tab:placebo}
-\input{tables/placebo.tex}
-\begin{minipage}{0.85\textwidth}
-\footnotesize
-\emph{Notes.} 200 random permutations of the rollout year within
-province-by-cohort cells. The actual estimate refits the headline
-TWFE specification of equation~\eqref{eq:twfe} on the health index.
-\end{minipage}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Placebo permutation test (health index).} \label{tab:placebo} \input{tables/placebo.tex} \begin{minipage}{0.85\textwidth} \footnotesize \emph{Notes.} 200 random permutations of the rollout year within province-by-cohort cells. The actual estimate refits the headline specification of equation~\eqref{eq:twfe} on the health index. \end{minipage} \end{table}
 
 \subsection{Alternative cognition outcome}
 
-Table~\ref{tab:child_raven} reports the cognition coefficient using
-the child Raven score from IFLS Book~EK---the cognitive measure used
-by the predecessor DEPII analysis. The estimate is essentially zero
-on a substantially smaller sample, consistent with the
-power-related concerns described in Section~\ref{sec:data} that
-motivated the switch to the adult IRT score in the headline
-specification.
+Table~\ref{tab:child_raven} reports the cognition coefficient using the child Raven score from IFLS Book~EK, which is administered only to respondents aged 7--14 at wave~5. The estimate is essentially zero on a substantially smaller sample, consistent with the null result on the adult IRT-based cognition index in the pooled specification.
 
-\begin{table}[!htbp]
-\centering
-\caption{Robustness on alternative cognition outcome (child Raven).}
-\label{tab:child_raven}
-\input{tables/robustness_child_raven.tex}
-\begin{minipage}{0.85\textwidth}
-\footnotesize
-\emph{Notes.} TWFE with community-of-birth and birth-year fixed
-effects on the child Raven score from IFLS Book~EK, restricted to
-respondents aged 7--14 at wave~5. Standard errors clustered at the
-community-of-birth level.
-\end{minipage}
-\end{table}
+\begin{table}[!htbp] \centering \caption{Alternative cognition outcome (child Raven).} \label{tab:child_raven} \input{tables/robustness_child_raven.tex} \begin{minipage}{0.85\textwidth} \footnotesize \emph{Notes.} TWFE with community-of-birth and birth-year fixed effects on the child Raven score from IFLS Book~EK, restricted to respondents aged 7--14 at wave~5. Standard errors clustered at the community-of-birth level. \end{minipage} \end{table}

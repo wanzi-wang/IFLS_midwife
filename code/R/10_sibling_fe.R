@@ -7,7 +7,7 @@
 # out every village characteristic that drove where the VM was placed
 # — poverty, remoteness, baseline infrastructure — regardless of
 # whether it is observed. The remaining identifying variation is
-# birth timing relative to a fixed start_sar_preceding per village.
+# birth timing relative to a fixed start_sar_legacy per village.
 #
 # Inputs :  data/intermediate/stage06/analysis_sample.rds
 #
@@ -26,6 +26,7 @@ suppressPackageStartupMessages({
 
 source(here::here("code", "R", "lib", "paths.R"))
 source(here::here("code", "R", "lib", "io.R"))
+source(here::here("code", "R", "lib", "labels.R"))
 
 log_stage("stage10", "begin")
 
@@ -64,19 +65,19 @@ log_stage("stage10", sprintf(
 fit_sib <- function(y, data, spec) {
   form <- switch(spec,
     A = sprintf(paste0(
-      "%s ~ exposure_early_sar_preceding + birth_order + ",
+      "%s ~ exposure_early_sar_legacy + birth_order + ",
       "mother_age_birth | mother_pidlink + birth_year"), y),
     B = sprintf(paste0(
-      "%s ~ exposure_early_sar_preceding + birth_order + ",
+      "%s ~ exposure_early_sar_legacy + birth_order + ",
       "mother_age_birth | mother_pidlink + birth_year + ",
-      "commid_birth_preceding"), y),
+      "commid_birth_legacy"), y),
     C = sprintf(paste0(
-      "%s ~ exposure_early_sar_preceding + birth_order + ",
+      "%s ~ exposure_early_sar_legacy + birth_order + ",
       "mother_age_birth | mother_pidlink + birth_year"), y)
   )
   tryCatch(
     feols(as.formula(form), data = data,
-          cluster = ~ commid_birth_preceding),
+          cluster = ~ commid_birth_legacy),
     error = function(e) {
       message(sprintf("fit_sib failed (spec %s, y=%s): %s", spec, y,
                       e$message))
@@ -91,9 +92,9 @@ rows <- lapply(outcomes, function(y) {
   mC <- fit_sib(y, sib3, "C")
   pull <- function(m) {
     if (is.null(m)) return(c(est = NA, se = NA, n = 0))
-    co <- coef(m)["exposure_early_sar_preceding"]
-    se <- sqrt(vcov(m)["exposure_early_sar_preceding",
-                       "exposure_early_sar_preceding"])
+    co <- coef(m)["exposure_early_sar_legacy"]
+    se <- sqrt(vcov(m)["exposure_early_sar_legacy",
+                       "exposure_early_sar_legacy"])
     c(est = unname(co), se = unname(se), n = fixest::fitstat(m, "n")$n)
   }
   pA <- pull(mA); pB <- pull(mB); pC <- pull(mC)
@@ -120,7 +121,7 @@ writeLines(c(
       paste0("\\makecell{", gsub("\n", "\\\\\\\\", cell), "}")
     }, character(1))
     sprintf("%s & %s \\\\",
-            gsub("_", "\\\\_", r["outcome"]),
+            pretty_label(r["outcome"]),
             paste(cells, collapse = " & "))
   }),
   "\\bottomrule",
@@ -141,21 +142,21 @@ writeLines(c(
 # reproductive years? We cannot compute fertility perfectly (only kids
 # born 1984–1999 are in our roster), so this is a within-window proxy.
 fertility <- df |>
-  filter(!is.na(start_sar_preceding), !is.na(mother_dob_yr)) |>
-  group_by(mother_pidlink, commid_birth_preceding,
-           start_sar_preceding, mother_dob_yr) |>
+  filter(!is.na(start_sar_legacy), !is.na(mother_dob_yr)) |>
+  group_by(mother_pidlink, commid_birth_legacy,
+           start_sar_legacy, mother_dob_yr) |>
   summarise(n_kids_window = n(), .groups = "drop") |>
   mutate(
     # Mother's age when VM arrived. Exposed = VM arrived before she
     # was 40 and after she was 15 (her reproductive years).
-    mom_age_at_rollout = start_sar_preceding - mother_dob_yr,
+    mom_age_at_rollout = start_sar_legacy - mother_dob_yr,
     exposed_reproductive = as.integer(mom_age_at_rollout <= 40 &
                                         mom_age_at_rollout >= 15)
   )
 
 fit_f <- feols(n_kids_window ~ exposed_reproductive |
-                 commid_birth_preceding,
-               data = fertility, cluster = ~ commid_birth_preceding)
+                 commid_birth_legacy,
+               data = fertility, cluster = ~ commid_birth_legacy)
 
 est <- coef(fit_f)["exposed_reproductive"]
 se  <- sqrt(vcov(fit_f)["exposed_reproductive", "exposed_reproductive"])

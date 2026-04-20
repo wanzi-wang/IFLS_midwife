@@ -49,6 +49,8 @@ rollout  <- read_intermediate("stage03", "midwife_rollout") |>
          present_any_sar, present_any_pkk)
 other_fac <- read_intermediate("stage03", "other_facilities")
 outcomes  <- read_intermediate("stage04", "outcomes")
+mediators <- read_intermediate("stage04b", "mediators") |>
+  select(-wave_source)
 
 # ---------------------------------------------------------------------
 # 2. Attach rollout (SAR + PKK) for each birthplace variant.
@@ -113,7 +115,8 @@ for (src in c("sar", "pkk")) {
 # ---------------------------------------------------------------------
 frame <- frame |>
   left_join(outcomes, by = "pidlink") |>
-  left_join(other_fac, by = c("commid_birth_legacy" = "commid93"))
+  left_join(other_fac, by = c("commid_birth_legacy" = "commid93")) |>
+  left_join(mediators, by = c("mother_pidlink", "birth_year"))
 
 # ---------------------------------------------------------------------
 # 5. Diagnostics.
