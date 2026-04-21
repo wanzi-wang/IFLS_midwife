@@ -1,30 +1,47 @@
-% ===================================================================== % sections/appendix.tex — long version only (~5-8 pages) % =====================================================================
+% =====================================================================
+% sections/appendix.tex — long version only (~4-6 pages)
+% =====================================================================
 
-\section{SAR vs.\ PKK rollout disagreement} \label{app:rollout}
+\section{SAR vs.\ PKK rollout disagreement}
+\label{app:rollout}
 
-The IFLS contains two independent measures of the year a village midwife first arrived in each community: the SAR module, completed by the facility informant, and the PKK module, completed by the village leader. Both are recorded in waves 2--5 (PKK additionally in wave~3). Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement between the two measures across the 153 communities for which both are recorded.
+The Indonesia Family Life Survey records two independent measures of the year a village midwife first arrived in each community: the SAR module, completed by a facility informant, and the PKK module, completed by the village leader.
+Both are recorded in waves 2--5; PKK is additionally recorded in wave~3.
+Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement between the two measures across the 153 communities for which both are available.
 
-\begin{table}[!htbp] \centering \caption{SAR vs.\ PKK rollout-year agreement.} \label{tab:rollout_compare} \input{tables/rollout_sar_vs_pkk.tex} \end{table}
+\begin{table}[!htbp]
+\centering
+\caption{SAR vs.\ PKK rollout-year agreement.}
+\label{tab:rollout_compare}
+\input{tables/rollout_sar_vs_pkk.tex}
+\end{table}
 
-The disagreement is severe. The Pearson correlation between the two measures is essentially zero ($\rho = 0.02$), and the two measures disagree on the rollout year for 83 percent of the communities for which both are recorded. The mean absolute disagreement is over four years. The headline analysis uses the SAR measure on the rationale that the SAR informant (typically a facility staff member) is closer to the operational record than the village leader, and the alternative PKK estimates appear in column~R4 of the robustness table.
+The disagreement is severe.
+The Pearson correlation between the two measures is essentially zero ($\rho = 0.02$), the two sources disagree on the rollout year for roughly 83 percent of the communities for which both are recorded, and the mean absolute disagreement exceeds four years.
+The headline analysis uses the SAR measure on the rationale that the SAR informant, typically a facility staff member, is closer to the operational record than the village leader, and the alternative PKK-based estimates appear in column~R4 of the robustness table.
 
-The implication of this disagreement for the headline estimates is classical attenuation toward zero: if the true rollout year were measured perfectly we would expect tighter point estimates and narrower confidence intervals. The size of the attenuation cannot be recovered without an independent benchmark. The disagreement is also a feature of the data itself rather than a coding artifact: both measures pass the same internal consistency checks (range, monotonic within-village across waves) and the disagreement is not concentrated in any one province or rollout-year bin.
+The implication of this disagreement for the headline estimates is classical attenuation toward zero: were the true rollout year measured perfectly, tighter point estimates and narrower confidence intervals would be expected.
+The size of the attenuation cannot be recovered without an independent benchmark.
+The disagreement is a feature of the underlying data rather than a coding artifact; both measures pass the same internal consistency checks (valid range, monotonic within-village across waves), and the disagreement is not concentrated in any one province or rollout-year bin.
 
-\section{Sun--Abraham event-study figures} \label{app:sa_event}
+\section{Disaggregated outcome components and Anderson $q$-values}
+\label{app:anderson}
 
-Figure~\ref{fig:sa_event_study} reports the Sun--Abraham cohort-aggregated event-study coefficients with 95-percent confidence intervals for the four primary outcomes, as a complement to the Callaway--Sant'Anna event-study figures in Section~\ref{sec:results}.
+Each of the four composite outcome indices used in the headline analysis is constructed by Anderson-weighting across its component measures, following \textcite{anderson2008}.
+The weights down-weight redundant information across correlated components and deliver a single summary per domain, but the aggregation also obscures the behaviour of the individual components that go into the index.
+Table~\ref{tab:anderson_components} reports the component-by-component two-way-fixed-effects coefficients and the Anderson stepdown $q$-values (computed jointly within each domain to control the false-discovery rate across the set of correlated components).
 
-\begin{figure}[!htbp] \centering \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_health_index.pdf} \caption{Health index} \end{subfigure} \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_depression_index.pdf} \caption{Depression index (higher = better)} \end{subfigure}\\[1ex] \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_cognition_index.pdf} \caption{Cognition index} \end{subfigure} \begin{subfigure}[t]{0.49\textwidth} \centering \includegraphics[width=\linewidth]{figures/event_study_bigfive_index.pdf} \caption{Socioemotional index} \end{subfigure} \caption{Sun--Abraham cohort-aggregated event-study coefficients with 95\% confidence intervals.} \label{fig:sa_event_study} \end{figure}
-
-\section{Event-study coefficient tables} \label{app:event_tables}
-
-Tables~\ref{tab:es_health} through~\ref{tab:es_bigfive} report the event-time coefficients underlying the Sun--Abraham figures.
-
-\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: health index.} \label{tab:es_health} \input{tables/event_study_health_index.tex} \end{table}
-
-\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: cognition index.} \label{tab:es_cognition} \input{tables/event_study_cognition_index.tex} \end{table}
-
-\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: depression index.} \label{tab:es_depression} \input{tables/event_study_depression_index.tex} \end{table}
-
-\begin{table}[!htbp] \centering \caption{Sun--Abraham event-study coefficients: Socioemotional index.} \label{tab:es_bigfive} \input{tables/event_study_bigfive_index.tex} \end{table}
-
+\begin{table}[!htbp]
+\centering
+\caption{Disaggregated outcome components and Anderson $q$-values.}
+\label{tab:anderson_components}
+\resizebox{\textwidth}{!}{\input{tables/anderson_qvalues.tex}}
+\begin{minipage}{0.97\textwidth}
+\footnotesize
+\emph{Notes.}
+Each row is a separate two-way-fixed-effects regression of a single outcome component on early village-midwife exposure, with community-of-birth and birth-year fixed effects and mother controls.
+Standard errors clustered at the community-of-birth level in parentheses.
+The Anderson $q$-value column applies the \textcite{anderson2008} stepdown correction within each domain (health, cognition, socioemotional); values below conventional thresholds indicate components where the nominal $p$-value survives the FDR adjustment.
+Stars on the coefficient: $^{*}\,p<0.10$, $^{**}\,p<0.05$, $^{***}\,p<0.01$ (nominal $p$-values, not $q$-values).
+\end{minipage}
+\end{table}
