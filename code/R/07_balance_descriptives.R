@@ -181,42 +181,239 @@ log_stage("stage07", sprintf(
 # ---------------------------------------------------------------------
 # 3. Table 1 — descriptive statistics on the primary sample.
 # ---------------------------------------------------------------------
-t1 <- frame |>
-  filter(primary_sample == 1) |>
-  mutate(
-    Exposed = factor(ifelse(exposure_early_sar_legacy == 1,
-                            "Exposed", "Control"),
-                     levels = c("Exposed", "Control")),
-    # IFLS roster ar07: 1 = male, 3 = female.
-    Female  = as.integer(sex == 3),
-    age2014 = 2014 - birth_year
-  ) |>
-  select(
-    Exposed,
-    Female,
-    `Age in 2014 (years)`                = age2014,
-    `Birth year`                         = birth_year,
-    `Mother's education (years)`         = mother_edu_years,
-    `Mother's age at birth (years)`      = mother_age_birth,
-    `Child height (cm)`                  = height_cm,
-    `Word-recall score`                  = w_abil,
-    `CESD-10 depression score (raw)`     = dep_index,
-    `Health index (std.)`                = health_index,
-    `Cognition index (std.)`             = cognition_index,
-    `Depression index (std., higher = better)` = depression_index,
-    `Socioemotional index (std.)`        = bigfive_index
+# Row formatter: integer-valued variables get integer Min/Median/Max;
+# continuous variables get one decimal (or two for small values).
+# Mean and SD are always 3 decimals.
+format_summary_row <- function(v, name) {
+  v <- v[!is.na(v)]
+  n  <- length(v)
+  if (n == 0) {
+    return(sprintf("%s & 0 & --- & --- & --- & --- & --- \\\\", name))
+  }
+  m  <- mean(v)
+  sd <- stats::sd(v)
+  mn <- min(v)
+  md <- stats::median(v)
+  mx <- max(v)
+  is_int <- isTRUE(all(v == round(v)))
+  fmt_extreme <- function(x) {
+    if (is_int) sprintf("%d", as.integer(x))
+    else if (abs(x) >= 100) sprintf("%.1f", x)
+    else sprintf("%.2f", x)
+  }
+  sprintf("%s & %s & %.3f & %.3f & %s & %s & %s \\\\",
+          name, format(n, big.mark = ","), m, sd,
+          fmt_extreme(mn), fmt_extreme(md), fmt_extreme(mx))
+}
+
+# Build the primary-sample frame with the variables for the summary
+# table. Sex IFLS roster ar07: 1 = male, 3 = female.
+# Province (Java or Bali) covers BPS province codes 31--35 (DKI, West
+# Java, Central Java, Yogyakarta, East Java) and 51 (Bali).
+prim <- frame |>
+  dplyr::filter(primary_sample == 1) |>
+  dplyr::mutate(
+    Female                         = as.integer(sex == 3),
+    `Age in 2014`                  = 2014 - birth_year,
+    `Province (Java or Bali)`      = as.integer(province %in% c(31, 32, 33, 34, 35, 51)),
+    `Mother's age at birth`        = mother_age_birth,
+    `Mother's years of schooling`  = mother_edu_years,
+    `Mother's height (cm)`         = mother_height
   )
 
-datasummary(
-  All(t1) ~ Exposed * (Mean + SD),
-  data = t1,
-  output = file.path(tables_dir, "table1_descriptives.tex"),
-  fmt = 3,
-  title = "Descriptive statistics (primary sample).",
-  notes = "VM = village midwife. See Section text for sample definition."
+# Panel B is at the community level (one row per commid_birth_legacy):
+# treated = community has any village-midwife rollout year on record.
+# Start year is observed only for treated communities.
+comm_panel <- prim |>
+  dplyr::distinct(commid_birth_legacy, .keep_all = TRUE) |>
+  dplyr::transmute(
+    `Treated community`          = as.integer(!is.na(start_sar_legacy)),
+    `Village midwife start year` = start_sar_legacy
+  )
+
+panelA_vars <- c("Female", "Age in 2014", "Province (Java or Bali)",
+                 "Mother's age at birth", "Mother's years of schooling",
+                 "Mother's height (cm)")
+panelB_vars <- c("Treated community", "Village midwife start year")
+
+panelA_rows <- vapply(panelA_vars,
+                      function(v) format_summary_row(prim[[v]], v),
+                      character(1))
+panelB_rows <- vapply(panelB_vars,
+                      function(v) format_summary_row(comm_panel[[v]], v),
+                      character(1))
+
+tex_lines <- c(
+  "\\begin{table}[!htbp]",
+  "\\centering",
+  "\\caption{Summary statistics.}\\label{tab:descriptives}",
+  "\\begin{tabular}{lrrrrrr}",
+  "\\toprule",
+  "Variable & N & Mean & SD & Min & Median & Max \\\\",
+  "\\midrule",
+  "\\multicolumn{7}{l}{\\emph{Panel A: Individual and family characteristics}} \\\\",
+  panelA_rows,
+  "\\midrule",
+  "\\multicolumn{7}{l}{\\emph{Panel B: Program exposure (community of birth)}} \\\\",
+  panelB_rows,
+  "\\bottomrule",
+  "\\end{tabular}",
+  "\\begin{minipage}{0.9\\textwidth}",
+  "\\footnotesize",
+  "\\emph{Notes.} Sample: non-migrant children born 1984--1999. Panel A reports individual and family characteristics across all primary-sample individuals. Panel B reports program exposure at the community of birth: rows are at the community level, with the treated indicator equal to one if the village midwife is ever recorded in either the SAR or the PKK rollout source, and the start-year row defined only for treated communities.",
+  "\\end{minipage}",
+  "\\end{table}"
 )
 
-log_stage("stage07", sprintf("Table 1 written for N=%d.", nrow(t1)))
+tex_path <- file.path(tables_dir, "table1_descriptives.tex")
+writeLines(tex_lines, tex_path)
+
+log_stage("stage07", sprintf(
+  "Table 1 written: N=%d primary individuals; communities=%d (treated=%d, untreated=%d).",
+  nrow(prim), nrow(comm_panel),
+  sum(comm_panel$`Treated community` == 1),
+  sum(comm_panel$`Treated community` == 0)))
+
+# ---------------------------------------------------------------------
+# 4. Appendix Table — comprehensive summary statistics for every
+#    conceptual variable used in the analysis (skipping ID columns,
+#    spec variants beyond the legacy/SAR primary, and intermediate-only
+#    items). Grouped into panels for readability.
+# ---------------------------------------------------------------------
+appendix_groups <- list(
+  "Demographics and geography" = c(
+    Female                          = "Female",
+    `Age in 2014`                   = "Age in 2014",
+    `Birth year`                    = "Birth year",
+    `Birth month`                   = "Birth month",
+    `Province (Java or Bali)`       = "Province (Java or Bali)"),
+  "Mother characteristics" = c(
+    `Mother's age at birth`         = "Mother's age at birth",
+    `Mother's years of schooling`   = "Mother's years of schooling",
+    `Mother's height (cm)`          = "Mother's height (cm)",
+    `Mother smokes`                 = "mother_smoke",
+    `Mother is non-migrant`         = "mother_non_migrant",
+    `Mother education missing`      = "mother_edu_miss"),
+  "Program exposure (main: SAR-preferred)" = c(
+    `Village midwife start year`    = "start_sar_legacy",
+    `Age at midwife arrival`        = "age_at_rollout_sar_legacy",
+    `In utero at arrival`           = "inutero_sar_legacy",
+    `Exposed in utero or age 0--3`  = "exposure_early_sar_legacy",
+    `Exposed within ages 0--3 only` = "within_3_sar_legacy",
+    `Exposed within ages 4--6`      = "within_46_sar_legacy"),
+  "Other facility presence (community of birth)" = c(
+    `Has clinic (puskesmas)`        = "has_clinic",
+    `Has doctor`                    = "has_doctor",
+    `Has private midwife`           = "has_private_midwife",
+    `Has traditional midwife`       = "has_traditional_midwife"),
+  "Health outcomes (wave 5 adult)" = c(
+    `Standing height (cm)`          = "height_cm",
+    `BMI`                           = "bmi",
+    `Not underweight (BMI >= 18.5)` = "no_underweight",
+    `Log peak expiratory flow`      = "lung_log",
+    `Diastolic BP (mmHg)`           = "bp_diast_mean",
+    `Systolic BP (mmHg)`            = "bp_syst_mean",
+    `Not hypertensive`              = "no_hypertension",
+    `Good early-life health`        = "good_early_health",
+    `General health self-rating`    = "ghs",
+    `Health index (Anderson)`       = "health_index"),
+  "Cognition outcomes (wave 5 adult)" = c(
+    `Adult IRT score (w\\_abil)`    = "w_abil",
+    `Serial-7 subtraction (0--5)`   = "serial7_correct",
+    `Immediate word recall (0--10)` = "immed_count",
+    `Delayed word recall (0--10)`   = "delay_count",
+    `Memory test (days survey)`     = "memory_days",
+    `Math share correct (child)`    = "math_prop_child",
+    `Cognition share correct (child)` = "cog_prop_child",
+    `Cognition index (Anderson)`    = "cognition_index"),
+  "Depression outcomes (wave 5 CESD-10)" = c(
+    `Depression raw sum`            = "dep_index",
+    `CESD-10 items reported (0--10)`= "n_dep_items",
+    `Not depressed`                 = "no_depression",
+    `Depression index (sign-flipped)` = "depression_index",
+    `CESD-10: bothered`             = "kp02_A",
+    `CESD-10: poor appetite`        = "kp02_B",
+    `CESD-10: blues`                = "kp02_C",
+    `CESD-10: as good as others`    = "kp02_D",
+    `CESD-10: trouble concentrating`= "kp02_E",
+    `CESD-10: depressed`            = "kp02_F",
+    `CESD-10: everything an effort` = "kp02_G",
+    `CESD-10: hopeful`              = "kp02_H",
+    `CESD-10: fearful`              = "kp02_I",
+    `CESD-10: sleep restless`       = "kp02_J"),
+  "Socioemotional outcomes (Big-Five)" = c(
+    Agreeableness                   = "agreeableness",
+    Conscientiousness               = "conscientiousness",
+    Extraversion                    = "extraversion",
+    `Emotional stability`           = "emotional_stability",
+    Openness                        = "openness",
+    `Big-Five composite index`      = "bigfive_index"),
+  "Mediators (mother-reported pregnancy history)" = c(
+    `Any prenatal check-up`         = "pnc_any",
+    `Ever breastfed`                = "ever_breastfed",
+    `Not sick in past month`        = "notsick_a_month"),
+  "Sample weights and flags" = c(
+    `Primary sample`                = "primary_sample",
+    `Mother (sibling) sample`       = "mother_sample",
+    `Preceding-wave sample`         = "preceding_sample",
+    `Deceased before wave 5`        = "dead",
+    `Migrant (any wave)`            = "migrant",
+    `Non-migrant (all waves)`       = "non_migrant",
+    `Inverse-probability weight`    = "ipw")
+)
+
+# Use the primary-sample frame for all appendix entries that exist
+# at the individual level. (Adding a separate community panel here
+# would clutter; the community-level Treated indicator already lives
+# in Table 1 Panel B.)
+build_group_rows <- function(group_name, var_map) {
+  c(sprintf("\\multicolumn{7}{l}{\\emph{%s}} \\\\", group_name),
+    vapply(seq_along(var_map),
+           function(i) {
+             colnm <- var_map[i]
+             label <- names(var_map)[i]
+             if (!colnm %in% names(prim)) {
+               return(sprintf("%s & --- & --- & --- & --- & --- & --- \\\\",
+                              label))
+             }
+             format_summary_row(prim[[colnm]], label)
+           },
+           character(1)))
+}
+
+appendix_rows <- unlist(lapply(seq_along(appendix_groups), function(i) {
+  group_name <- names(appendix_groups)[i]
+  rows <- build_group_rows(group_name, appendix_groups[[i]])
+  if (i < length(appendix_groups)) c(rows, "\\midrule") else rows
+}))
+
+appendix_lines <- c(
+  "\\begin{longtable}{lrrrrrr}",
+  "\\caption{Comprehensive summary statistics for every analysis-frame variable (primary sample).}\\label{tab:appendix_summary}\\\\",
+  "\\toprule",
+  "Variable & N & Mean & SD & Min & Median & Max \\\\",
+  "\\midrule",
+  "\\endfirsthead",
+  "\\multicolumn{7}{l}{\\emph{Table~\\ref{tab:appendix_summary} continued.}}\\\\",
+  "\\toprule",
+  "Variable & N & Mean & SD & Min & Median & Max \\\\",
+  "\\midrule",
+  "\\endhead",
+  "\\midrule",
+  "\\multicolumn{7}{r}{\\emph{Continued on next page.}}\\\\",
+  "\\endfoot",
+  "\\bottomrule",
+  "\\endlastfoot",
+  appendix_rows,
+  "\\end{longtable}"
+)
+
+writeLines(appendix_lines,
+           file.path(tables_dir, "appendix_summary_stats.tex"))
+
+log_stage("stage07", sprintf(
+  "Appendix summary table written: %d variable groups, %d individual variables.",
+  length(appendix_groups), sum(lengths(appendix_groups))))
 
 # ---------------------------------------------------------------------
 # 4. Rollout histogram (distribution of start_year_sar across commids).

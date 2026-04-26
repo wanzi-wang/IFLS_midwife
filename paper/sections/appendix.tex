@@ -18,16 +18,16 @@ Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement b
 
 The disagreement is severe.
 The Pearson correlation between the two measures is essentially zero ($\rho = 0.02$), the two sources disagree on the rollout year for roughly 83 percent of the communities for which both are recorded, and the mean absolute disagreement exceeds four years.
-The headline analysis uses the SAR measure on the rationale that the SAR informant, typically a facility staff member, is closer to the operational record than the village leader, and the alternative PKK-based estimates appear in column~R4 of the robustness table.
+The main analysis uses the SAR measure on the rationale that the SAR informant, typically a facility staff member, is closer to the operational record than the village leader, and the alternative PKK-based estimates appear in column~R4 of the robustness table.
 
-The implication of this disagreement for the headline estimates is classical attenuation toward zero: were the true rollout year measured perfectly, tighter point estimates and narrower confidence intervals would be expected.
+The implication of this disagreement for the main estimates is classical attenuation toward zero: were the true rollout year measured perfectly, tighter point estimates and narrower confidence intervals would be expected.
 The size of the attenuation cannot be recovered without an independent benchmark.
 The disagreement is a feature of the underlying data rather than a coding artifact; both measures pass the same internal consistency checks (valid range, monotonic within-village across waves), and the disagreement is not concentrated in any one province or rollout-year bin.
 
 \section{Disaggregated outcome components and Anderson $q$-values}
 \label{app:anderson}
 
-Each of the four composite outcome indices used in the headline analysis is constructed by Anderson-weighting across its component measures, following \textcite{anderson2008}.
+Each of the four composite outcome indices used in the main analysis is constructed by Anderson-weighting across its component measures, following \textcite{anderson2008}.
 The weights down-weight redundant information across correlated components and deliver a single summary per domain, but the aggregation also obscures the behaviour of the individual components that go into the index.
 Table~\ref{tab:anderson_components} reports the component-by-component two-way-fixed-effects coefficients and the Anderson stepdown $q$-values (computed jointly within each domain to control the false-discovery rate across the set of correlated components).
 
@@ -43,5 +43,70 @@ Each row is a separate two-way-fixed-effects regression of a single outcome comp
 Standard errors clustered at the community-of-birth level in parentheses.
 The Anderson $q$-value column applies the \textcite{anderson2008} stepdown correction within each domain (health, cognition, socioemotional); values below conventional thresholds indicate components where the nominal $p$-value survives the FDR adjustment.
 Stars on the coefficient: $^{*}\,p<0.10$, $^{**}\,p<0.05$, $^{***}\,p<0.01$ (nominal $p$-values, not $q$-values).
+\end{minipage}
+\end{table}
+
+
+\section{Comprehensive variable summary statistics}
+\label{app:summary_stats}
+
+Table~\ref{tab:appendix_summary} reports descriptive statistics for every conceptual variable in the analysis frame, grouped by domain.
+The table covers the demographic and family controls; the program-exposure variables built from the SAR-preferred rollout source; the other-facility presence indicators that enter the robustness suite; the four families of adult outcomes (health, cognition, depression, socioemotional traits) together with the components that enter each composite index; the mother-reported pregnancy-history mediators that enter the channel decomposition in Section~\ref{sec:mechanisms}; and the sample, weight, and attrition flags used downstream.
+
+\input{tables/appendix_summary_stats.tex}
+
+
+\section{Pre-trend joint Wald tests}
+\label{app:pretrend}
+
+A standard event-study specification with one coefficient per event time and the same community-of-birth, birth-year, and survey-wave fixed effects as equation~\eqref{eq:twfe} produces pre-period coefficients $\delta_{-4}$, $\delta_{-3}$, and $\delta_{-2}$ for each outcome.
+Table~\ref{tab:pretrend} reports the Wald test for joint significance of these three pre-treatment coefficients separately for each of the four composite outcome indices, with the null hypothesis that all three pre-treatment coefficients equal zero.
+The test fails to reject at $\alpha = 0.05$ for all four outcomes, supporting the parallel-trends assumption used by the CS estimator across the four outcome margins.
+
+\begin{table}[!htbp]
+\centering
+\caption{Event-study pre-trend test (joint Wald, event-times $-4$, $-3$, $-2$).}
+\label{tab:pretrend}
+\input{tables/event_study_pretrend_tests.tex}
+\begin{minipage}{0.85\textwidth}
+\footnotesize
+\emph{Notes.} Wald test for joint significance of pre-treatment coefficients in the standard event-study specification with one coefficient per event time (event-times $-4$, $-3$, $-2$; reference event-time $-1$), community-of-birth, birth-year, and survey-wave fixed effects. Null hypothesis: all pre-treatment coefficients equal zero. Standard errors clustered at the community-of-birth level. Significance level: $\alpha = 0.05$.
+\end{minipage}
+\end{table}
+
+
+\section{Geographic distribution of the village-midwife rollout}
+\label{app:indonesia_map}
+
+Figure~\ref{fig:midwife_map} shows the geographic distribution of the Village Midwife Program rollout across the IFLS-13 provinces at three snapshot years: 1990 (one year after the program was announced), 1994 (mid-rollout), and 1999 (end of the cohort window used in the analysis).
+Each province is shaded by the share of IFLS communities of birth in that province with at least one village midwife by the indicated snapshot year.
+The rollout is rapid in Bali and the densely populated Java provinces, with most provinces reaching 30--60 percent coverage by 1994 and 60--90 percent by 1999.
+The non-IFLS-13 provinces are drawn in white to indicate that they do not enter the analysis sample.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/midwife_rollout_map.pdf}
+\caption{Province-level share of IFLS communities of birth with a village midwife present in 1990, 1994, and 1999. Shading uses a common $0$--$100$ percent scale across the three panels. Non-IFLS-13 provinces appear in white.}
+\label{fig:midwife_map}
+\end{figure}
+
+
+\section{Multiple-inference correction (Romano--Wolf)}
+\label{app:romano_wolf}
+
+The four composite outcome indices are correlated and constitute a four-outcome family.
+The headline cell-by-cell standard errors do not adjust for the implied multiple-comparison burden.
+Table~\ref{tab:romano_wolf} reports the \textcite{anderson2008}-style Romano--Wolf stepdown $p$-values across the four outcomes, computed from $B = 1{,}999$ pair cluster bootstrap draws at the community-of-birth level.
+The specification is the two-way-fixed-effects column of Table~\ref{tab:main_results} with mother controls.
+The stepdown enforces monotonicity in the order of observed $|t|$-statistics, so $p_{\mathrm{RW}}$ values are weakly larger than nominal $p$-values for the same coefficient.
+
+\begin{table}[!htbp]
+\centering
+\caption{Multiple-inference correction across the four composite indices (Romano--Wolf).}
+\label{tab:romano_wolf}
+\input{tables/romano_wolf.tex}
+\begin{minipage}{0.9\textwidth}
+\footnotesize
+\emph{Notes.} Romano--Wolf stepdown $p$-values computed from $B=1{,}999$ pair cluster bootstrap draws at the community-of-birth level. Specification is the two-way-fixed-effects column of Table~\ref{tab:main_results} with mother controls. The stepdown enforces monotonicity in the order of observed $|t|$-statistics. The correction is applied to the TWFE baseline as a four-outcome diagnostic and does not apply mechanically to the CS column reported in the main text.
 \end{minipage}
 \end{table}

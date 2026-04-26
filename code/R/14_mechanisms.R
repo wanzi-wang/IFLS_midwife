@@ -91,7 +91,7 @@ first_stage <- lapply(mediators, function(m) {
   fit <- tryCatch(
     feols(as.formula(sprintf(paste0(
       "%s ~ exposure_early_sar_preceding + sex_f + mother_edu_years + ",
-      "mother_age_birth | commid_birth_preceding + birth_year"), m)),
+      "mother_age_birth | commid_birth_preceding + birth_year + source_wave"), m)),
       data = df, cluster = ~ commid_birth_preceding,
       notes = FALSE, warn = FALSE),
     error = function(e) NULL
@@ -165,11 +165,11 @@ run_cond <- function(y, m, data) {
   # Total (reduced form).
   f_total <- as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_preceding + sex_f + mother_edu_years + ",
-    "mother_age_birth | commid_birth_preceding + birth_year"), y))
+    "mother_age_birth | commid_birth_preceding + birth_year + source_wave"), y))
   # Conditional (adds mediator as regressor).
   f_cond <- as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_preceding + %s + sex_f + mother_edu_years + ",
-    "mother_age_birth | commid_birth_preceding + birth_year"), y, m))
+    "mother_age_birth | commid_birth_preceding + birth_year + source_wave"), y, m))
   fit_t <- feols(f_total, data = data,
                  cluster = ~ commid_birth_preceding,
                  notes = FALSE, warn = FALSE)

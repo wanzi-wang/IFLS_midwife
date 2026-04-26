@@ -66,14 +66,14 @@ fit_sib <- function(y, data, spec) {
   form <- switch(spec,
     A = sprintf(paste0(
       "%s ~ exposure_early_sar_legacy + birth_order + ",
-      "mother_age_birth | mother_pidlink + birth_year"), y),
+      "mother_age_birth | mother_pidlink + birth_year + source_wave"), y),
     B = sprintf(paste0(
       "%s ~ exposure_early_sar_legacy + birth_order + ",
-      "mother_age_birth | mother_pidlink + birth_year + ",
+      "mother_age_birth | mother_pidlink + birth_year + source_wave + ",
       "commid_birth_legacy"), y),
     C = sprintf(paste0(
       "%s ~ exposure_early_sar_legacy + birth_order + ",
-      "mother_age_birth | mother_pidlink + birth_year"), y)
+      "mother_age_birth | mother_pidlink + birth_year + source_wave"), y)
   )
   tryCatch(
     feols(as.formula(form), data = data,

@@ -57,16 +57,25 @@ mediators <- read_intermediate("stage04b", "mediators") |>
 #    Each variant gets its own pair of start-year columns.
 # ---------------------------------------------------------------------
 attach_rollout <- function(df, birth_col, suffix) {
+  sar_col <- paste0("start_sar_", suffix)
+  pkk_col <- paste0("start_pkk_", suffix)
   df |>
     left_join(
       rollout |>
-        rename(!!paste0("start_sar_", suffix) := start_year_sar,
-               !!paste0("start_pkk_", suffix) := start_year_pkk) |>
-        select(commid93,
-               !!paste0("start_sar_", suffix),
-               !!paste0("start_pkk_", suffix)),
+        rename(!!sar_col := start_year_sar,
+               !!pkk_col := start_year_pkk) |>
+        select(commid93, !!sar_col, !!pkk_col),
       by = c(stats::setNames("commid93", birth_col))
-    )
+    ) |>
+    # Coalesce SAR -> PKK so the main exposure variable uses the best
+    # available rollout year per community. SAR is preferred (it tags
+    # facility-level rollout dates); PKK fills in communities where the
+    # SAR year is missing but the PKK year is available. The PKK-only
+    # variant `start_pkk_<suffix>` is preserved for the R4 robustness
+    # check in stage 11. Without this coalesce, ~740 individuals in
+    # 62 communities are dropped from the main analysis because their
+    # SAR rollout year is missing even though PKK records it.
+    mutate(!!sar_col := dplyr::coalesce(.data[[sar_col]], .data[[pkk_col]]))
 }
 
 frame <- br |>

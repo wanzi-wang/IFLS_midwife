@@ -70,12 +70,12 @@ fmt <- function(est, se) {
 rows_edu <- lapply(outcomes, function(y) {
   ml <- feols(as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_legacy | ",
-    "commid_birth_legacy + birth_year"), y)),
+    "commid_birth_legacy + birth_year + source_wave"), y)),
     data = df |> filter(high_medu == 0),
     cluster = ~ commid_birth_legacy)
   mh <- feols(as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_legacy | ",
-    "commid_birth_legacy + birth_year"), y)),
+    "commid_birth_legacy + birth_year + source_wave"), y)),
     data = df |> filter(high_medu == 1),
     cluster = ~ commid_birth_legacy)
   pl <- coef_se(ml, "exposure_early_sar_legacy")
@@ -127,7 +127,7 @@ for (y in outcomes) {
     d <- subsets[[nm]]
     m <- feols(as.formula(sprintf(paste0(
       "%s ~ exposure_early_sar_legacy | ",
-      "commid_birth_legacy + birth_year"), y)),
+      "commid_birth_legacy + birth_year + source_wave"), y)),
       data = d, cluster = ~ commid_birth_legacy)
     p <- coef_se(m, "exposure_early_sar_legacy")
     forest_rows[[paste(y, nm)]] <- tibble(
@@ -190,10 +190,10 @@ stage08 <- readRDS(here::here("data", "output", "regressions",
 # TWFE baseline (used as the "TWFE is the wrong lens" benchmark in the
 # CS-vs-TWFE comparison paragraphs).
 main_m <- feols(health_index ~ exposure_early_sar_legacy |
-                  commid_birth_legacy + birth_year,
+                  commid_birth_legacy + birth_year + source_wave,
                 data = df, cluster = ~ commid_birth_legacy)
 dep_m  <- feols(depression_index ~ exposure_early_sar_legacy |
-                  commid_birth_legacy + birth_year,
+                  commid_birth_legacy + birth_year + source_wave,
                 data = df, cluster = ~ commid_birth_legacy)
 
 # Within-mother (sibling-FE) depression, parallel to stage 10's spec A.
@@ -233,7 +233,7 @@ writeLines(c(
   sprintf("\\newcommand{\\NPrimaryMediator}{%s}",
           format(n_med, big.mark = ",")),
   "%",
-  "% Callaway-Sant'Anna dynamic ATT over event-times 0-3 (headline).",
+  "% Callaway-Sant'Anna dynamic ATT over event-times 0-3 (main specification).",
   sprintf("\\newcommand{\\CoefHealthCS}{%s}", sig3(cs_est("health_index"))),
   sprintf("\\newcommand{\\SEHealthCS}{%s}",   sig3(cs_se("health_index"))),
   sprintf("\\newcommand{\\CoefCogCS}{%s}",    sig3(cs_est("cognition_index"))),
@@ -243,7 +243,7 @@ writeLines(c(
   sprintf("\\newcommand{\\CoefSocCS}{%s}",    sig3(cs_est("bigfive_index"))),
   sprintf("\\newcommand{\\SESocCS}{%s}",      sig3(cs_se("bigfive_index"))),
   "%",
-  "% TWFE baseline (comparison benchmark, not headline).",
+  "% TWFE comparator (reported as a baseline benchmark).",
   sprintf("\\newcommand{\\CoefHealthTWFE}{%s}",
           sig3(unname(coef(main_m)["exposure_early_sar_legacy"]))),
   sprintf("\\newcommand{\\SEHealthTWFE}{%s}",

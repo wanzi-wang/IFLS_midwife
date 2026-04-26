@@ -132,7 +132,7 @@ for (y in outcomes) {
   # R1: IPW-weighted TWFE.
   d1 <- df |> filter(!is.na(ipw))
   m1 <- feols(as.formula(sprintf(
-    "%s ~ exposure_early_sar_legacy | commid_birth_legacy + birth_year",
+    "%s ~ exposure_early_sar_legacy | commid_birth_legacy + birth_year + source_wave",
     y)), data = d1, weights = ~ ipw, cluster = ~ commid_birth_legacy)
 
   # R2: Other-facility controls.
@@ -147,26 +147,26 @@ for (y in outcomes) {
                                           start_clinic_pr <= birth_year))
   m2 <- feols(as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_legacy + doctor_at_birth + clinic_at_birth | ",
-    "commid_birth_legacy + birth_year"), y)),
+    "commid_birth_legacy + birth_year + source_wave"), y)),
     data = df_m2, cluster = ~ commid_birth_legacy)
 
   # R3: Province linear trends (instead of prov × birth_year FE).
   m3 <- feols(as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_legacy + i(province, birth_year) | ",
-    "commid_birth_legacy + birth_year"), y)),
+    "commid_birth_legacy + birth_year + source_wave"), y)),
     data = df, cluster = ~ commid_birth_legacy)
 
   # R4: PKK rollout source (exposure_early_pkk_legacy).
   m4 <- feols(as.formula(sprintf(paste0(
     "%s ~ exposure_early_pkk_legacy | ",
-    "commid_birth_legacy + birth_year"), y)),
+    "commid_birth_legacy + birth_year + source_wave"), y)),
     data = df, cluster = ~ commid_birth_legacy)
 
   # R5: Preceding-wave birthplace variant (keeps internal migrants).
   d5 <- frame |> filter(preceding_sample == 1)
   m5 <- feols(as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_preceding | ",
-    "commid_birth_preceding + birth_year"), y)),
+    "commid_birth_preceding + birth_year + source_wave"), y)),
     data = d5, cluster = ~ commid_birth_preceding)
 
   # R6: Mother birthplace variant.
@@ -281,7 +281,7 @@ writeLines(c(
 log_stage("stage11", "running placebo permutation (200 draws)")
 true_fit <- feols(
   health_index ~ exposure_early_sar_legacy |
-    commid_birth_legacy + birth_year,
+    commid_birth_legacy + birth_year + source_wave,
   data = df, cluster = ~ commid_birth_legacy)
 true_coef <- unname(coef(true_fit)["exposure_early_sar_legacy"])
 
@@ -294,7 +294,7 @@ for (b in seq_len(B)) {
     ungroup()
   fit <- tryCatch(feols(
     health_index ~ exp_perm |
-      commid_birth_legacy + birth_year,
+      commid_birth_legacy + birth_year + source_wave,
     data = perm, cluster = ~ commid_birth_legacy),
     error = function(e) NULL)
   placebo_coefs[b] <- if (is.null(fit)) NA_real_
@@ -335,7 +335,7 @@ writeLines(c(
 # ---------------------------------------------------------------------
 m_child <- tryCatch(feols(
   cog_prop_child ~ exposure_early_sar_legacy |
-    commid_birth_legacy + birth_year,
+    commid_birth_legacy + birth_year + source_wave,
   data = df, cluster = ~ commid_birth_legacy),
   error = function(e) NULL)
 

@@ -75,7 +75,7 @@ outcomes <- c("health_index", "cognition_index",
 fml <- function(y) {
   as.formula(sprintf(paste0(
     "%s ~ exposure_early_sar_legacy + sex_f + mother_edu_years + ",
-    "mother_age_birth | commid_birth_legacy + birth_year"), y))
+    "mother_age_birth | commid_birth_legacy + birth_year + source_wave"), y))
 }
 
 obs_stats <- lapply(outcomes, function(y) {
@@ -255,7 +255,7 @@ component_rows <- lapply(names(domain_components), function(domain) {
     fit <- tryCatch(
       feols(as.formula(sprintf(paste0(
         "%s ~ exposure_early_sar_legacy + sex_f + mother_edu_years + ",
-        "mother_age_birth | commid_birth_legacy + birth_year"), v)),
+        "mother_age_birth | commid_birth_legacy + birth_year + source_wave"), v)),
         data = df, cluster = ~ commid_birth_legacy,
         notes = FALSE, warn = FALSE),
       error = function(e) NULL
