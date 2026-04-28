@@ -40,7 +40,6 @@ source(here::here("code", "R", "11_robustness.R"))
 source(here::here("code", "R", "12_heterogeneity_finalize.R"))
 source(here::here("code", "R", "13_multiple_inference.R"))
 source(here::here("code", "R", "14_mechanisms.R"))
-source(here::here("code", "R", "15_honestdid_sensitivity.R"))
 source(here::here("code", "R", "16_appendix_figures.R"))
 
 elapsed <- round(as.numeric(difftime(Sys.time(), t0, units = "secs")), 1)

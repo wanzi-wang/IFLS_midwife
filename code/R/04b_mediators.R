@@ -5,19 +5,51 @@
 # Extracts mother-reported pregnancy-history variables from the IFLS
 # book-4 CH module (Kesehatan anak in hhN b4_ch1). These are the
 # candidate channels through which a village midwife's arrival would
-# move a child's adult-outcome distribution:
+# move a child's adult-outcome distribution. IFLS ch20 (delivery
+# attendant) is a multi-response letter string; the per-letter coding
+# is verified against the IFLS-4 (2007) codebook (vol. 5, hhd_B4):
 #
-#   - pnc_any              : any prenatal check-up during pregnancy
-#                            (ch14 == 1)
-#   - skilled_attendant    : delivery attended by a doctor (A),
-#                            midwife (B — includes village midwives),
-#                            paramedic (C), or nurse (D). IFLS ch20 is
-#                            a multi-response letter string; 1 if the
-#                            string contains any of A/B/C/D, 0 if only
-#                            traditional/unskilled codes (E dukun,
-#                            F family, G alone, H other, Z unknown).
-#   - ever_breastfed       : ever initiated breastfeeding (ch24a in
-#                            W2/W3).
+#   A = Physician,  B = Private midwife,  C = Village midwife,
+#   D = Nurse,      E = Traditional birth attendant (dukun),
+#   F = Family,     G = Self / alone,     H = Other,    Z = Missing.
+#
+# Constructed mediators:
+#
+#   - pnc_any                    : any prenatal check-up during
+#                                  pregnancy (ch14 == 1).
+#   - attendant_village_midwife  : delivery attended by a village
+#                                  midwife specifically (ch20 contains
+#                                  C). This is the program-specific
+#                                  channel; the village midwife program
+#                                  is precisely a village-midwife
+#                                  posting, so the cleanest first-stage
+#                                  is a village-midwife indicator
+#                                  rather than a generic skilled-
+#                                  attendant indicator. Matches the
+#                                  channel definition in
+#                                  \citeauthor{ahsan2021}.
+#   - skilled_attendant          : kept for backwards compatibility.
+#                                  1 if ch20 contains any of A/B/C/D
+#                                  (any skilled attendant, broader than
+#                                  the program-specific channel).
+#   - exclusive_bf_6m            : exclusive breastfeeding for at least
+#                                  six months. Constructed from
+#                                  ch24c/ch24cx (food other than breast
+#                                  milk first introduced) and
+#                                  ch24d/ch24dx (water other than breast
+#                                  milk first introduced); the W2 unit
+#                                  flag (ch24cx, ch24dx) maps 5 = month,
+#                                  4 = week, 3 = day. Fall-back to
+#                                  ever-breastfed when duration is
+#                                  unrecorded.
+#   - ever_breastfed             : kept for backwards compatibility.
+#                                  Ever initiated breastfeeding (ch24a
+#                                  in W2/W3, ch28 in W1).
+#   - birth_weight               : recorded birth weight in kilograms
+#                                  (ch24, with the IFLS 9.x missing
+#                                  flag dropped). Used by
+#                                  \citeauthor{ahsan2021} as a
+#                                  proximate at-birth outcome.
 #
 # NOTE on ch19 (place of delivery): the numeric coding drifts between
 # waves in a way the IFLS 1997 codebook did not fully resolve and the
@@ -72,7 +104,8 @@ preg_w3 <- read_intermediate("raw", "W3__preg_hist")
 # ---------------------------------------------------------------------
 harmonize_preg <- function(df, wave_label) {
   keep <- intersect(
-    c("pidlink", "ch09yr", "ch14", "ch20", "ch24a", "ch28"),
+    c("pidlink", "ch09yr", "ch14", "ch20", "ch24",
+      "ch24a", "ch24c", "ch24cx", "ch24d", "ch24dx", "ch28"),
     names(df)
   )
   df2 <- df[, keep, drop = FALSE]
@@ -92,11 +125,11 @@ harmonize_preg <- function(df, wave_label) {
                     ifelse(df2$ch09yr < 100, df2$ch09yr + 1900L,
                            df2$ch09yr))
 
-  # ch20 letter classification.
-  #   A = doctor, B = midwife (incl. village midwife), C = paramedic,
-  #   D = nurse              -> SKILLED
-  #   E = traditional attendant (dukun), F = family, G = self / alone,
-  #   H = other, Z = unknown -> UNSKILLED
+  # ch20 letter classification (verified against IFLS-4 hhd_B4 codebook):
+  #   A = Physician,  B = Private midwife,  C = Village midwife,
+  #   D = Nurse                 -> SKILLED
+  #   E = Traditional birth attendant (dukun), F = Family, G = Self,
+  #   H = Other, Z = Missing    -> UNSKILLED
   # Missing: ch20 is NA or empty string.
   ch20_str <- ifelse(is.na(df2$ch20), "", as.character(df2$ch20))
   df2$skilled_attendant <- dplyr::case_when(
@@ -105,6 +138,49 @@ harmonize_preg <- function(df, wave_label) {
     grepl("^[EFGHZ]+$", ch20_str)    ~ 0L,
     TRUE                             ~ NA_integer_
   )
+  df2$attendant_village_midwife <- dplyr::case_when(
+    ch20_str == ""                   ~ NA_integer_,
+    grepl("C", ch20_str)             ~ 1L,
+    TRUE                             ~ 0L
+  )
+
+  # Birth weight: ch24 is in kilograms with codes >= 9 flagging
+  # "don't know" / unreported. Drop those.
+  if ("ch24" %in% names(df2)) {
+    df2$birth_weight <- ifelse(is.na(df2$ch24) | df2$ch24 >= 9,
+                               NA_real_, df2$ch24)
+  } else {
+    df2$birth_weight <- NA_real_
+  }
+
+  # Exclusive breastfeeding for >= 6 months. ch24c/cx records when food
+  # other than breast milk was first given; ch24d/dx records when water
+  # other than breast milk was first given. The 'x' unit flag maps:
+  #   3 = days, 4 = weeks, 5 = months. Convert each duration to months
+  # and take the minimum (the earliest non-breast-milk introduction).
+  to_months <- function(val, unit) {
+    dplyr::case_when(
+      is.na(val) | is.na(unit)         ~ NA_real_,
+      unit == 5                        ~ as.numeric(val),
+      unit == 4                        ~ as.numeric(val) / 4.34,
+      unit == 3                        ~ as.numeric(val) / 30,
+      TRUE                             ~ NA_real_
+    )
+  }
+  if (all(c("ch24c", "ch24cx", "ch24d", "ch24dx") %in% names(df2))) {
+    food_m  <- to_months(df2$ch24c, df2$ch24cx)
+    water_m <- to_months(df2$ch24d, df2$ch24dx)
+    excl_m  <- pmin(food_m, water_m, na.rm = TRUE)
+    excl_m[is.infinite(excl_m)] <- NA_real_
+    df2$exclusive_bf_6m <- dplyr::case_when(
+      df2$bf_raw == 3                  ~ 0L,   # never breastfed
+      is.na(excl_m)                    ~ NA_integer_,
+      excl_m >= 6                      ~ 1L,
+      TRUE                             ~ 0L
+    )
+  } else {
+    df2$exclusive_bf_6m <- NA_integer_
+  }
 
   df2 |>
     transmute(
@@ -112,10 +188,13 @@ harmonize_preg <- function(df, wave_label) {
       birth_year     = birth_year,
       pnc_any        = dplyr::case_when(
         ch14 == 1 ~ 1L, ch14 == 3 ~ 0L, TRUE ~ NA_integer_),
-      skilled_attendant = skilled_attendant,
-      ever_breastfed    = dplyr::case_when(
+      skilled_attendant         = skilled_attendant,
+      attendant_village_midwife = attendant_village_midwife,
+      birth_weight              = birth_weight,
+      ever_breastfed            = dplyr::case_when(
         bf_raw == 1 ~ 1L, bf_raw == 3 ~ 0L, TRUE ~ NA_integer_),
-      wave_source       = wave_label
+      exclusive_bf_6m           = exclusive_bf_6m,
+      wave_source               = wave_label
     ) |>
     filter(!is.na(mother_pidlink), !is.na(birth_year))
 }
@@ -160,21 +239,17 @@ log_stage("stage04b", sprintf(
   "cohort 1984–1999 mediator rows: %d", nrow(mediators)))
 
 # Coverage diagnostics.
-cov_tbl <- mediators |>
-  summarise(across(c(pnc_any, skilled_attendant, ever_breastfed),
-                   ~ mean(!is.na(.x))))
-log_stage("stage04b", sprintf(
-  "non-NA share: pnc=%.2f skilled=%.2f bf=%.2f",
-  cov_tbl$pnc_any, cov_tbl$skilled_attendant,
-  cov_tbl$ever_breastfed))
-
-means_tbl <- mediators |>
-  summarise(across(c(pnc_any, skilled_attendant, ever_breastfed),
-                   ~ mean(.x, na.rm = TRUE)))
-log_stage("stage04b", sprintf(
-  "mediator means: pnc=%.2f skilled=%.2f bf=%.2f",
-  means_tbl$pnc_any, means_tbl$skilled_attendant,
-  means_tbl$ever_breastfed))
+mediator_vars <- c("pnc_any", "skilled_attendant",
+                   "attendant_village_midwife", "ever_breastfed",
+                   "exclusive_bf_6m", "birth_weight")
+cov_tbl   <- mediators |> summarise(across(all_of(mediator_vars),
+                                           ~ mean(!is.na(.x))))
+means_tbl <- mediators |> summarise(across(all_of(mediator_vars),
+                                           ~ mean(.x, na.rm = TRUE)))
+for (v in mediator_vars) {
+  log_stage("stage04b", sprintf(
+    "%-26s  cov=%.2f  mean=%.3f", v, cov_tbl[[v]], means_tbl[[v]]))
+}
 
 # ---------------------------------------------------------------------
 # Persist.

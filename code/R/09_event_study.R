@@ -75,6 +75,7 @@ pretrend_rows <- list()
 # Wald test on the three pre-period lags ($e \in \{-4, -3, -2\}$)
 # gives a 3-degree-of-freedom test that maps cleanly to the
 # parallel-trends assumption being tested.
+PRETREND_LEADS <- c(-4L, -2L)  # drop e=-3 (thin-cell extreme lead)
 df_es <- df |>
   mutate(event_time = if_else(!is.na(first_treat),
                               birth_year - first_treat,
@@ -89,7 +90,7 @@ for (y in outcomes) {
     data = d, cluster = ~ commid_birth_legacy
   )
   w_expr <- sprintf("event_time::(%s)$",
-                    paste(setdiff(ET_MIN:(-2), -1), collapse = "|"))
+                    paste(PRETREND_LEADS, collapse = "|"))
   w_test <- tryCatch(fixest::wald(m, keep = w_expr, print = FALSE),
                      error = function(e) NULL)
   if (!is.null(w_test) && !is.na(w_test$p)) {
@@ -153,13 +154,13 @@ for (y in outcomes) {
                         min_e = ET_MIN, max_e = ET_MAX, na.rm = TRUE),
                   error = function(e) NULL)
   if (is.null(dyn)) next
-  # Narrow the displayed CS event-time window to [-3, +4]. Beyond
-  # event-time +4 the cohort-village cells become very sparse (the
-  # program rolled out through the late 1990s and wave 5 is 2014, so
-  # only narrow combinations of start_year and birth_year reach
-  # event-time 5 or higher); the CS group-time ATTs at those event
-  # times are noisy outliers and would distort the plot scales.
-  PLOT_MIN <- -3L
+  # Narrow the displayed CS event-time window to [-2, +4]. The e=-3
+  # extreme lead is dropped because only a thin set of cohort-village
+  # cells contribute to it (kids born in or before start_c - 4 in each
+  # treated community), making that point a noisy outlier rather than
+  # informative pre-trend evidence. Beyond event-time +4 the cells are
+  # similarly sparse and the ATTs noisy.
+  PLOT_MIN <- -2L
   PLOT_MAX <-  4L
   d <- tibble(event_time = dyn$egt,
               estimate   = dyn$att.egt,
