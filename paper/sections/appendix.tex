@@ -6,8 +6,8 @@
 \label{app:rollout}
 
 The Indonesia Family Life Survey records two independent measures of the year a village midwife first arrived in each community: the SAR module, completed by a facility informant, and the PKK module, completed by the village leader.
-Both are recorded in waves 2--5; PKK is additionally recorded in wave~3.
-Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement between the two measures across the 153 communities for which both are available.
+Both are recorded in waves 2--5.
+Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement between the two measures across the 153 of \NVillages~analysis-sample communities for which both measures are available.
 
 \begin{table}[!htbp]
 \centering
@@ -18,7 +18,7 @@ Table~\ref{tab:rollout_compare} reports diagnostic statistics on the agreement b
 
 The disagreement is severe.
 The Pearson correlation between the two measures is essentially zero ($\rho = 0.02$), the two sources disagree on the rollout year for roughly 83 percent of the communities for which both are recorded, and the mean absolute disagreement exceeds four years.
-The main analysis uses the SAR measure on the rationale that the SAR informant, typically a facility staff member, is closer to the operational record than the village leader, and the alternative PKK-based estimates appear in column~R4 of the robustness table.
+The main analysis uses the SAR measure on the rationale that the SAR informant, typically a facility staff member, is closer to the operational record than the village leader, and the alternative PKK-based estimates appear in column~R2 of the robustness table.
 
 The implication of this disagreement for the main estimates is classical attenuation toward zero: were the true rollout year measured perfectly, tighter point estimates and narrower confidence intervals would be expected.
 The size of the attenuation cannot be recovered without an independent benchmark.
@@ -41,7 +41,7 @@ Table~\ref{tab:anderson_components} reports the component-by-component two-way-f
 \emph{Notes.}
 Each row is a separate two-way-fixed-effects regression of a single outcome component on early village-midwife exposure, with community-of-birth and birth-year fixed effects and mother controls.
 Standard errors clustered at the community-of-birth level in parentheses.
-The Anderson $q$-value column applies the \textcite{anderson2008} stepdown correction within each domain (health, cognition, socioemotional); values below conventional thresholds indicate components where the nominal $p$-value survives the FDR adjustment.
+The Anderson $q$-value column applies the \textcite{anderson2008} stepdown correction within each domain (health, cognition, socioemotional); values below the standard 0.05 / 0.10 cutoffs indicate components where the nominal $p$-value survives the FDR adjustment.
 Stars on the coefficient: $^{*}\,p<0.10$, $^{**}\,p<0.05$, $^{***}\,p<0.01$ (nominal $p$-values, not $q$-values).
 \end{minipage}
 \end{table}
@@ -53,13 +53,17 @@ Stars on the coefficient: $^{*}\,p<0.10$, $^{**}\,p<0.05$, $^{***}\,p<0.01$ (nom
 Table~\ref{tab:appendix_summary} reports descriptive statistics for every conceptual variable in the analysis frame, grouped by domain.
 The table covers the demographic and family controls; the program-exposure variables built from the SAR-preferred rollout source; the other-facility presence indicators that enter the robustness suite; the four families of adult outcomes (health, cognition, depression, socioemotional traits) together with the components that enter each composite index; the mother-reported pregnancy-history mediators that enter the channel decomposition in Section~\ref{sec:mechanisms}; and the sample, weight, and attrition flags used downstream.
 
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.92}
 \input{tables/appendix_summary_stats.tex}
+}
 
 
 \section{Pre-trend joint Wald tests}
 \label{app:pretrend}
 
-A standard event-study specification with one coefficient per event time and the same community-of-birth, birth-year, and survey-wave fixed effects as equation~\eqref{eq:twfe} produces pre-period coefficients $\delta_{-4}$ and $\delta_{-2}$ for each outcome. Event-time $-3$ is excluded from the pre-trend test because only a thin set of cohort-village cells contributes to that lead (kids born in or before $\text{start}_c - 4$ in each treated community) and the resulting coefficient is a noisy outlier rather than informative pre-trend evidence.
+A standard event-study specification with one coefficient per event time and the same community-of-birth, birth-year, and survey-wave fixed effects as equation~\eqref{eq:twfe} produces pre-period coefficients $\delta_{-4}$ and $\delta_{-2}$ for each outcome. Event-time $-3$ is excluded from the pre-trend test because only a thin set of cohort-village cells contributes to that lead (children born in or before $\text{start}_c - 4$ in each treated community), so the resulting coefficient is too imprecise to bear weight as a pre-trend test.
 Table~\ref{tab:pretrend} reports the Wald test for joint significance of $\delta_{-4}$ and $\delta_{-2}$ separately for each of the four composite outcome indices, with the null hypothesis that both pre-treatment coefficients equal zero.
 The test fails to reject at $\alpha = 0.05$ for all four outcomes, supporting the parallel-trends assumption used by the CS estimator across the four outcome margins.
 
