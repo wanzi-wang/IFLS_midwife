@@ -11,7 +11,15 @@
 *.swp
 *~
 
-# --- Claude harness / local state ---
+# --- Claude harness / local state (entire dir; not part of public repo) ---
+memory/
+
+# --- Internal working artifacts (not part of public repo) ---
+audit_reports/
+attic/
+templates/
+scripts/quality_score.py
+.history-cleanup/
 
 # --- Data (restricted IFLS, large, or regenerable) ---
 data/raw/

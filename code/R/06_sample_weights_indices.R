@@ -24,7 +24,7 @@
 #     presence (imperfect proxy for pre-program village traits —
 #     IFLS W1 has no usable pre-1989 community module).
 #   * The two-shock / AFC-exit design was explored here originally
-#     -quasar.md §R7). Dropped 2026-04-15: SAR exit-year fields are
+#     (see git history). Dropped 2026-04-15: SAR exit-year fields are
 #     empty across all waves, leaving only 3-year-resolution PKK
 #     presence-gap windows; identification on ~36 coarse events was
 #     too weak to support a headline. Code removed to simplify the

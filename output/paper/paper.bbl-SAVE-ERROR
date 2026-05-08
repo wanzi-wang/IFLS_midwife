@@ -1,0 +1,2889 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{ahsan2021}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=cc7d391578c3c2849b9bf184dbfbcff8}{%
+           family={Ahsan},
+           familyi={A\bibinitperiod},
+           given={Md.\bibnamedelimi Nazmul},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=c5d59cf59617e08d1bf1f2403336cd5f}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Rakesh},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a33e89a1140be4c96ca792f21a3c2708}{%
+           family={Maharaj},
+           familyi={M\bibinitperiod},
+           given={Riddhi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{20a489517ee32f4f55f47f9b9deac7ae}
+      \strng{fullhash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{fullhashraw}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{bibnamehash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{authorbibnamehash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{authornamehash}{20a489517ee32f4f55f47f9b9deac7ae}
+      \strng{authorfullhash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{authorfullhashraw}{ec8a96f144f2d74e4e93a80a415120fd}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The World Bank Economic Review}
+      \field{number}{3}
+      \field{title}{Early-Life Access to a Basic Health Care Program and Adult Outcomes in {Indonesia}}
+      \field{volume}{35}
+      \field{year}{2021}
+      \field{pages}{681\bibrangedash 704}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1093/wber/lhaa015
+      \endverb
+    \endentry
+    \entry{alatas1993}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=30e788079097a2be44df98bbcca1b30e}{%
+           family={Alatas},
+           familyi={A\bibinitperiod},
+           given={Secha},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{fullhash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{fullhashraw}{30e788079097a2be44df98bbcca1b30e}
+      \strng{bibnamehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authorbibnamehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authornamehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authorfullhash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authorfullhashraw}{30e788079097a2be44df98bbcca1b30e}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Majalah Demografi Indonesia}
+      \field{note}{No DOI available; printed reference only.}
+      \field{number}{40}
+      \field{title}{Macro Patterns of Internal Migration in {Indonesia}, 1971--1990}
+      \field{volume}{20}
+      \field{year}{1993}
+      \field{pages}{21\bibrangedash 47}
+      \range{pages}{27}
+    \endentry
+    \entry{almondcurrie2011}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6606f2d353cb503cb4cc3cd83438520a}{%
+           family={Almond},
+           familyi={A\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c740e1c3a89d6974ff6cbc7e787f8b3a}{%
+           family={Currie},
+           familyi={C\bibinitperiod},
+           given={Janet},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{fullhash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{fullhashraw}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{bibnamehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authorbibnamehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authornamehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authorfullhash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authorfullhashraw}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Perspectives}
+      \field{number}{3}
+      \field{title}{Killing Me Softly: The Fetal Origins Hypothesis}
+      \field{volume}{25}
+      \field{year}{2011}
+      \field{pages}{153\bibrangedash 172}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1257/jep.25.3.153
+      \endverb
+    \endentry
+    \entry{almondmazumder2013}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6606f2d353cb503cb4cc3cd83438520a}{%
+           family={Almond},
+           familyi={A\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9a37622b847748c554ab509dc54c1a72}{%
+           family={Mazumder},
+           familyi={M\bibinitperiod},
+           given={Bhashkar},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{fullhash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{fullhashraw}{1da25d53e7a561d160324e6c8390174c}
+      \strng{bibnamehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authorbibnamehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authornamehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authorfullhash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authorfullhashraw}{1da25d53e7a561d160324e6c8390174c}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annual Review of Economics}
+      \field{title}{Fetal Origins and Parental Responses}
+      \field{volume}{5}
+      \field{year}{2013}
+      \field{pages}{37\bibrangedash 56}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1146/annurev-economics-082912-110145
+      \endverb
+    \endentry
+    \entry{anderson2008}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7173f1b8e6e0c113bcd57065c917c990}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={Michael\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{fullhash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{fullhashraw}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{bibnamehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authorbibnamehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authornamehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authorfullhash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authorfullhashraw}{7173f1b8e6e0c113bcd57065c917c990}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{484}
+      \field{title}{Multiple Inference and Gender Differences in the Effects of Early Intervention: A Reevaluation of the {Abecedarian}, {Perry Preschool}, and {Early Training} Projects}
+      \field{volume}{103}
+      \field{year}{2008}
+      \field{pages}{1481\bibrangedash 1495}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1198/016214508000000841
+      \endverb
+    \endentry
+    \entry{atwood2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=a1ac7674da6b00e345c97a501449c8ef}{%
+           family={Atwood},
+           familyi={A\bibinitperiod},
+           given={Alicia},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{fullhash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{fullhashraw}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{bibnamehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authorbibnamehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authornamehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authorfullhash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authorfullhashraw}{a1ac7674da6b00e345c97a501449c8ef}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Journal: Economic Policy}
+      \field{number}{2}
+      \field{title}{The Long-Term Effects of Measles Vaccination on Earnings and Employment}
+      \field{volume}{14}
+      \field{year}{2022}
+      \field{pages}{34\bibrangedash 61}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1257/pol.20190509
+      \endverb
+    \endentry
+    \entry{barker1995}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ada62b442bcfba06e48083b488ac1f37}{%
+           family={Barker},
+           familyi={B\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{fullhash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{fullhashraw}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{bibnamehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authorbibnamehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authornamehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authorfullhash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authorfullhashraw}{ada62b442bcfba06e48083b488ac1f37}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BMJ (Clinical Research Ed.)}
+      \field{number}{6998}
+      \field{title}{Fetal Origins of Coronary Heart Disease}
+      \field{volume}{311}
+      \field{year}{1995}
+      \field{pages}{171\bibrangedash 174}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1136/bmj.311.6998.171
+      \endverb
+    \endentry
+    \entry{callawaysantanna2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4a5a67b3788b4a3653a14d9ab03fba0e}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Brantly},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f90144f1e670fa40bee88166593b00ea}{%
+           family={Sant'Anna},
+           familyi={S\bibinitperiod},
+           given={Pedro\bibnamedelimb H.\bibnamedelimi C.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{bibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorbibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authornamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Difference-in-Differences with Multiple Time Periods}
+      \field{volume}{225}
+      \field{year}{2021}
+      \field{pages}{200\bibrangedash 230}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1016/j.jeconom.2020.12.001
+      \endverb
+    \endentry
+    \entry{cas2012}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{hash=5dcfcbe35513d20f131b3f757960c904}{%
+           family={Cas},
+           familyi={C\bibinitperiod},
+           given={Ava\bibnamedelima Gail},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Duke University}%
+      }
+      \strng{namehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{fullhash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{fullhashraw}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{bibnamehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authorbibnamehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authornamehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authorfullhash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authorfullhashraw}{5dcfcbe35513d20f131b3f757960c904}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Essays in Health, Education and Development}
+      \field{type}{phdthesis}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://hdl.handle.net/10161/5810
+      \endverb
+      \verb{url}
+      \verb https://hdl.handle.net/10161/5810
+      \endverb
+    \endentry
+    \entry{cunhaheckman2007}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=95879561df1d4fe8a5a8dafde92a6aaa}{%
+           family={Cunha},
+           familyi={C\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+        {{hash=31a1496cdbf5dc77b32758042c61ba9c}{%
+           family={Heckman},
+           familyi={H\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{fullhash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{fullhashraw}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{bibnamehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authorbibnamehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authornamehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authorfullhash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authorfullhashraw}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{2}
+      \field{title}{The Technology of Skill Formation}
+      \field{volume}{97}
+      \field{year}{2007}
+      \field{pages}{31\bibrangedash 47}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1257/aer.97.2.31
+      \endverb
+    \endentry
+    \entry{currievogl2013}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c740e1c3a89d6974ff6cbc7e787f8b3a}{%
+           family={Currie},
+           familyi={C\bibinitperiod},
+           given={Janet},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ce129bafea6b0caa52164aa4e012e2b6}{%
+           family={Vogl},
+           familyi={V\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{fullhash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{fullhashraw}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{bibnamehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authorbibnamehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authornamehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authorfullhash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authorfullhashraw}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annual Review of Economics}
+      \field{title}{Early-Life Health and Adult Circumstance in Developing Countries}
+      \field{volume}{5}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 36}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1146/annurev-economics-081412-103704
+      \endverb
+    \endentry
+    \entry{dechaisemartin2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e476426fa9151355cd09327277745a1c}{%
+           family={Chaisemartin},
+           familyi={C\bibinitperiod},
+           given={Clément},
+           giveni={C\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=411f64c7f01ee0e2a0fdc31e20535454}{%
+           family={D'Haultf{œ}uille},
+           familyi={D\bibinitperiod},
+           given={Xavier},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Social Science Research Network}%
+      }
+      \strng{namehash}{48bc62d3b1de71e129248df511640093}
+      \strng{fullhash}{48bc62d3b1de71e129248df511640093}
+      \strng{fullhashraw}{48bc62d3b1de71e129248df511640093}
+      \strng{bibnamehash}{48bc62d3b1de71e129248df511640093}
+      \strng{authorbibnamehash}{48bc62d3b1de71e129248df511640093}
+      \strng{authornamehash}{48bc62d3b1de71e129248df511640093}
+      \strng{authorfullhash}{48bc62d3b1de71e129248df511640093}
+      \strng{authorfullhashraw}{48bc62d3b1de71e129248df511640093}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{3980758}
+      \field{title}{Two-Way Fixed Effects and Differences-in-Differences with Heterogeneous Treatment Effects: A Survey}
+      \field{type}{SSRN Scholarly Paper}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.2139/ssrn.3980758
+      \endverb
+    \endentry
+    \entry{duflo2001}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7e6b0ea4eee38822cdb0a4361e98752c}{%
+           family={Duflo},
+           familyi={D\bibinitperiod},
+           given={Esther},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{fullhash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{fullhashraw}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{bibnamehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authorbibnamehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authornamehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authorfullhash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authorfullhashraw}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{4}
+      \field{title}{Schooling and Labor Market Consequences of School Construction in {Indonesia}: Evidence from an Unusual Policy Experiment}
+      \field{volume}{91}
+      \field{year}{2001}
+      \field{pages}{795\bibrangedash 813}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1257/aer.91.4.795
+      \endverb
+    \endentry
+    \entry{frankenbergthomas2001}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4bde70c93d230738bd333deea7fbbc6b}{%
+           family={Frankenberg},
+           familyi={F\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=19a8bfbe1e99a8af15e5becbb9a52635}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{fullhash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{fullhashraw}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{bibnamehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authorbibnamehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authornamehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authorfullhash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authorfullhashraw}{12335891c28bb5b8d1555173d6e6b85c}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Demography}
+      \field{number}{2}
+      \field{title}{Women's Health and Pregnancy Outcomes: Do Services Make a Difference?}
+      \field{volume}{38}
+      \field{year}{2001}
+      \field{pages}{253\bibrangedash 265}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1353/dem.2001.0014
+      \endverb
+    \endentry
+    \entry{frankenberg2005}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=4bde70c93d230738bd333deea7fbbc6b}{%
+           family={Frankenberg},
+           familyi={F\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=9343f5d781044139c430acd75451ac99}{%
+           family={Suriastini},
+           familyi={S\bibinitperiod},
+           given={Wayan},
+           giveni={W\bibinitperiod}}}%
+        {{hash=19a8bfbe1e99a8af15e5becbb9a52635}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{0004c401a8a77abec5011180b7aa624b}
+      \strng{fullhash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{fullhashraw}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{bibnamehash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{authorbibnamehash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{authornamehash}{0004c401a8a77abec5011180b7aa624b}
+      \strng{authorfullhash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{authorfullhashraw}{2f844591c74d4c9f0402e95e7b101500}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Population Studies}
+      \field{note}{Cited in DEPII text; verify entry before submission.}
+      \field{number}{1}
+      \field{title}{Can Expanding Access to Basic Healthcare Improve Children's Health Status? Lessons from {Indonesia}'s `Midwife in the Village' Programme}
+      \field{volume}{59}
+      \field{year}{2005}
+      \field{pages}{5\bibrangedash 19}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1080/0032472052000332674
+      \endverb
+    \endentry
+    \entry{gani1996}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f6c46b8fb15c090c9940851d543540ab}{%
+           family={Gani},
+           familyi={G\bibinitperiod},
+           given={Ascobat},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{fullhash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{fullhashraw}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{bibnamehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authorbibnamehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authornamehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authorfullhash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authorfullhashraw}{f6c46b8fb15c090c9940851d543540ab}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Health Planning and Management}
+      \field{number}{3}
+      \field{title}{Improving Quality in Public Sector Hospitals in {Indonesia}}
+      \field{volume}{11}
+      \field{year}{1996}
+      \field{pages}{275\bibrangedash 296}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1002/(SICI)1099-1751(199607)11:3<275::AID-HPM436>3.0.CO;2-V
+      \endverb
+    \endentry
+    \entry{geefhuysen1999}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=54030a87da6ad018fecb2d4097fc079d}{%
+           family={Geefhuysen},
+           familyi={G\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{fullhash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{fullhashraw}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{bibnamehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authorbibnamehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authornamehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authorfullhash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authorfullhashraw}{54030a87da6ad018fecb2d4097fc079d}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Safe Motherhood in {Indonesia}: A Task for the Next Century}
+      \field{year}{1999}
+      \verb{urlraw}
+      \verb https://espace.library.uq.edu.au/view/UQ:146775
+      \endverb
+      \verb{url}
+      \verb https://espace.library.uq.edu.au/view/UQ:146775
+      \endverb
+    \endentry
+    \entry{giles2015}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=d502e81d99047027f0dfa2c63cd0253d}{%
+           family={Giles},
+           familyi={G\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=40722987593f8c3e551217f8a5eff4d1}{%
+           family={Satriawan},
+           familyi={S\bibinitperiod},
+           given={Elan},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{e657743e97237f835a42da2b53a38481}
+      \strng{fullhash}{e657743e97237f835a42da2b53a38481}
+      \strng{fullhashraw}{e657743e97237f835a42da2b53a38481}
+      \strng{bibnamehash}{e657743e97237f835a42da2b53a38481}
+      \strng{authorbibnamehash}{e657743e97237f835a42da2b53a38481}
+      \strng{authornamehash}{e657743e97237f835a42da2b53a38481}
+      \strng{authorfullhash}{e657743e97237f835a42da2b53a38481}
+      \strng{authorfullhashraw}{e657743e97237f835a42da2b53a38481}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{title}{Protecting Child Nutritional Status in the Aftermath of a Financial Crisis: Evidence from {Indonesia}}
+      \field{volume}{114}
+      \field{year}{2015}
+      \field{pages}{97\bibrangedash 106}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.jdeveco.2014.12.001
+      \endverb
+    \endentry
+    \entry{goodmanbacon2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=437b3fad5b4a40d10f45b4fc16dd7730}{%
+           family={Goodman-Bacon},
+           familyi={G\bibinithyphendelim B\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{fullhash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{fullhashraw}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{bibnamehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authorbibnamehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authornamehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authorfullhash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authorfullhashraw}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Difference-in-Differences with Variation in Treatment Timing}
+      \field{volume}{225}
+      \field{year}{2021}
+      \field{pages}{254\bibrangedash 277}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1016/j.jeconom.2021.03.014
+      \endverb
+    \endentry
+    \entry{imai2010}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=3fb69a8c942c769b74775b484c82bbe9}{%
+           family={Imai},
+           familyi={I\bibinitperiod},
+           given={Kosuke},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6e3c81199764b364deb7d5fada503c91}{%
+           family={Keele},
+           familyi={K\bibinitperiod},
+           given={Luke},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0e9a50476b4db979d3b603e83a05e919}{%
+           family={Tingley},
+           familyi={T\bibinitperiod},
+           given={Dustin},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{2414c3cf2241532aabc6cb4206d54225}
+      \strng{fullhash}{3e90d39344189949529b94ffd1317956}
+      \strng{fullhashraw}{3e90d39344189949529b94ffd1317956}
+      \strng{bibnamehash}{3e90d39344189949529b94ffd1317956}
+      \strng{authorbibnamehash}{3e90d39344189949529b94ffd1317956}
+      \strng{authornamehash}{2414c3cf2241532aabc6cb4206d54225}
+      \strng{authorfullhash}{3e90d39344189949529b94ffd1317956}
+      \strng{authorfullhashraw}{3e90d39344189949529b94ffd1317956}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychological Methods}
+      \field{number}{4}
+      \field{title}{A General Approach to Causal Mediation Analysis}
+      \field{volume}{15}
+      \field{year}{2010}
+      \field{pages}{309\bibrangedash 334}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1037/a0020761
+      \endverb
+    \endentry
+    \entry{jayachandran2009}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=82446ac206a12986d955f8766e3ec844}{%
+           family={Jayachandran},
+           familyi={J\bibinitperiod},
+           given={Seema},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{fullhash}{82446ac206a12986d955f8766e3ec844}
+      \strng{fullhashraw}{82446ac206a12986d955f8766e3ec844}
+      \strng{bibnamehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authorbibnamehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authornamehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authorfullhash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authorfullhashraw}{82446ac206a12986d955f8766e3ec844}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Human Resources}
+      \field{number}{4}
+      \field{title}{Air Quality and Early-Life Mortality: Evidence from {Indonesia}'s Wildfires}
+      \field{volume}{44}
+      \field{year}{2009}
+      \field{pages}{916\bibrangedash 954}
+      \range{pages}{39}
+      \verb{doi}
+      \verb 10.3368/jhr.44.4.916
+      \endverb
+    \endentry
+    \entry{johnson2019}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=f463483c9fddafc118a9714178e6bca3}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Rucker\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c2d8c94b1329d97abfd858cb46ec55b8}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={C.\bibnamedelimi Kirabo},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{fullhash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{fullhashraw}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{bibnamehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authorbibnamehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authornamehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authorfullhash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authorfullhashraw}{42fe6215350efcac58563c5ddb8477cc}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Journal: Economic Policy}
+      \field{number}{4}
+      \field{title}{Reducing Inequality through Dynamic Complementarity: Evidence from {Head Start} and Public School Spending}
+      \field{volume}{11}
+      \field{year}{2019}
+      \field{pages}{310\bibrangedash 349}
+      \range{pages}{40}
+      \verb{doi}
+      \verb 10.1257/pol.20180510
+      \endverb
+    \endentry
+    \entry{jointcommittee2013}{book}{}{}
+      \name{author}{5}{}{%
+        {{hash=9e0041480a51241a8802b57d04f7a30b}{%
+           family={{Joint Committee on Reducing Maternal and Neonatal Mortality in Indonesia}},
+           familyi={J\bibinitperiod}}}%
+        {{hash=2d5ea72b26621c85ec352d6e4641f4ce}{%
+           family={{Development, Security, and Cooperation}},
+           familyi={D\bibinitperiod}}}%
+        {{hash=f3245d09f5359cf02fd15f2579d42724}{%
+           family={{Policy and Global Affairs}},
+           familyi={P\bibinitperiod}}}%
+        {{hash=542dbf807c6825455f75670116436ebd}{%
+           family={{National Research Council}},
+           familyi={N\bibinitperiod}}}%
+        {{hash=7d404e4b11b5ecf136c6d637511a05b8}{%
+           family={{Indonesian Academy of Sciences}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {National Academies Press (US)}%
+      }
+      \strng{namehash}{db534033e1e74a9fa2789902564ec364}
+      \strng{fullhash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{fullhashraw}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{bibnamehash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{authorbibnamehash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{authornamehash}{db534033e1e74a9fa2789902564ec364}
+      \strng{authorfullhash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{authorfullhashraw}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Reducing Maternal and Neonatal Mortality in {Indonesia}: Saving Lives, Saving the Future}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb http://www.ncbi.nlm.nih.gov/books/NBK201706/
+      \endverb
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/books/NBK201706/
+      \endverb
+    \endentry
+    \entry{maccini2009}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=640ce3a694ab32ddd85a8581e7fc4a7c}{%
+           family={Maccini},
+           familyi={M\bibinitperiod},
+           given={Sharon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ec5dcc8c968cea90e00182b3af9cc823}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Dean},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{fullhash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{fullhashraw}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{bibnamehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authorbibnamehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authornamehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authorfullhash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authorfullhashraw}{d12f8adbc062f59a8f64b243ec157c1b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{3}
+      \field{title}{Under the Weather: Health, Schooling, and Economic Consequences of Early-Life Rainfall}
+      \field{volume}{99}
+      \field{year}{2009}
+      \field{pages}{1006\bibrangedash 1026}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1257/aer.99.3.1006
+      \endverb
+    \endentry
+    \entry{majid2015}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=8ee854a85c43c0b30887e29d91c4f94b}{%
+           family={Majid},
+           familyi={M\bibinitperiod},
+           given={Muhammad\bibnamedelima Farhan},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{fullhash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{fullhashraw}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{bibnamehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authorbibnamehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authornamehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authorfullhash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authorfullhashraw}{8ee854a85c43c0b30887e29d91c4f94b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{title}{The Persistent Effects of In-Utero Nutrition Shocks Over the Life Cycle: Evidence from {Ramadan} Fasting}
+      \field{volume}{117}
+      \field{year}{2015}
+      \field{pages}{48\bibrangedash 57}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.jdeveco.2015.06.006
+      \endverb
+    \endentry
+    \entry{makowiecka2008}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=24aeb15c3f564428818887d2addf90f3}{%
+           family={Makowiecka},
+           familyi={M\bibinitperiod},
+           given={Krystyna},
+           giveni={K\bibinitperiod}}}%
+        {{hash=361b0ceb55888d82e8bad5fc9ab77efe}{%
+           family={Achadi},
+           familyi={A\bibinitperiod},
+           given={Endang},
+           giveni={E\bibinitperiod}}}%
+        {{hash=15402a5142de9015b930f8a48a7852b7}{%
+           family={Izati},
+           familyi={I\bibinitperiod},
+           given={Yulia},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=1171c64172230954b7ae99342f0f5650}{%
+           family={Ronsmans},
+           familyi={R\bibinitperiod},
+           given={Carine},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1c6471d939e6a9111649be48d1addb1}
+      \strng{fullhash}{7d50de7976f224bad34172806278fa96}
+      \strng{fullhashraw}{7d50de7976f224bad34172806278fa96}
+      \strng{bibnamehash}{7d50de7976f224bad34172806278fa96}
+      \strng{authorbibnamehash}{7d50de7976f224bad34172806278fa96}
+      \strng{authornamehash}{f1c6471d939e6a9111649be48d1addb1}
+      \strng{authorfullhash}{7d50de7976f224bad34172806278fa96}
+      \strng{authorfullhashraw}{7d50de7976f224bad34172806278fa96}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Health Policy and Planning}
+      \field{number}{1}
+      \field{title}{Midwifery Provision in Two Districts in {Indonesia}: How Well Are Rural Areas Served?}
+      \field{volume}{23}
+      \field{year}{2008}
+      \field{pages}{67\bibrangedash 75}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1093/heapol/czm036
+      \endverb
+    \endentry
+    \entry{oster2019}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f5272ac5d8e6a7827453045453181571}{%
+           family={Oster},
+           familyi={O\bibinitperiod},
+           given={Emily},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{fullhash}{f5272ac5d8e6a7827453045453181571}
+      \strng{fullhashraw}{f5272ac5d8e6a7827453045453181571}
+      \strng{bibnamehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authorbibnamehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authornamehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authorfullhash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authorfullhashraw}{f5272ac5d8e6a7827453045453181571}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Business \& Economic Statistics}
+      \field{number}{2}
+      \field{title}{Unobservable Selection and Coefficient Stability: Theory and Evidence}
+      \field{volume}{37}
+      \field{year}{2019}
+      \field{pages}{187\bibrangedash 204}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1080/07350015.2016.1227711
+      \endverb
+    \endentry
+    \entry{premand2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=1fa69f391a2115e60ab4859a58c6cc7d}{%
+           family={Premand},
+           familyi={P\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3dde1ac580ffdc500245d06b3a470566}{%
+           family={Barry},
+           familyi={B\bibinitperiod},
+           given={Oumar},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{fullhash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{fullhashraw}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{bibnamehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authorbibnamehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authornamehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authorfullhash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authorfullhashraw}{d985f47528b2943a283c86abfc2f7d7b}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{title}{Behavioral Change Promotion, Cash Transfers and Early Childhood Development: Experimental Evidence from a Government Program in a Low-Income Setting}
+      \field{volume}{158}
+      \field{year}{2022}
+      \field{pages}{102921}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.jdeveco.2022.102921
+      \endverb
+    \endentry
+    \entry{rambachanroth2023}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=85edb53244c29c17ce57830271014b46}{%
+           family={Rambachan},
+           familyi={R\bibinitperiod},
+           given={Ashesh},
+           giveni={A\bibinitperiod}}}%
+        {{hash=73c1da3266b3c7728f6b1f38a73c7671}{%
+           family={Roth},
+           familyi={R\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{fullhash}{c7db070288680264f6dfa86410e8586f}
+      \strng{fullhashraw}{c7db070288680264f6dfa86410e8586f}
+      \strng{bibnamehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authorbibnamehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authornamehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authorfullhash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authorfullhashraw}{c7db070288680264f6dfa86410e8586f}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Economic Studies}
+      \field{number}{5}
+      \field{title}{A More Credible Approach to Parallel Trends}
+      \field{volume}{90}
+      \field{year}{2023}
+      \field{pages}{2555\bibrangedash 2591}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1093/restud/rdad018
+      \endverb
+    \endentry
+    \entry{rosalesrueda2019}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=0f7c71e43b13ac4e067867d4c32eb343}{%
+           family={Rosales-Rueda},
+           familyi={R\bibinithyphendelim R\bibinitperiod},
+           given={Maria},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f5283e474c199035d0adefb33d89766c}{%
+           family={Triyana},
+           familyi={T\bibinitperiod},
+           given={Margaret},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{fullhash}{7de37765adb4f9663345f58804bfada0}
+      \strng{fullhashraw}{7de37765adb4f9663345f58804bfada0}
+      \strng{bibnamehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authorbibnamehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authornamehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authorfullhash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authorfullhashraw}{7de37765adb4f9663345f58804bfada0}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Human Resources}
+      \field{number}{4}
+      \field{title}{The Persistent Effects of Early-Life Exposure to Air Pollution: Evidence from the {Indonesian} Forest Fires}
+      \field{volume}{54}
+      \field{year}{2019}
+      \field{pages}{1037\bibrangedash 1080}
+      \range{pages}{44}
+      \verb{doi}
+      \verb 10.3368/jhr.54.4.0117.8497R1
+      \endverb
+    \endentry
+    \entry{sorrenti2025}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=e5a70054955440e414c8ccff92f1c07b}{%
+           family={Sorrenti},
+           familyi={S\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1ed69c284c555d965fb68d911859c42b}{%
+           family={Zölitz},
+           familyi={Z\bibinitperiod},
+           given={Ulf},
+           giveni={U\bibinitperiod}}}%
+        {{hash=32ea5e765c1db6d87ab90dd730c0cc02}{%
+           family={Ribeaud},
+           familyi={R\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b246a6dd9368f65a10999c3a7f49622f}{%
+           family={Eisner},
+           familyi={E\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e2ab85cda107556b93c49a7238bc99f}
+      \strng{fullhash}{f85b81e618bef75949c96571c16fb608}
+      \strng{fullhashraw}{f85b81e618bef75949c96571c16fb608}
+      \strng{bibnamehash}{f85b81e618bef75949c96571c16fb608}
+      \strng{authorbibnamehash}{f85b81e618bef75949c96571c16fb608}
+      \strng{authornamehash}{4e2ab85cda107556b93c49a7238bc99f}
+      \strng{authorfullhash}{f85b81e618bef75949c96571c16fb608}
+      \strng{authorfullhashraw}{f85b81e618bef75949c96571c16fb608}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Economic Studies}
+      \field{number}{1}
+      \field{title}{The Causal Impact of Socio-Emotional Skills Training on Educational Success}
+      \field{volume}{92}
+      \field{year}{2025}
+      \field{pages}{506\bibrangedash 552}
+      \range{pages}{47}
+      \verb{doi}
+      \verb 10.1093/restud/rdae018
+      \endverb
+    \endentry
+    \entry{strauss2016}{report}{}{}
+      \name{author}{3}{}{%
+        {{hash=ee71acb701cdaed782b8857bcc90add8}{%
+           family={Strauss},
+           familyi={S\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d18e9ad74edaa9070fb14e334ddfb264}{%
+           family={Witoelar},
+           familyi={W\bibinitperiod},
+           given={Firman},
+           giveni={F\bibinitperiod}}}%
+        {{hash=08933f91ca948699be342b38e9c289fe}{%
+           family={Sikoki},
+           familyi={S\bibinitperiod},
+           given={Bondan},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {RAND Corporation}%
+      }
+      \strng{namehash}{79e36d631ddfb078596283801c87561b}
+      \strng{fullhash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{fullhashraw}{043a6f505ec381624bc20eec1134fa67}
+      \strng{bibnamehash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{authorbibnamehash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{authornamehash}{79e36d631ddfb078596283801c87561b}
+      \strng{authorfullhash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{authorfullhashraw}{043a6f505ec381624bc20eec1134fa67}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{WR-1143/1-NIA/NICHD}
+      \field{title}{The Fifth Wave of the {Indonesia Family Life Survey}: Overview and Field Report: Volume 1}
+      \field{type}{Working Paper}
+      \field{year}{2016}
+      \verb{doi}
+      \verb 10.7249/WR1143.1
+      \endverb
+    \endentry
+    \entry{thomas2000}{unpublished}{}{}
+      \name{author}{3}{}{%
+        {{hash=19a8bfbe1e99a8af15e5becbb9a52635}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4bde70c93d230738bd333deea7fbbc6b}{%
+           family={Frankenberg},
+           familyi={F\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=aa176b95116c9a3196740c67459d5095}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{210868583a2f1f37bf119b8ebf8353e8}
+      \strng{fullhash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{fullhashraw}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{bibnamehash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{authorbibnamehash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{authornamehash}{210868583a2f1f37bf119b8ebf8353e8}
+      \strng{authorfullhash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{authorfullhashraw}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{RAND Working Paper.}
+      \field{title}{Lost but Not Forgotten: Attrition and Follow-up in the {Indonesia Family Life Survey}}
+      \field{year}{2000}
+    \endentry
+    \entry{triyana2016}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f5283e474c199035d0adefb33d89766c}{%
+           family={Triyana},
+           familyi={T\bibinitperiod},
+           given={Margaret},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{fullhash}{f5283e474c199035d0adefb33d89766c}
+      \strng{fullhashraw}{f5283e474c199035d0adefb33d89766c}
+      \strng{bibnamehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authorbibnamehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authornamehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authorfullhash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authorfullhashraw}{f5283e474c199035d0adefb33d89766c}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Population Studies}
+      \field{number}{3}
+      \field{title}{The Effects of {Indonesia}'s `Midwife in the Village' Programme 10 Years Post-Launch}
+      \field{volume}{70}
+      \field{year}{2016}
+      \field{pages}{365\bibrangedash 376}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1080/00324728.2016.1145728
+      \endverb
+    \endentry
+    \entry{tuckerdrob2022}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=9baea69ebc28e4142d73795e08290a89}{%
+           family={Tucker-Drob},
+           familyi={T\bibinithyphendelim D\bibinitperiod},
+           given={Elliot\bibnamedelima M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=bcd69d7eea02cdf90b0633d923cb0e35}{%
+           family={Fuente},
+           familyi={F\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod},
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+        {{hash=d70259bf2f3f3065ea37863fc73a9dfb}{%
+           family={Köhncke},
+           familyi={K\bibinitperiod},
+           given={Ylva},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=de5248794077b7c85214f4bae90f6bc7}{%
+           family={Brandmaier},
+           familyi={B\bibinitperiod},
+           given={Andreas\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=4b59423f386ea0ce16852d41b4d95457}{%
+           family={Nyberg},
+           familyi={N\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+        {{hash=7dd1dcc34fe50175ab15dcedf2db02e5}{%
+           family={Lindenberger},
+           familyi={L\bibinitperiod},
+           given={Ulman},
+           giveni={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0c6de3501c82500836adade2b2f4e03}
+      \strng{fullhash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{fullhashraw}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{bibnamehash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{authorbibnamehash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{authornamehash}{a0c6de3501c82500836adade2b2f4e03}
+      \strng{authorfullhash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{authorfullhashraw}{3a23c5d42c61d05848c60ff1f2162810}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science Advances}
+      \field{number}{5}
+      \field{title}{A Strong Dependency Between Changes in Fluid and Crystallized Abilities in Human Cognitive Aging}
+      \field{volume}{8}
+      \field{year}{2022}
+      \field{pages}{eabj2422}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1126/sciadv.abj2422
+      \endverb
+    \endentry
+    \entry{unicef}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d13783605ea066c4fee77fe8192de83a}{%
+           family={{UNICEF}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{fullhash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{fullhashraw}{d13783605ea066c4fee77fe8192de83a}
+      \strng{bibnamehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authorbibnamehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authornamehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authorfullhash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authorfullhashraw}{d13783605ea066c4fee77fe8192de83a}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{UNICEF DATA}
+      \field{title}{Indonesia Profile---Countdown 2030}
+      \field{urlday}{10}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{n.d.}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://data.unicef.org/countdown-2030/country/indonesia/
+      \endverb
+      \verb{url}
+      \verb https://data.unicef.org/countdown-2030/country/indonesia/
+      \endverb
+    \endentry
+    \entry{webb2024}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=32dc5dc556c47967840e5e6221619e9f}{%
+           family={Webb},
+           familyi={W\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{fullhash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{fullhashraw}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{bibnamehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authorbibnamehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authornamehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authorfullhash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authorfullhashraw}{32dc5dc556c47967840e5e6221619e9f}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{660}
+      \field{title}{Critical Periods in Cognitive and Socioemotional Development: Evidence from Weather Shocks in {Indonesia}}
+      \field{volume}{134}
+      \field{year}{2024}
+      \field{pages}{1637\bibrangedash 1665}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1093/ej/uead105
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{ahsan2021}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=cc7d391578c3c2849b9bf184dbfbcff8}{%
+           family={Ahsan},
+           familyi={A\bibinitperiod},
+           given={Md.\bibnamedelimi Nazmul},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=c5d59cf59617e08d1bf1f2403336cd5f}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Rakesh},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a33e89a1140be4c96ca792f21a3c2708}{%
+           family={Maharaj},
+           familyi={M\bibinitperiod},
+           given={Riddhi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{20a489517ee32f4f55f47f9b9deac7ae}
+      \strng{fullhash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{fullhashraw}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{bibnamehash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{authorbibnamehash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{authornamehash}{20a489517ee32f4f55f47f9b9deac7ae}
+      \strng{authorfullhash}{ec8a96f144f2d74e4e93a80a415120fd}
+      \strng{authorfullhashraw}{ec8a96f144f2d74e4e93a80a415120fd}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The World Bank Economic Review}
+      \field{number}{3}
+      \field{title}{Early-Life Access to a Basic Health Care Program and Adult Outcomes in {Indonesia}}
+      \field{volume}{35}
+      \field{year}{2021}
+      \field{pages}{681\bibrangedash 704}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1093/wber/lhaa015
+      \endverb
+    \endentry
+    \entry{alatas1993}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=30e788079097a2be44df98bbcca1b30e}{%
+           family={Alatas},
+           familyi={A\bibinitperiod},
+           given={Secha},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{fullhash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{fullhashraw}{30e788079097a2be44df98bbcca1b30e}
+      \strng{bibnamehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authorbibnamehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authornamehash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authorfullhash}{30e788079097a2be44df98bbcca1b30e}
+      \strng{authorfullhashraw}{30e788079097a2be44df98bbcca1b30e}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Majalah Demografi Indonesia}
+      \field{note}{No DOI available; printed reference only.}
+      \field{number}{40}
+      \field{title}{Macro Patterns of Internal Migration in {Indonesia}, 1971--1990}
+      \field{volume}{20}
+      \field{year}{1993}
+      \field{pages}{21\bibrangedash 47}
+      \range{pages}{27}
+    \endentry
+    \entry{almondcurrie2011}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6606f2d353cb503cb4cc3cd83438520a}{%
+           family={Almond},
+           familyi={A\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c740e1c3a89d6974ff6cbc7e787f8b3a}{%
+           family={Currie},
+           familyi={C\bibinitperiod},
+           given={Janet},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{fullhash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{fullhashraw}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{bibnamehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authorbibnamehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authornamehash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authorfullhash}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \strng{authorfullhashraw}{fe572b2f6d10b7589e03e98292b8ccc7}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Economic Perspectives}
+      \field{number}{3}
+      \field{title}{Killing Me Softly: The Fetal Origins Hypothesis}
+      \field{volume}{25}
+      \field{year}{2011}
+      \field{pages}{153\bibrangedash 172}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1257/jep.25.3.153
+      \endverb
+    \endentry
+    \entry{almondmazumder2013}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6606f2d353cb503cb4cc3cd83438520a}{%
+           family={Almond},
+           familyi={A\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9a37622b847748c554ab509dc54c1a72}{%
+           family={Mazumder},
+           familyi={M\bibinitperiod},
+           given={Bhashkar},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{fullhash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{fullhashraw}{1da25d53e7a561d160324e6c8390174c}
+      \strng{bibnamehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authorbibnamehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authornamehash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authorfullhash}{1da25d53e7a561d160324e6c8390174c}
+      \strng{authorfullhashraw}{1da25d53e7a561d160324e6c8390174c}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annual Review of Economics}
+      \field{title}{Fetal Origins and Parental Responses}
+      \field{volume}{5}
+      \field{year}{2013}
+      \field{pages}{37\bibrangedash 56}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1146/annurev-economics-082912-110145
+      \endverb
+    \endentry
+    \entry{anderson2008}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7173f1b8e6e0c113bcd57065c917c990}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={Michael\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{fullhash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{fullhashraw}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{bibnamehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authorbibnamehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authornamehash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authorfullhash}{7173f1b8e6e0c113bcd57065c917c990}
+      \strng{authorfullhashraw}{7173f1b8e6e0c113bcd57065c917c990}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{484}
+      \field{title}{Multiple Inference and Gender Differences in the Effects of Early Intervention: A Reevaluation of the {Abecedarian}, {Perry Preschool}, and {Early Training} Projects}
+      \field{volume}{103}
+      \field{year}{2008}
+      \field{pages}{1481\bibrangedash 1495}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1198/016214508000000841
+      \endverb
+    \endentry
+    \entry{atwood2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=a1ac7674da6b00e345c97a501449c8ef}{%
+           family={Atwood},
+           familyi={A\bibinitperiod},
+           given={Alicia},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{fullhash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{fullhashraw}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{bibnamehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authorbibnamehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authornamehash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authorfullhash}{a1ac7674da6b00e345c97a501449c8ef}
+      \strng{authorfullhashraw}{a1ac7674da6b00e345c97a501449c8ef}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Journal: Economic Policy}
+      \field{number}{2}
+      \field{title}{The Long-Term Effects of Measles Vaccination on Earnings and Employment}
+      \field{volume}{14}
+      \field{year}{2022}
+      \field{pages}{34\bibrangedash 61}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1257/pol.20190509
+      \endverb
+    \endentry
+    \entry{barker1995}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ada62b442bcfba06e48083b488ac1f37}{%
+           family={Barker},
+           familyi={B\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{fullhash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{fullhashraw}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{bibnamehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authorbibnamehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authornamehash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authorfullhash}{ada62b442bcfba06e48083b488ac1f37}
+      \strng{authorfullhashraw}{ada62b442bcfba06e48083b488ac1f37}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BMJ (Clinical Research Ed.)}
+      \field{number}{6998}
+      \field{title}{Fetal Origins of Coronary Heart Disease}
+      \field{volume}{311}
+      \field{year}{1995}
+      \field{pages}{171\bibrangedash 174}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1136/bmj.311.6998.171
+      \endverb
+    \endentry
+    \entry{callawaysantanna2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4a5a67b3788b4a3653a14d9ab03fba0e}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Brantly},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f90144f1e670fa40bee88166593b00ea}{%
+           family={Sant'Anna},
+           familyi={S\bibinitperiod},
+           given={Pedro\bibnamedelimb H.\bibnamedelimi C.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{bibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorbibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authornamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Difference-in-Differences with Multiple Time Periods}
+      \field{volume}{225}
+      \field{year}{2021}
+      \field{pages}{200\bibrangedash 230}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1016/j.jeconom.2020.12.001
+      \endverb
+    \endentry
+    \entry{cas2012}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{hash=5dcfcbe35513d20f131b3f757960c904}{%
+           family={Cas},
+           familyi={C\bibinitperiod},
+           given={Ava\bibnamedelima Gail},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Duke University}%
+      }
+      \strng{namehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{fullhash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{fullhashraw}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{bibnamehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authorbibnamehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authornamehash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authorfullhash}{5dcfcbe35513d20f131b3f757960c904}
+      \strng{authorfullhashraw}{5dcfcbe35513d20f131b3f757960c904}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Essays in Health, Education and Development}
+      \field{type}{phdthesis}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://hdl.handle.net/10161/5810
+      \endverb
+      \verb{url}
+      \verb https://hdl.handle.net/10161/5810
+      \endverb
+    \endentry
+    \entry{cunhaheckman2007}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=95879561df1d4fe8a5a8dafde92a6aaa}{%
+           family={Cunha},
+           familyi={C\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+        {{hash=31a1496cdbf5dc77b32758042c61ba9c}{%
+           family={Heckman},
+           familyi={H\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{fullhash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{fullhashraw}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{bibnamehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authorbibnamehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authornamehash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authorfullhash}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \strng{authorfullhashraw}{b1c6e837f5cad7ba70f57e20cd8ee583}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{2}
+      \field{title}{The Technology of Skill Formation}
+      \field{volume}{97}
+      \field{year}{2007}
+      \field{pages}{31\bibrangedash 47}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1257/aer.97.2.31
+      \endverb
+    \endentry
+    \entry{currievogl2013}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c740e1c3a89d6974ff6cbc7e787f8b3a}{%
+           family={Currie},
+           familyi={C\bibinitperiod},
+           given={Janet},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ce129bafea6b0caa52164aa4e012e2b6}{%
+           family={Vogl},
+           familyi={V\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{fullhash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{fullhashraw}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{bibnamehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authorbibnamehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authornamehash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authorfullhash}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \strng{authorfullhashraw}{ec6cca3ec184cfc4a94ced67a07107f2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annual Review of Economics}
+      \field{title}{Early-Life Health and Adult Circumstance in Developing Countries}
+      \field{volume}{5}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 36}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1146/annurev-economics-081412-103704
+      \endverb
+    \endentry
+    \entry{dechaisemartin2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e476426fa9151355cd09327277745a1c}{%
+           family={Chaisemartin},
+           familyi={C\bibinitperiod},
+           given={Clément},
+           giveni={C\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=411f64c7f01ee0e2a0fdc31e20535454}{%
+           family={D'Haultf{œ}uille},
+           familyi={D\bibinitperiod},
+           given={Xavier},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Social Science Research Network}%
+      }
+      \strng{namehash}{48bc62d3b1de71e129248df511640093}
+      \strng{fullhash}{48bc62d3b1de71e129248df511640093}
+      \strng{fullhashraw}{48bc62d3b1de71e129248df511640093}
+      \strng{bibnamehash}{48bc62d3b1de71e129248df511640093}
+      \strng{authorbibnamehash}{48bc62d3b1de71e129248df511640093}
+      \strng{authornamehash}{48bc62d3b1de71e129248df511640093}
+      \strng{authorfullhash}{48bc62d3b1de71e129248df511640093}
+      \strng{authorfullhashraw}{48bc62d3b1de71e129248df511640093}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{3980758}
+      \field{title}{Two-Way Fixed Effects and Differences-in-Differences with Heterogeneous Treatment Effects: A Survey}
+      \field{type}{SSRN Scholarly Paper}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.2139/ssrn.3980758
+      \endverb
+    \endentry
+    \entry{duflo2001}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7e6b0ea4eee38822cdb0a4361e98752c}{%
+           family={Duflo},
+           familyi={D\bibinitperiod},
+           given={Esther},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{fullhash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{fullhashraw}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{bibnamehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authorbibnamehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authornamehash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authorfullhash}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \strng{authorfullhashraw}{7e6b0ea4eee38822cdb0a4361e98752c}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{4}
+      \field{title}{Schooling and Labor Market Consequences of School Construction in {Indonesia}: Evidence from an Unusual Policy Experiment}
+      \field{volume}{91}
+      \field{year}{2001}
+      \field{pages}{795\bibrangedash 813}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1257/aer.91.4.795
+      \endverb
+    \endentry
+    \entry{frankenberg2005}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=4bde70c93d230738bd333deea7fbbc6b}{%
+           family={Frankenberg},
+           familyi={F\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=9343f5d781044139c430acd75451ac99}{%
+           family={Suriastini},
+           familyi={S\bibinitperiod},
+           given={Wayan},
+           giveni={W\bibinitperiod}}}%
+        {{hash=19a8bfbe1e99a8af15e5becbb9a52635}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{0004c401a8a77abec5011180b7aa624b}
+      \strng{fullhash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{fullhashraw}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{bibnamehash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{authorbibnamehash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{authornamehash}{0004c401a8a77abec5011180b7aa624b}
+      \strng{authorfullhash}{2f844591c74d4c9f0402e95e7b101500}
+      \strng{authorfullhashraw}{2f844591c74d4c9f0402e95e7b101500}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Population Studies}
+      \field{note}{Cited in DEPII text; verify entry before submission.}
+      \field{number}{1}
+      \field{title}{Can Expanding Access to Basic Healthcare Improve Children's Health Status? Lessons from {Indonesia}'s `Midwife in the Village' Programme}
+      \field{volume}{59}
+      \field{year}{2005}
+      \field{pages}{5\bibrangedash 19}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1080/0032472052000332674
+      \endverb
+    \endentry
+    \entry{frankenbergthomas2001}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4bde70c93d230738bd333deea7fbbc6b}{%
+           family={Frankenberg},
+           familyi={F\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=19a8bfbe1e99a8af15e5becbb9a52635}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{fullhash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{fullhashraw}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{bibnamehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authorbibnamehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authornamehash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authorfullhash}{12335891c28bb5b8d1555173d6e6b85c}
+      \strng{authorfullhashraw}{12335891c28bb5b8d1555173d6e6b85c}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Demography}
+      \field{number}{2}
+      \field{title}{Women's Health and Pregnancy Outcomes: Do Services Make a Difference?}
+      \field{volume}{38}
+      \field{year}{2001}
+      \field{pages}{253\bibrangedash 265}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1353/dem.2001.0014
+      \endverb
+    \endentry
+    \entry{gani1996}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f6c46b8fb15c090c9940851d543540ab}{%
+           family={Gani},
+           familyi={G\bibinitperiod},
+           given={Ascobat},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{fullhash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{fullhashraw}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{bibnamehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authorbibnamehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authornamehash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authorfullhash}{f6c46b8fb15c090c9940851d543540ab}
+      \strng{authorfullhashraw}{f6c46b8fb15c090c9940851d543540ab}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Health Planning and Management}
+      \field{number}{3}
+      \field{title}{Improving Quality in Public Sector Hospitals in {Indonesia}}
+      \field{volume}{11}
+      \field{year}{1996}
+      \field{pages}{275\bibrangedash 296}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1002/(SICI)1099-1751(199607)11:3<275::AID-HPM436>3.0.CO;2-V
+      \endverb
+    \endentry
+    \entry{geefhuysen1999}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=54030a87da6ad018fecb2d4097fc079d}{%
+           family={Geefhuysen},
+           familyi={G\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{fullhash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{fullhashraw}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{bibnamehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authorbibnamehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authornamehash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authorfullhash}{54030a87da6ad018fecb2d4097fc079d}
+      \strng{authorfullhashraw}{54030a87da6ad018fecb2d4097fc079d}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Safe Motherhood in {Indonesia}: A Task for the Next Century}
+      \field{year}{1999}
+      \verb{urlraw}
+      \verb https://espace.library.uq.edu.au/view/UQ:146775
+      \endverb
+      \verb{url}
+      \verb https://espace.library.uq.edu.au/view/UQ:146775
+      \endverb
+    \endentry
+    \entry{giles2015}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=d502e81d99047027f0dfa2c63cd0253d}{%
+           family={Giles},
+           familyi={G\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=40722987593f8c3e551217f8a5eff4d1}{%
+           family={Satriawan},
+           familyi={S\bibinitperiod},
+           given={Elan},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{e657743e97237f835a42da2b53a38481}
+      \strng{fullhash}{e657743e97237f835a42da2b53a38481}
+      \strng{fullhashraw}{e657743e97237f835a42da2b53a38481}
+      \strng{bibnamehash}{e657743e97237f835a42da2b53a38481}
+      \strng{authorbibnamehash}{e657743e97237f835a42da2b53a38481}
+      \strng{authornamehash}{e657743e97237f835a42da2b53a38481}
+      \strng{authorfullhash}{e657743e97237f835a42da2b53a38481}
+      \strng{authorfullhashraw}{e657743e97237f835a42da2b53a38481}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{title}{Protecting Child Nutritional Status in the Aftermath of a Financial Crisis: Evidence from {Indonesia}}
+      \field{volume}{114}
+      \field{year}{2015}
+      \field{pages}{97\bibrangedash 106}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.jdeveco.2014.12.001
+      \endverb
+    \endentry
+    \entry{goodmanbacon2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=437b3fad5b4a40d10f45b4fc16dd7730}{%
+           family={Goodman-Bacon},
+           familyi={G\bibinithyphendelim B\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{fullhash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{fullhashraw}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{bibnamehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authorbibnamehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authornamehash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authorfullhash}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \strng{authorfullhashraw}{437b3fad5b4a40d10f45b4fc16dd7730}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Difference-in-Differences with Variation in Treatment Timing}
+      \field{volume}{225}
+      \field{year}{2021}
+      \field{pages}{254\bibrangedash 277}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1016/j.jeconom.2021.03.014
+      \endverb
+    \endentry
+    \entry{imai2010}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=3fb69a8c942c769b74775b484c82bbe9}{%
+           family={Imai},
+           familyi={I\bibinitperiod},
+           given={Kosuke},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6e3c81199764b364deb7d5fada503c91}{%
+           family={Keele},
+           familyi={K\bibinitperiod},
+           given={Luke},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0e9a50476b4db979d3b603e83a05e919}{%
+           family={Tingley},
+           familyi={T\bibinitperiod},
+           given={Dustin},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{2414c3cf2241532aabc6cb4206d54225}
+      \strng{fullhash}{3e90d39344189949529b94ffd1317956}
+      \strng{fullhashraw}{3e90d39344189949529b94ffd1317956}
+      \strng{bibnamehash}{3e90d39344189949529b94ffd1317956}
+      \strng{authorbibnamehash}{3e90d39344189949529b94ffd1317956}
+      \strng{authornamehash}{2414c3cf2241532aabc6cb4206d54225}
+      \strng{authorfullhash}{3e90d39344189949529b94ffd1317956}
+      \strng{authorfullhashraw}{3e90d39344189949529b94ffd1317956}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychological Methods}
+      \field{number}{4}
+      \field{title}{A General Approach to Causal Mediation Analysis}
+      \field{volume}{15}
+      \field{year}{2010}
+      \field{pages}{309\bibrangedash 334}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1037/a0020761
+      \endverb
+    \endentry
+    \entry{jayachandran2009}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=82446ac206a12986d955f8766e3ec844}{%
+           family={Jayachandran},
+           familyi={J\bibinitperiod},
+           given={Seema},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{fullhash}{82446ac206a12986d955f8766e3ec844}
+      \strng{fullhashraw}{82446ac206a12986d955f8766e3ec844}
+      \strng{bibnamehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authorbibnamehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authornamehash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authorfullhash}{82446ac206a12986d955f8766e3ec844}
+      \strng{authorfullhashraw}{82446ac206a12986d955f8766e3ec844}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Human Resources}
+      \field{number}{4}
+      \field{title}{Air Quality and Early-Life Mortality: Evidence from {Indonesia}'s Wildfires}
+      \field{volume}{44}
+      \field{year}{2009}
+      \field{pages}{916\bibrangedash 954}
+      \range{pages}{39}
+      \verb{doi}
+      \verb 10.3368/jhr.44.4.916
+      \endverb
+    \endentry
+    \entry{johnson2019}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=f463483c9fddafc118a9714178e6bca3}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Rucker\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c2d8c94b1329d97abfd858cb46ec55b8}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={C.\bibnamedelimi Kirabo},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{fullhash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{fullhashraw}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{bibnamehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authorbibnamehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authornamehash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authorfullhash}{42fe6215350efcac58563c5ddb8477cc}
+      \strng{authorfullhashraw}{42fe6215350efcac58563c5ddb8477cc}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Journal: Economic Policy}
+      \field{number}{4}
+      \field{title}{Reducing Inequality through Dynamic Complementarity: Evidence from {Head Start} and Public School Spending}
+      \field{volume}{11}
+      \field{year}{2019}
+      \field{pages}{310\bibrangedash 349}
+      \range{pages}{40}
+      \verb{doi}
+      \verb 10.1257/pol.20180510
+      \endverb
+    \endentry
+    \entry{jointcommittee2013}{book}{}{}
+      \name{author}{5}{}{%
+        {{hash=9e0041480a51241a8802b57d04f7a30b}{%
+           family={{Joint Committee on Reducing Maternal and Neonatal Mortality in Indonesia}},
+           familyi={J\bibinitperiod}}}%
+        {{hash=2d5ea72b26621c85ec352d6e4641f4ce}{%
+           family={{Development, Security, and Cooperation}},
+           familyi={D\bibinitperiod}}}%
+        {{hash=f3245d09f5359cf02fd15f2579d42724}{%
+           family={{Policy and Global Affairs}},
+           familyi={P\bibinitperiod}}}%
+        {{hash=542dbf807c6825455f75670116436ebd}{%
+           family={{National Research Council}},
+           familyi={N\bibinitperiod}}}%
+        {{hash=7d404e4b11b5ecf136c6d637511a05b8}{%
+           family={{Indonesian Academy of Sciences}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {National Academies Press (US)}%
+      }
+      \strng{namehash}{db534033e1e74a9fa2789902564ec364}
+      \strng{fullhash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{fullhashraw}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{bibnamehash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{authorbibnamehash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{authornamehash}{db534033e1e74a9fa2789902564ec364}
+      \strng{authorfullhash}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \strng{authorfullhashraw}{50b8ee3c77f933ad1e0f8ce5d2a9d343}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Reducing Maternal and Neonatal Mortality in {Indonesia}: Saving Lives, Saving the Future}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb http://www.ncbi.nlm.nih.gov/books/NBK201706/
+      \endverb
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/books/NBK201706/
+      \endverb
+    \endentry
+    \entry{maccini2009}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=640ce3a694ab32ddd85a8581e7fc4a7c}{%
+           family={Maccini},
+           familyi={M\bibinitperiod},
+           given={Sharon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ec5dcc8c968cea90e00182b3af9cc823}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Dean},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{fullhash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{fullhashraw}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{bibnamehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authorbibnamehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authornamehash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authorfullhash}{d12f8adbc062f59a8f64b243ec157c1b}
+      \strng{authorfullhashraw}{d12f8adbc062f59a8f64b243ec157c1b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{3}
+      \field{title}{Under the Weather: Health, Schooling, and Economic Consequences of Early-Life Rainfall}
+      \field{volume}{99}
+      \field{year}{2009}
+      \field{pages}{1006\bibrangedash 1026}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1257/aer.99.3.1006
+      \endverb
+    \endentry
+    \entry{majid2015}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=8ee854a85c43c0b30887e29d91c4f94b}{%
+           family={Majid},
+           familyi={M\bibinitperiod},
+           given={Muhammad\bibnamedelima Farhan},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{fullhash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{fullhashraw}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{bibnamehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authorbibnamehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authornamehash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authorfullhash}{8ee854a85c43c0b30887e29d91c4f94b}
+      \strng{authorfullhashraw}{8ee854a85c43c0b30887e29d91c4f94b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{title}{The Persistent Effects of In-Utero Nutrition Shocks Over the Life Cycle: Evidence from {Ramadan} Fasting}
+      \field{volume}{117}
+      \field{year}{2015}
+      \field{pages}{48\bibrangedash 57}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.jdeveco.2015.06.006
+      \endverb
+    \endentry
+    \entry{makowiecka2008}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=24aeb15c3f564428818887d2addf90f3}{%
+           family={Makowiecka},
+           familyi={M\bibinitperiod},
+           given={Krystyna},
+           giveni={K\bibinitperiod}}}%
+        {{hash=361b0ceb55888d82e8bad5fc9ab77efe}{%
+           family={Achadi},
+           familyi={A\bibinitperiod},
+           given={Endang},
+           giveni={E\bibinitperiod}}}%
+        {{hash=15402a5142de9015b930f8a48a7852b7}{%
+           family={Izati},
+           familyi={I\bibinitperiod},
+           given={Yulia},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=1171c64172230954b7ae99342f0f5650}{%
+           family={Ronsmans},
+           familyi={R\bibinitperiod},
+           given={Carine},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1c6471d939e6a9111649be48d1addb1}
+      \strng{fullhash}{7d50de7976f224bad34172806278fa96}
+      \strng{fullhashraw}{7d50de7976f224bad34172806278fa96}
+      \strng{bibnamehash}{7d50de7976f224bad34172806278fa96}
+      \strng{authorbibnamehash}{7d50de7976f224bad34172806278fa96}
+      \strng{authornamehash}{f1c6471d939e6a9111649be48d1addb1}
+      \strng{authorfullhash}{7d50de7976f224bad34172806278fa96}
+      \strng{authorfullhashraw}{7d50de7976f224bad34172806278fa96}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Health Policy and Planning}
+      \field{number}{1}
+      \field{title}{Midwifery Provision in Two Districts in {Indonesia}: How Well Are Rural Areas Served?}
+      \field{volume}{23}
+      \field{year}{2008}
+      \field{pages}{67\bibrangedash 75}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1093/heapol/czm036
+      \endverb
+    \endentry
+    \entry{oster2019}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f5272ac5d8e6a7827453045453181571}{%
+           family={Oster},
+           familyi={O\bibinitperiod},
+           given={Emily},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{fullhash}{f5272ac5d8e6a7827453045453181571}
+      \strng{fullhashraw}{f5272ac5d8e6a7827453045453181571}
+      \strng{bibnamehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authorbibnamehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authornamehash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authorfullhash}{f5272ac5d8e6a7827453045453181571}
+      \strng{authorfullhashraw}{f5272ac5d8e6a7827453045453181571}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Business \& Economic Statistics}
+      \field{number}{2}
+      \field{title}{Unobservable Selection and Coefficient Stability: Theory and Evidence}
+      \field{volume}{37}
+      \field{year}{2019}
+      \field{pages}{187\bibrangedash 204}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1080/07350015.2016.1227711
+      \endverb
+    \endentry
+    \entry{premand2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=1fa69f391a2115e60ab4859a58c6cc7d}{%
+           family={Premand},
+           familyi={P\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3dde1ac580ffdc500245d06b3a470566}{%
+           family={Barry},
+           familyi={B\bibinitperiod},
+           given={Oumar},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{fullhash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{fullhashraw}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{bibnamehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authorbibnamehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authornamehash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authorfullhash}{d985f47528b2943a283c86abfc2f7d7b}
+      \strng{authorfullhashraw}{d985f47528b2943a283c86abfc2f7d7b}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{title}{Behavioral Change Promotion, Cash Transfers and Early Childhood Development: Experimental Evidence from a Government Program in a Low-Income Setting}
+      \field{volume}{158}
+      \field{year}{2022}
+      \field{pages}{102921}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.jdeveco.2022.102921
+      \endverb
+    \endentry
+    \entry{rambachanroth2023}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=85edb53244c29c17ce57830271014b46}{%
+           family={Rambachan},
+           familyi={R\bibinitperiod},
+           given={Ashesh},
+           giveni={A\bibinitperiod}}}%
+        {{hash=73c1da3266b3c7728f6b1f38a73c7671}{%
+           family={Roth},
+           familyi={R\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{fullhash}{c7db070288680264f6dfa86410e8586f}
+      \strng{fullhashraw}{c7db070288680264f6dfa86410e8586f}
+      \strng{bibnamehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authorbibnamehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authornamehash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authorfullhash}{c7db070288680264f6dfa86410e8586f}
+      \strng{authorfullhashraw}{c7db070288680264f6dfa86410e8586f}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Economic Studies}
+      \field{number}{5}
+      \field{title}{A More Credible Approach to Parallel Trends}
+      \field{volume}{90}
+      \field{year}{2023}
+      \field{pages}{2555\bibrangedash 2591}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1093/restud/rdad018
+      \endverb
+    \endentry
+    \entry{rosalesrueda2019}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=0f7c71e43b13ac4e067867d4c32eb343}{%
+           family={Rosales-Rueda},
+           familyi={R\bibinithyphendelim R\bibinitperiod},
+           given={Maria},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f5283e474c199035d0adefb33d89766c}{%
+           family={Triyana},
+           familyi={T\bibinitperiod},
+           given={Margaret},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{fullhash}{7de37765adb4f9663345f58804bfada0}
+      \strng{fullhashraw}{7de37765adb4f9663345f58804bfada0}
+      \strng{bibnamehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authorbibnamehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authornamehash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authorfullhash}{7de37765adb4f9663345f58804bfada0}
+      \strng{authorfullhashraw}{7de37765adb4f9663345f58804bfada0}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Human Resources}
+      \field{number}{4}
+      \field{title}{The Persistent Effects of Early-Life Exposure to Air Pollution: Evidence from the {Indonesian} Forest Fires}
+      \field{volume}{54}
+      \field{year}{2019}
+      \field{pages}{1037\bibrangedash 1080}
+      \range{pages}{44}
+      \verb{doi}
+      \verb 10.3368/jhr.54.4.0117.8497R1
+      \endverb
+    \endentry
+    \entry{sorrenti2025}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=e5a70054955440e414c8ccff92f1c07b}{%
+           family={Sorrenti},
+           familyi={S\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1ed69c284c555d965fb68d911859c42b}{%
+           family={Zölitz},
+           familyi={Z\bibinitperiod},
+           given={Ulf},
+           giveni={U\bibinitperiod}}}%
+        {{hash=32ea5e765c1db6d87ab90dd730c0cc02}{%
+           family={Ribeaud},
+           familyi={R\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b246a6dd9368f65a10999c3a7f49622f}{%
+           family={Eisner},
+           familyi={E\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e2ab85cda107556b93c49a7238bc99f}
+      \strng{fullhash}{f85b81e618bef75949c96571c16fb608}
+      \strng{fullhashraw}{f85b81e618bef75949c96571c16fb608}
+      \strng{bibnamehash}{f85b81e618bef75949c96571c16fb608}
+      \strng{authorbibnamehash}{f85b81e618bef75949c96571c16fb608}
+      \strng{authornamehash}{4e2ab85cda107556b93c49a7238bc99f}
+      \strng{authorfullhash}{f85b81e618bef75949c96571c16fb608}
+      \strng{authorfullhashraw}{f85b81e618bef75949c96571c16fb608}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Economic Studies}
+      \field{number}{1}
+      \field{title}{The Causal Impact of Socio-Emotional Skills Training on Educational Success}
+      \field{volume}{92}
+      \field{year}{2025}
+      \field{pages}{506\bibrangedash 552}
+      \range{pages}{47}
+      \verb{doi}
+      \verb 10.1093/restud/rdae018
+      \endverb
+    \endentry
+    \entry{strauss2016}{report}{}{}
+      \name{author}{3}{}{%
+        {{hash=ee71acb701cdaed782b8857bcc90add8}{%
+           family={Strauss},
+           familyi={S\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d18e9ad74edaa9070fb14e334ddfb264}{%
+           family={Witoelar},
+           familyi={W\bibinitperiod},
+           given={Firman},
+           giveni={F\bibinitperiod}}}%
+        {{hash=08933f91ca948699be342b38e9c289fe}{%
+           family={Sikoki},
+           familyi={S\bibinitperiod},
+           given={Bondan},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {RAND Corporation}%
+      }
+      \strng{namehash}{79e36d631ddfb078596283801c87561b}
+      \strng{fullhash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{fullhashraw}{043a6f505ec381624bc20eec1134fa67}
+      \strng{bibnamehash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{authorbibnamehash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{authornamehash}{79e36d631ddfb078596283801c87561b}
+      \strng{authorfullhash}{043a6f505ec381624bc20eec1134fa67}
+      \strng{authorfullhashraw}{043a6f505ec381624bc20eec1134fa67}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{WR-1143/1-NIA/NICHD}
+      \field{title}{The Fifth Wave of the {Indonesia Family Life Survey}: Overview and Field Report: Volume 1}
+      \field{type}{Working Paper}
+      \field{year}{2016}
+      \verb{doi}
+      \verb 10.7249/WR1143.1
+      \endverb
+    \endentry
+    \entry{thomas2000}{unpublished}{}{}
+      \name{author}{3}{}{%
+        {{hash=19a8bfbe1e99a8af15e5becbb9a52635}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4bde70c93d230738bd333deea7fbbc6b}{%
+           family={Frankenberg},
+           familyi={F\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=aa176b95116c9a3196740c67459d5095}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{210868583a2f1f37bf119b8ebf8353e8}
+      \strng{fullhash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{fullhashraw}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{bibnamehash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{authorbibnamehash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{authornamehash}{210868583a2f1f37bf119b8ebf8353e8}
+      \strng{authorfullhash}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \strng{authorfullhashraw}{3a0f20c0f26d0e2dc9c5f5da69aa8623}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{RAND Working Paper.}
+      \field{title}{Lost but Not Forgotten: Attrition and Follow-up in the {Indonesia Family Life Survey}}
+      \field{year}{2000}
+    \endentry
+    \entry{triyana2016}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f5283e474c199035d0adefb33d89766c}{%
+           family={Triyana},
+           familyi={T\bibinitperiod},
+           given={Margaret},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{fullhash}{f5283e474c199035d0adefb33d89766c}
+      \strng{fullhashraw}{f5283e474c199035d0adefb33d89766c}
+      \strng{bibnamehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authorbibnamehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authornamehash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authorfullhash}{f5283e474c199035d0adefb33d89766c}
+      \strng{authorfullhashraw}{f5283e474c199035d0adefb33d89766c}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Population Studies}
+      \field{number}{3}
+      \field{title}{The Effects of {Indonesia}'s `Midwife in the Village' Programme 10 Years Post-Launch}
+      \field{volume}{70}
+      \field{year}{2016}
+      \field{pages}{365\bibrangedash 376}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1080/00324728.2016.1145728
+      \endverb
+    \endentry
+    \entry{tuckerdrob2022}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=9baea69ebc28e4142d73795e08290a89}{%
+           family={Tucker-Drob},
+           familyi={T\bibinithyphendelim D\bibinitperiod},
+           given={Elliot\bibnamedelima M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=bcd69d7eea02cdf90b0633d923cb0e35}{%
+           family={Fuente},
+           familyi={F\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod},
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+        {{hash=d70259bf2f3f3065ea37863fc73a9dfb}{%
+           family={Köhncke},
+           familyi={K\bibinitperiod},
+           given={Ylva},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=de5248794077b7c85214f4bae90f6bc7}{%
+           family={Brandmaier},
+           familyi={B\bibinitperiod},
+           given={Andreas\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=4b59423f386ea0ce16852d41b4d95457}{%
+           family={Nyberg},
+           familyi={N\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+        {{hash=7dd1dcc34fe50175ab15dcedf2db02e5}{%
+           family={Lindenberger},
+           familyi={L\bibinitperiod},
+           given={Ulman},
+           giveni={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0c6de3501c82500836adade2b2f4e03}
+      \strng{fullhash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{fullhashraw}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{bibnamehash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{authorbibnamehash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{authornamehash}{a0c6de3501c82500836adade2b2f4e03}
+      \strng{authorfullhash}{3a23c5d42c61d05848c60ff1f2162810}
+      \strng{authorfullhashraw}{3a23c5d42c61d05848c60ff1f2162810}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science Advances}
+      \field{number}{5}
+      \field{title}{A Strong Dependency Between Changes in Fluid and Crystallized Abilities in Human Cognitive Aging}
+      \field{volume}{8}
+      \field{year}{2022}
+      \field{pages}{eabj2422}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1126/sciadv.abj2422
+      \endverb
+    \endentry
+    \entry{unicef}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d13783605ea066c4fee77fe8192de83a}{%
+           family={{UNICEF}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{fullhash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{fullhashraw}{d13783605ea066c4fee77fe8192de83a}
+      \strng{bibnamehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authorbibnamehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authornamehash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authorfullhash}{d13783605ea066c4fee77fe8192de83a}
+      \strng{authorfullhashraw}{d13783605ea066c4fee77fe8192de83a}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{UNICEF DATA}
+      \field{title}{Indonesia Profile---Countdown 2030}
+      \field{urlday}{10}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{n.d.}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://data.unicef.org/countdown-2030/country/indonesia/
+      \endverb
+      \verb{url}
+      \verb https://data.unicef.org/countdown-2030/country/indonesia/
+      \endverb
+    \endentry
+    \entry{webb2024}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=32dc5dc556c47967840e5e6221619e9f}{%
+           family={Webb},
+           familyi={W\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{fullhash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{fullhashraw}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{bibnamehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authorbibnamehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authornamehash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authorfullhash}{32dc5dc556c47967840e5e6221619e9f}
+      \strng{authorfullhashraw}{32dc5dc556c47967840e5e6221619e9f}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{660}
+      \field{title}{Critical Periods in Cognitive and Socioemotional Development: Evidence from Weather Shocks in {Indonesia}}
+      \field{volume}{134}
+      \field{year}{2024}
+      \field{pages}{1637\bibrangedash 1665}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1093/ej/uead105
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

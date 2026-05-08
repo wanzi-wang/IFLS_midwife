@@ -50,9 +50,12 @@ Library helpers live in `code/R/lib/`. Produces `data/intermediate/stage05/analy
 
 ## Repository layout
 
+Key dirs:
 
 - `code/R/` — pipeline scripts (01..05) + `lib/` helpers
 - `data/intermediate/` — gitignored; regenerable
+- `paper/` — manuscript LaTeX sources, sections, tables, figures
+- `slides/` — presentation sources
 - `old/` — frozen pre-rebuild project, read-only reference only
 
 ## Data access
