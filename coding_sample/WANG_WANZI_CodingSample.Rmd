@@ -1,0 +1,424 @@
+---
+title: "Village Midwife Program Analysis: Data Construction and Event Study"
+author: "Wanzi Wang"
+date: "2026"
+output: pdf_document
+---
+
+This document presents code from my ongoing project on the Indonesia Village Midwife (*Bidan di Desa*) program, using the Indonesia Family Life Survey (IFLS). It constructs community-level measures of village-midwife arrival from the SAR (Service Availability Roster) and PKK (Village Administration) modules, builds an individual-level analysis frame, and runs the staggered-DiD event-study specifications used in the analysis (Sun--Abraham and Callaway--Sant'Anna estimators).
+
+Note: To keep the coding sample compact while remaining broadly representative, I use a simplified analysis sample constructed directly from IFLS Wave 5 (1989--1999 cohorts living in their birth household), without the multi-wave non-migrant restriction or the controls and survey weights used in the production specifications.
+
+# 1. Setup
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+```{r packages}
+if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
+pacman::p_load(haven, dplyr, tidyr, purrr, ggplot2, fixest, did, broom,
+               modelsummary, kableExtra)
+```
+
+```{r paths}
+# === EDIT HERE ===
+# Path to the IFLS raw data root (containing W2/, W3/, W4/, W5/ subfolders).
+# IFLS data is freely available from RAND:
+#   https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html
+data_path <- "path_to_data"
+
+load_dta <- function(filename) {
+  read_dta(file.path(data_path, filename))
+}
+```
+
+```{r load-data}
+# SAR (Service Availability Roster) and PKK (Village Administration) by wave.
+# IFLS-2 (1997), IFLS-3 (2000), IFLS-4 (2007), IFLS-5 (2014/2015).
+sar_14 <- load_dta("W5/cf14_all_dta/sar.dta")
+pkk_14 <- load_dta("W5/cf14_all_dta/pkk.dta")
+
+sar_07 <- load_dta("W4/cf07_all_dta/sar.dta")
+pkk_07 <- load_dta("W4/cf07_all_dta/pkk.dta")
+
+pkk_00 <- load_dta("W3/cf00_all_dta/pkk.dta")  # SAR-W3 schema is not comparable
+
+sar_97 <- load_dta("W2/cf97dta/sar_v12.dta")
+pkk_97 <- load_dta("W2/cf97dta/pkk_v12.dta")
+```
+
+# 2. Helper Functions
+
+I define three small functions, one per schema:
+
+* `sar_modern_rollout()` handles the IFLS-4 and IFLS-5 SAR (`x14b1`, `x12yr`, `x12b`, `x07`, `x08yr`, `x08b`).
+* `sar_old_rollout()` handles the IFLS-2 SAR (`factpint`, `calyropn`, `calyrend`, `operates`).
+* `pkk_wave_rollout()` handles all four PKK waves (`j10a`, `j10c`).
+
+Each returns a community-level data frame with the start year of the village midwife and a presence flag.
+
+```{r fn-sar-modern}
+sar_modern_rollout <- function(sar, commid_col, survey_year) {
+  sar %>%
+    filter(x14b1 == 8, !is.na(.data[[commid_col]])) %>%   # 8 = village midwife
+    mutate(
+      open_year_fac = coalesce(
+        as.integer(x12yr),
+        if_else(!is.na(x12b), survey_year - as.integer(x12b), NA_integer_)
+      ),
+      close_year_fac = case_when(
+        x07 == 1      ~ NA_integer_,                        # still operating
+        !is.na(x08yr) ~ as.integer(x08yr),
+        !is.na(x08b)  ~ survey_year - as.integer(x08b),
+        TRUE          ~ NA_integer_
+      ),
+      open_year_fac = if_else(open_year_fac >= 1989 &
+                                open_year_fac <= survey_year,
+                              open_year_fac, NA_integer_)
+    ) %>%
+    group_by(.data[[commid_col]]) %>%
+    summarise(
+      start_sar   = suppressWarnings(min(open_year_fac, na.rm = TRUE)),
+      present_sar = as.integer(any(
+        x07 == 1 |
+        (!is.na(open_year_fac) & open_year_fac <= survey_year &
+           (is.na(close_year_fac) | close_year_fac >= survey_year))
+      )),
+      n_fac = n(),
+      .groups = "drop"
+    ) %>%
+    mutate(start_sar = if_else(is.infinite(start_sar), NA_real_, start_sar))
+}
+```
+
+```{r fn-sar-old}
+sar_old_rollout <- function(sar, commid_col = "commid97", survey_year = 1997L) {
+  sar %>%
+    filter(factpint == 8, !is.na(.data[[commid_col]])) %>%
+    mutate(
+      open_year_fac  = as.integer(calyropn),
+      close_year_fac = as.integer(calyrend),
+      open_year_fac  = if_else(open_year_fac >= 1989 &
+                                 open_year_fac <= survey_year,
+                               open_year_fac, NA_integer_)
+    ) %>%
+    group_by(.data[[commid_col]]) %>%
+    summarise(
+      start_sar   = suppressWarnings(min(open_year_fac, na.rm = TRUE)),
+      present_sar = as.integer(any(
+        operates == 1 |
+        (!is.na(open_year_fac) & open_year_fac <= survey_year &
+           (is.na(close_year_fac) | close_year_fac >= survey_year))
+      )),
+      n_fac = n(),
+      .groups = "drop"
+    ) %>%
+    mutate(start_sar = if_else(is.infinite(start_sar), NA_real_, start_sar))
+}
+```
+
+```{r fn-pkk}
+pkk_wave_rollout <- function(pkk, commid_col, survey_year) {
+  pkk %>%
+    filter(!is.na(.data[[commid_col]])) %>%
+    mutate(
+      midwife_present = as.integer(!is.na(j10a) & j10a == 1),
+      start_pkk = if_else(
+        midwife_present == 1 &
+          as.integer(j10c) >= 1989 &
+          as.integer(j10c) <= survey_year,
+        as.numeric(j10c), NA_real_
+      )
+    ) %>%
+    group_by(.data[[commid_col]]) %>%
+    summarise(
+      start_pkk   = suppressWarnings(min(start_pkk, na.rm = TRUE)),
+      present_pkk = max(midwife_present, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    mutate(start_pkk = if_else(is.infinite(start_pkk), NA_real_, start_pkk))
+}
+```
+
+# 3. SAR Rollout by Wave
+
+```{r sar-by-wave}
+sar_14_fac <- sar_modern_rollout(sar_14, "commid14", survey_year = 2015L) %>%
+  rename(start_sar_14 = start_sar, present_sar_14 = present_sar)
+
+sar_07_fac <- sar_modern_rollout(sar_07, "commid07", survey_year = 2007L) %>%
+  rename(start_sar_07 = start_sar, present_sar_07 = present_sar)
+
+sar_97_fac <- sar_old_rollout(sar_97, "commid97", survey_year = 1997L) %>%
+  rename(start_sar_97 = start_sar, present_sar_97 = present_sar)
+```
+
+Diagnostic: how many facility-level observations report a closure year in the 2014 SAR?
+
+```{r sar14-close-check}
+sar_14 %>%
+  filter(x14b1 == 8, !is.na(x08yr)) %>%
+  summarise(n_closed = n())
+```
+
+# 4. PKK Rollout by Wave
+
+```{r pkk-by-wave}
+pkk_14_fac <- pkk_wave_rollout(pkk_14, "commid14", 2015L) %>%
+  rename(start_pkk_14 = start_pkk, present_pkk_14 = present_pkk)
+
+pkk_07_fac <- pkk_wave_rollout(pkk_07, "commid07", 2007L) %>%
+  rename(start_pkk_07 = start_pkk, present_pkk_07 = present_pkk)
+
+pkk_00_fac <- pkk_wave_rollout(pkk_00, "commid00", 2000L) %>%
+  rename(start_pkk_00 = start_pkk, present_pkk_00 = present_pkk)
+
+pkk_97_fac <- pkk_wave_rollout(pkk_97, "commid97", 1997L) %>%
+  rename(start_pkk_97 = start_pkk, present_pkk_97 = present_pkk)
+```
+
+# 5. Community-Level Start Year
+
+In the production pipeline, each wave-specific community ID is anchored to the IFLS-1 community ID (`commid93`) using the W5 household tracking file (`htrack`). For brevity in this sample, I work directly at the wave-specific commid level and combine through `bind_rows` on the wave keys; the combined start year is the minimum across waves and channels, clipped to [1989, survey_year].
+
+```{r combine-sar}
+start_year_sar <- bind_rows(
+  sar_14_fac %>% rename(commid = commid14, start = start_sar_14),
+  sar_07_fac %>% rename(commid = commid07, start = start_sar_07),
+  sar_97_fac %>% rename(commid = commid97, start = start_sar_97)
+) %>%
+  group_by(commid) %>%
+  summarise(start_year_sar = suppressWarnings(min(start, na.rm = TRUE)),
+            .groups = "drop") %>%
+  mutate(start_year_sar = if_else(is.infinite(start_year_sar),
+                                  NA_real_, start_year_sar))
+```
+
+```{r combine-pkk}
+start_year_pkk <- bind_rows(
+  pkk_14_fac %>% rename(commid = commid14, start = start_pkk_14),
+  pkk_07_fac %>% rename(commid = commid07, start = start_pkk_07),
+  pkk_00_fac %>% rename(commid = commid00, start = start_pkk_00),
+  pkk_97_fac %>% rename(commid = commid97, start = start_pkk_97)
+) %>%
+  group_by(commid) %>%
+  summarise(start_year_pkk = suppressWarnings(min(start, na.rm = TRUE)),
+            .groups = "drop") %>%
+  mutate(start_year_pkk = if_else(is.infinite(start_year_pkk),
+                                  NA_real_, start_year_pkk))
+```
+
+# 6. SAR vs PKK Comparison
+
+I keep both channels and surface the disagreement as a first-class diagnostic rather than choosing one silently. The two channels can disagree because PKK's `j10c` field, especially in 1997, may include all midwife types rather than village midwives only.
+
+```{r compare-summary}
+comparison <- full_join(start_year_sar, start_year_pkk, by = "commid") %>%
+  mutate(
+    has_sar  = as.integer(!is.na(start_year_sar)),
+    has_pkk  = as.integer(!is.na(start_year_pkk)),
+    has_both = as.integer(has_sar == 1 & has_pkk == 1),
+    delta    = start_year_pkk - start_year_sar
+  )
+
+comparison %>%
+  summarise(
+    total_communities = n(),
+    with_sar          = sum(has_sar),
+    with_pkk          = sum(has_pkk),
+    with_both         = sum(has_both),
+    rho_sar_pkk       = cor(start_year_sar, start_year_pkk,
+                            use = "complete.obs"),
+    share_disagree    = mean(start_year_sar != start_year_pkk, na.rm = TRUE),
+    median_delta_yr   = median(delta, na.rm = TRUE),
+    diff_range        = mean(abs(start_year_sar - start_year_pkk), na.rm = TRUE)
+  )
+```
+
+```{r rollout-curves, fig.width = 6, fig.height = 4}
+rollout_curve <- function(df, col, label) {
+  df %>%
+    drop_na(all_of(col)) %>%
+    distinct(commid, .data[[col]]) %>%
+    count(.data[[col]], name = "n_new") %>%
+    rename(start_year = !!col) %>%
+    complete(start_year = seq(min(start_year), max(start_year)),
+             fill = list(n_new = 0)) %>%
+    arrange(start_year) %>%
+    mutate(
+      cumulative = cumsum(n_new),
+      share      = cumulative / nrow(df),
+      source     = label
+    )
+}
+
+rollout_plot_df <- bind_rows(
+  rollout_curve(start_year_sar, "start_year_sar", "SAR"),
+  rollout_curve(start_year_pkk, "start_year_pkk", "PKK")
+)
+
+ggplot(rollout_plot_df,
+       aes(x = start_year, y = share, color = source, group = source)) +
+  geom_line() + geom_point(size = 1.2) +
+  labs(x = "Year", y = "Share of communities with a village midwife",
+       color = NULL) +
+  theme_bw() + theme(legend.position = "top")
+```
+
+# 7. Individual-Level Analysis Frame
+
+Treatment is exposure to a village midwife in the early-life window (in utero through age 3). At the community level, $G = \text{start\_sar\_14} - 1$ is the first cohort exposed in utero; never-treated communities act as the control group. Below I load the IFLS-5 individual roster (`bk_ar1`) and adult anthropometrics (`bus_us`) to build a child-level frame, then merge in community-level treatment timing. The outcome is adult height (`us04`), a standard early-life human-capital marker. Cohorts are restricted to 1989--1999 (children plausibly exposed in utero or during their first three years).
+
+```{r load-individual}
+roster_w5 <- load_dta("W5/hh14_all_dta/bk_ar1.dta")
+height_w5 <- load_dta("W5/hh14_all_dta/bus_us.dta")
+htrack_w5 <- load_dta("W5/hh14_all_dta/htrack.dta")
+```
+
+```{r build-frame}
+# hhid14 -> commid14 mapping.
+hh_to_commid <- htrack_w5 %>%
+  transmute(hhid14 = as.character(hhid14),
+            commid14 = as.character(commid14)) %>%
+  distinct()
+
+# Individual frame: pidlink, sex, birth_year, commid14.
+individuals <- roster_w5 %>%
+  transmute(
+    pidlink    = as.character(pidlink),
+    hhid14     = as.character(hhid14),
+    sex        = as.integer(ar07),                     # 1 = male, 3 = female
+    birth_year = as.integer(ar08yr)
+  ) %>%
+  filter(birth_year >= 1989, birth_year <= 1999) %>%   # treatable cohorts
+  left_join(hh_to_commid, by = "hhid14")
+
+# Adult height in cm, with sanity bounds.
+heights <- height_w5 %>%
+  transmute(pidlink   = as.character(pidlink),
+            height_cm = as.numeric(us04)) %>%
+  mutate(height_cm = if_else(height_cm >= 100 & height_cm <= 210,
+                             height_cm, NA_real_))
+
+# Merge on individual + community-level treatment.
+analysis <- individuals %>%
+  left_join(heights, by = "pidlink") %>%
+  left_join(
+    sar_14_fac %>% transmute(commid14 = as.character(commid14),
+                             start_sar_14),
+    by = "commid14"
+  ) %>%
+  mutate(
+    G           = if_else(!is.na(start_sar_14),
+                          as.integer(start_sar_14) - 1L, NA_integer_),
+    first_treat = G,                                   # NA = never-treated
+    event_time  = if_else(!is.na(G), birth_year - G, NA_integer_)
+  ) %>%
+  filter(!is.na(height_cm), !is.na(commid14))
+
+analysis %>%
+  summarise(
+    n_individuals    = n(),
+    n_communities    = n_distinct(commid14),
+    n_treated_comm   = n_distinct(commid14[!is.na(G)]),
+    n_never_treated  = n_distinct(commid14[is.na(G)]),
+    mean_height_cm   = mean(height_cm),
+    cohort_min       = min(birth_year),
+    cohort_max       = max(birth_year)
+  )
+```
+
+# 8. Descriptive Statistics
+
+I report two summaries of the analysis frame: an overall descriptive table and a balance comparison between treated and never-treated communities. Modest pre-treatment imbalances are expected because rollout was not random; the staggered-DiD estimators in the next sections account for this through community fixed effects and a never-treated control group.
+
+```{r descriptives-overall}
+desc_data <- analysis %>%
+  transmute(
+    `Adult height (cm)` = height_cm,
+    `Birth year`        = birth_year,
+    `Female`            = as.integer(sex == 3),
+    `Treated community` = as.integer(!is.na(G)),
+    `Exposure (in utero - age 3)` = as.integer(!is.na(G) &
+                                                 birth_year >= G &
+                                                 birth_year <= G + 3L)
+  )
+
+datasummary(All(desc_data) ~ N + Mean + SD + Min + Median + Max,
+            data = desc_data,
+            title = "Summary statistics, analysis sample",
+            output = "kableExtra")
+```
+
+```{r descriptives-balance}
+desc_data %>%
+  mutate(group = if_else(`Treated community` == 1,
+                         "Treated", "Never-treated")) %>%
+  select(-`Treated community`) %>%
+  datasummary_balance(~ group, data = .,
+                      title = "Treated vs never-treated communities",
+                      output = "kableExtra")
+```
+
+# 9. Sun--Abraham Event Study on Adult Height
+
+```{r sunab-real}
+es_fit <- feols(
+  height_cm ~ sunab(first_treat, birth_year) | commid14 + birth_year,
+  data    = analysis,
+  cluster = ~ commid14
+)
+
+summary(es_fit, agg = "ATT")
+```
+
+```{r es-plot-real, fig.width = 6, fig.height = 4}
+iplot(es_fit,
+      xlim    = c(-4, 5),
+      ylim    = c(-8, 10),
+      ref.line = -1,
+      xlab    = "Event time (birth year minus first-treated cohort)",
+      ylab    = "Effect on adult height (cm)",
+      main    = "")
+```
+
+# 10. Callaway--Sant'Anna ATT (event-times 0--3)
+
+```{r cs-real}
+cs_data <- analysis %>%
+  mutate(
+    G_cs       = if_else(!is.na(G), as.integer(G), 0L),
+    commid_num = as.integer(factor(commid14))
+  ) %>%
+  as.data.frame()
+
+cs_att <- did::att_gt(
+  yname = "height_cm", tname = "birth_year", idname = "commid_num",
+  gname = "G_cs", data = cs_data, control_group = "nevertreated",
+  bstrap = FALSE, cband = FALSE, panel = FALSE,
+  allow_unbalanced_panel = TRUE
+)
+
+cs_dyn <- did::aggte(cs_att, type = "dynamic", min_e = 0, max_e = 3,
+                     na.rm = TRUE)
+
+tibble(
+  estimator  = "Callaway--Sant'Anna",
+  outcome    = "Adult height (cm)",
+  att_0_to_3 = cs_dyn$overall.att,
+  se         = cs_dyn$overall.se
+)
+```
+
+```{r cs-eventstudy, fig.width = 6, fig.height = 4}
+# Full event-study aggregation, displayed over the same window as SA.
+cs_dyn_full <- did::aggte(cs_att, type = "dynamic",
+                          min_e = -4, max_e = 5, na.rm = TRUE)
+
+did::ggdid(cs_dyn_full) +
+  labs(x = "Event time (birth year minus first-treated cohort)",
+       y = "Effect on adult height (cm)",
+       title = NULL) +
+  theme_bw()
+```
