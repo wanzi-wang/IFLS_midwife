@@ -1,0 +1,105 @@
+---
+title: "Early-Life Exposure to Indonesia's Village Midwife Program and Child Human Capital"
+subtitle: "Pilot deck: clean seminar format"
+author: "Wanzi Wang"
+institute: "Graduate School of Public Policy, University of Tokyo"
+date: today
+date-format: "MMMM YYYY"
+format:
+  revealjs:
+    theme: theme_clean.scss
+    slide-number: c/t
+    width: 1280
+    height: 720
+    margin: 0.12
+    transition: none
+    background-transition: none
+    hash: true
+    embed-resources: true
+    menu: false
+    center-title-slide: true
+---
+
+## Motivation
+
+- Indonesia entered the 1990s with one of Southeast Asia's highest maternal mortality ratios: roughly **450 deaths per 100,000 live births** in 1990, driven by unattended rural deliveries
+- The government responded with *Bidan di Desa*: by 1996 roughly **54,000 village midwives** had been placed, at least one per village, across rural Indonesia
+- Existing work documents effects on birth outcomes; much less is known about **children's human capital a decade later**
+
+. . .
+
+**This paper asks:** does early-life exposure to a village midwife improve health and cognition in later childhood?
+
+## The Village Midwife Program
+
+:::: {.columns}
+
+::: {.column width="45%"}
+- Launched 1989, scaled through the 1990s
+- Midwives posted to villages without existing health facilities
+- Provided prenatal care, delivery attendance, and referrals
+- Staggered village-level rollout drives identification
+:::
+
+::: {.column width="55%"}
+![Program rollout across provinces](figures/midwife_rollout_map.png)
+:::
+
+::::
+
+## Data and empirical design
+
+- **Data:** Indonesia Family Life Survey, waves 1 to 5 (1993 to 2014), children linked to their birth villages
+- **Sample:** non-migrant children, so exposure is measured in the village where the child was actually born
+- **Design:** staggered difference-in-differences using the Callaway and Sant'Anna (2021) estimator
+  - never-treated and not-yet-treated villages as controls
+  - dynamic effects averaged over event times 0 to 3
+- **Outcomes:** standardized indices of health, cognition, depression, and socioemotional skills
+
+::: {.small-note}
+Two-way fixed effects serves as a baseline only; heterogeneous treatment timing makes it unreliable here.
+:::
+
+# Results {.section-title}
+
+## Event study: health index
+
+![Callaway and Sant'Anna dynamic effects, health index, non-migrant sample. Pre-treatment coefficients are jointly indistinguishable from zero.](figures/event_study_CS_health_index.png){width="72%" fig-align="center"}
+
+## Headline estimates
+
+Early-life midwife exposure is associated with gains in health and cognition, though both are imprecisely pinned down:
+
+|  | Health | Cognition | Depression | Socioemotional |
+|---|---|---|---|---|
+| CS ATT (e = 0 to 3) | 0.248 | 0.272 | 0.020 | -0.155 |
+| SE | (0.145) | (0.142) | (0.171) | (0.164) |
+| p-value | 0.09 | 0.06 | n.s. | n.s. |
+
+- Effects of roughly **a quarter of a standard deviation**, marginal at the 10% level
+- Plain TWFE gives a *negative* health estimate (-0.139, SE 0.074): a sharp illustration of the Goodman-Bacon problem under staggered adoption
+
+## Mechanism: composition, not volume
+
+- The program raises **village-midwife-attended births** (+0.045, SE 0.026) on a baseline mean of 0.083
+- Aggregate skilled attendance, prenatal care, exclusive breastfeeding, and birth weight are all unchanged
+- The program shifts the **composition** of skilled deliveries toward village midwives rather than raising the overall rate
+
+::: {.small-note}
+Mechanism specification follows Ahsan (2021).
+:::
+
+## Takeaways
+
+- Early-life exposure to a village midwife is associated with better child health and cognition roughly a decade later
+- The channel is **who attends the birth**, not how many births are attended
+- Wide standard errors counsel caution; estimates are marginal at the 10% level
+- Methodological point: TWFE and CS diverge sharply here, so estimator choice is not innocuous
+
+## {.center}
+
+::: {style="text-align: center;"}
+**Thank you**
+
+wangwanzi2811@gmail.com
+:::

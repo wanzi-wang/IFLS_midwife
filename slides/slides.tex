@@ -1,16 +1,482 @@
 % =====================================================================
-% Slides stub — Early-Life Exposure to Indonesia's Village Midwife Program
+% Slides — Early-Life Exposure to Indonesia's Village Midwife Program
 % Author: Wanzi Wang
-% Content to be filled by the slides plan (subsequent session).
-% Build:  latexmk -xelatex -outdir=../output/slides slides.tex
+% Design: clean metropolis (white background, Fira Sans, Okabe-Ito blue
+% accent #0072B2), matching the approved pilot deck.
+%
+% Numbers: \input from paper/numbers.tex and paper/tables/ (single source
+% of truth). Spec-row tables come from slides/tables/, derived from
+% paper/tables/ by slides/make_slide_tables.sh (Yes -> checkmark). Re-run
+% that script after every `Rscript code/R/00_run_all.R`.
+%
+% Reveal: click-to-advance bullets; upcoming content stays visible in
+% light grey (\setbeamercovered). This deliberately overrides the old
+% no-overlay rule, at the author's request (2026-07-16).
+%
+% Build:  cd slides && latexmk -xelatex -outdir=../output/slides slides.tex
 % =====================================================================
-\documentclass[aspectratio=169]{beamer}
-% \input{../Preambles/header_beamer.tex}   % TODO: beamer preamble
-\title{Early-Life Exposure to Indonesia's Village Midwife Program}
-\subtitle{and Child Human Capital}
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme[progressbar=frametitle, numbering=fraction]{metropolis}
+\metroset{sectionpage=progressbar, subsectionpage=none}
+
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{appendixnumberbeamer}
+\usepackage{graphicx}
+\usepackage{pifont}
+
+% ---- Fonts: Fira Sans from TeX Live, loaded by filename ----
+\setsansfont[
+  BoldFont       = FiraSans-SemiBold.otf,
+  ItalicFont     = FiraSans-Italic.otf,
+  BoldItalicFont = FiraSans-SemiBoldItalic.otf
+]{FiraSans-Regular.otf}
+\setmonofont{FiraMono-Regular.otf}
+
+% ---- Palette: identical to the pilot deck ----
+\definecolor{accent}{HTML}{0072B2}   % Okabe-Ito blue, matches paper figures
+\definecolor{inkdark}{HTML}{111827}
+\definecolor{inkbody}{HTML}{1F2937}
+\definecolor{inkmuted}{HTML}{6B7280}
+
+\setbeamercolor{normal text}{fg=inkbody, bg=white}
+\setbeamercolor{frametitle}{fg=inkdark, bg=white}
+\setbeamercolor{title}{fg=inkdark}
+\setbeamercolor{subtitle}{fg=inkmuted}
+\setbeamercolor{title separator}{fg=accent}
+\setbeamercolor{progress bar}{fg=accent, bg=gray!25}
+\setbeamercolor{alerted text}{fg=accent}
+\setbeamercolor{example text}{fg=accent}
+\setbeamercolor{itemize item}{fg=accent}
+\setbeamercolor{itemize subitem}{fg=accent}
+\setbeamercolor{enumerate item}{fg=accent}
+\setbeamercolor{palette primary}{bg=accent, fg=white}  % standout frames
+\setbeamercolor{button}{bg=gray!15, fg=inkmuted}
+
+% ---- Reveal: not-yet-revealed content stays on screen in light grey ----
+\setbeamercovered{transparent=25}
+
+\newcommand{\muted}[1]{{\color{inkmuted}#1}}
+% Table notes and figure captions: one consistent style deck-wide
+\newcommand{\tabnote}[1]{\muted{\footnotesize #1}}
+% Spec-row checkmark used by slides/tables/*.tex
+\newcommand{\cmark}{\textcolor{accent}{\ding{51}}}
+
+% Title page: long title needs one size down to fit 16:9 frame
+\setbeamerfont{title}{size=\large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\small}
+
+% ---- Pipeline number macros (auto-generated, do not edit) ----
+\input{../paper/numbers.tex}
+\input{tables/fertility_macros.tex}
+
+\title{Early-Life Exposure to Indonesia's Village Midwife Program and Child Human Capital}
 \author{Wanzi Wang}
-\date{\today}
+\institute{Graduate School of Public Policy, University of Tokyo}
+\date{July 2026}
+
 \begin{document}
-\frame{\titlepage}
-% TODO: slide deck to be built in slides plan.
+
+% Custom title frame (metropolis \maketitle overflows with a two-line title)
+\begin{frame}[plain]
+  \vspace{2.4em}
+  \begin{center}
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}Early-Life Exposure to Indonesia's Village Midwife Program\\[0.25em]and Child Human Capital\par}
+    \vspace{1.1em}
+    {\color{accent}\rule{0.14\textwidth}{1.2pt}}\par
+    \vspace{1.6em}
+    {\large Wanzi Wang}\par
+    \vspace{0.4em}
+    \muted{Graduate School of Public Policy, University of Tokyo}\par
+    \vspace{0.4em}
+    \muted{July 2026}
+  \end{center}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Motivation}
+  \begin{itemize}[<+->]
+    \item Indonesia entered the 1990s with one of Southeast Asia's highest maternal mortality ratios: roughly \alert{450 deaths per 100{,}000 live births} in 1990
+    \item The driver: unattended deliveries in rural villages, where the only birth attendants were untrained traditional midwives (\emph{dukun bayi})
+    \item The response, \emph{Bidan di Desa} (1989): train and post a certified midwife in each village; by 1996 roughly \alert{54{,}000 midwives} had been placed
+    \item A large literature shows early-life health environments shape adult outcomes (Barker 1995; Almond and Currie 2011)
+  \end{itemize}
+  \vspace{0.6em}
+  \onslide<+->{\textbf{Question: does early-life exposure to a village midwife leave measurable effects on human capital a generation later?}}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{This paper}
+  \begin{itemize}[<+->]
+    \item \textbf{Data:} Indonesia Family Life Survey (IFLS), all five waves, 1993 to 2014; children born 1984--1999 followed to ages 15--30
+    \item \textbf{Treatment:} exposure to the village midwife in utero or at ages 0--3, assigned by the year the midwife first arrived in the community of birth
+    \item \textbf{Design:} staggered difference-in-differences; Callaway and Sant'Anna (2021, CS) estimator with never-treated communities as controls
+    \item \textbf{Outcomes:} four standardized adult indices, health, cognition, depression (CESD-10), and socioemotional traits (Big Five)
+    \item \textbf{Sample:} \NPrimary\ non-migrant individuals across \NVillages\ communities of birth
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Literature and contribution}
+  \muted{\footnotesize \textbf{Early-life environments.} Durable adult effects of early-life interventions (Atwood 2022; Johnson and Jackson 2019; Duflo 2001; Maccini and Yang 2009); an age-two cognitive critical period in Indonesia (Webb 2024).\par}
+
+  \vspace{0.3em}
+  \muted{\footnotesize \textbf{This program.} Short-run maternal and child health gains (Frankenberg and Thomas 2001; Frankenberg et al.\ 2005); adult-health effects mostly fade by year ten (Triyana 2016); in-utero exposure improves adult health, cognition, and economic outcomes among men (Ahsan et al.\ 2021).\par}
+
+  \vspace{0.8em}
+  \begin{enumerate}[<+->]
+    \item \textbf{New outcome margins:} to my knowledge, the first evaluation of this program on adult depression (CESD-10) and Big-Five socioemotional traits
+    \item \textbf{Heterogeneity-robust estimation:} prior evaluations rely on pooled TWFE, biased under staggered rollout (Goodman-Bacon 2021); estimator choice reverses the sign of the headline health estimate
+  \end{enumerate}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Preview of findings}
+  \begin{enumerate}[<+->]
+    \item Early-life exposure is associated with a \alert{+\CoefHealthCS\ SD} higher adult health index (SE \SEHealthCS) and a \alert{+\CoefCogCS\ SD} higher cognition index (SE \SECogCS), both marginal at the 10\% level
+    \item Depression (\CoefDepCS) and socioemotional traits (\CoefSocCS) show no detectable association: the program moves the margins it targeted
+    \item \textbf{Mechanism:} in-utero exposure is associated with more \emph{village-midwife-attended} births while aggregate skilled attendance is unchanged, a shift in the \alert{composition} of skilled deliveries, not their volume
+  \end{enumerate}
+  \vspace{0.6em}
+  \onslide<+->{\muted{Estimates are imprecisely pinned down; I read them as suggestive evidence of a positive long-run association.}}
+\end{frame}
+
+% =====================================================================
+\section{Program and data}
+
+\begin{frame}{The Village Midwife Program (Bidan di Desa, 1989)}
+  Three structural features distinguish the program:
+  \begin{enumerate}[<+->]
+    \item \textbf{Professional cadre:} three-year nursing diploma with full allied-health certification, not a paraprofessional community-health-worker model
+    \item \textbf{Resident provider:} posted to live in the assigned village, with a guaranteed government salary for the first three years
+    \item \textbf{Private-practice continuation:} permitted to remain in the village on out-of-pocket payments after the contract
+  \end{enumerate}
+  \vspace{0.5em}
+  \onslide<+->{Services went well beyond delivery care: antenatal visits, postnatal home visits, family planning, immunization referral, iron and vitamin A supplementation \muted{(Makowiecka et al.\ 2008)}: closer to a general early-childhood health intervention than an obstetric-only service}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Rollout was staggered, and not random}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \begin{itemize}[<+->]
+        \item Priority went to villages with the \alert{weakest baseline health infrastructure}
+        \item Never-treated controls are thus the better-served villages; community FE absorb levels, and I test cohort trends directly
+        \item The 1997 crisis disrupted renewals; I study the entry shock only
+      \end{itemize}
+      \vspace{0.4em}
+      \hyperlink{app-map}{\beamergotobutton{rollout map}}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \begin{center}
+        \includegraphics[width=\linewidth,height=0.56\textheight,keepaspectratio]{../paper/figures/rollout_histogram.pdf}
+
+        \tabnote{Rollout years across the \NVillages\ sample communities}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Placement was not random: balance across rollout timing}
+  \begin{center}
+    \footnotesize
+    \input{../paper/tables/balance.tex}
+  \end{center}
+  \tabnote{Non-migrant primary-sample children with a recorded SAR rollout year. Early-rollout communities are those at or below the median SAR rollout year among treated communities; the $N$ row counts children on each side. $p$-values from two-sample $t$-tests. $^{***}\,p<0.01$.}
+  \vspace{0.4em}
+
+  Early-rollout villages have less-educated and younger mothers. This documents the confounding the design must absorb; it is not a falsification test.
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Data: Indonesia Family Life Survey}
+  \begin{itemize}[<+->]
+    \item Household panel fielded in 1993, 1997, 2000, 2007, 2014; wave 1 represents 83\% of the population across 13 provinces
+    \item \textbf{Rollout year:} Service Availability Roster (SAR), recorded by community informants; an independent PKK module provides an alternative measure used in robustness \hyperlink{app-sarpkk}{\beamergotobutton{SAR vs PKK}}
+    \item \textbf{Attrition} is moderate (21\% since wave 1) and uncorrelated with midwife-arrival timing
+    \item \textbf{Birthplace:} IFLS does not record community of birth directly; the main sample keeps \alert{non-migrants} (own community identifier unchanged across waves), so the birthplace identifier is clean
+    \item Main sample: \NPrimary\ individuals, born 1984--1999, aged 15--30 in 2014, in \NVillages\ communities
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Summary statistics}
+  \begin{center}
+    \scriptsize
+    \input{tables/table1_descriptives.tex}
+  \end{center}
+  \tabnote{Non-migrant children born 1984--1999. Panel A is at the individual level; Panel B is at the community level, with the treated indicator equal to one if a village midwife is ever recorded in either the SAR or PKK source.}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Outcomes: four adult indices}
+  Each domain is an inverse-covariance-weighted index (Anderson 2008), signed so higher is better:
+  \vspace{0.3em}
+  \begin{itemize}[<+->]
+    \item \textbf{Health:} height, not-underweight, lung capacity, no hypertension, early-life health recall, self-rated health
+    \item \textbf{Cognition:} IRT-scored number series, serial-7 subtraction, immediate and delayed word recall
+    \item \textbf{Depression:} CESD-10 sum, sign-flipped (higher = fewer symptoms)
+    \item \textbf{Socioemotional:} Big-Five inventory average (neuroticism sign-flipped)
+  \end{itemize}
+  \vspace{0.5em}
+  \muted{All measured in wave 5 (2014), when the 1984--1999 cohorts are adults aged 15--30.}
+\end{frame}
+
+% =====================================================================
+\section{Empirical strategy}
+
+\begin{frame}{Specification}
+  Baseline specification for outcome index $Y_{ic}$:
+  \begin{equation*}
+    Y_{ic} = \beta E_{ic} + X_{ic}'\theta + \eta_c + \gamma_b + \zeta_{w(i)} + \varepsilon_{ic}
+  \end{equation*}
+  \begin{itemize}[<+->]
+    \item $E_{ic} = 1$ if in utero or aged 0--3 at midwife arrival in community $c$ (window from the fetal-origins literature, not estimated)
+    \item $\eta_c$, $\gamma_b$, $\zeta_{w(i)}$: community-of-birth, birth-year, and survey-wave fixed effects
+    \item $X_{ic}$: sex, mother's schooling, mother's age at birth
+    \item Standard errors clustered at the community of birth
+  \end{itemize}
+  \vspace{0.4em}
+  \onslide<+->{\textbf{Identifying assumptions.} Parallel trends; SUTVA violations from midwife mobility plausibly bias toward zero (Ahsan et al.\ 2021)}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Estimation under staggered rollout}
+  \begin{itemize}[<+->]
+    \item Treatment timing is staggered and effects plausibly vary by cohort and event time: exactly the setting where the pooled TWFE coefficient mixes clean and contaminated comparisons with possibly negative weights (Goodman-Bacon 2021)
+    \item \textbf{Main estimator:} CS group-time effects $ATT(g,t)$, computed against \alert{never-treated} communities only, then averaged over event times 0--3, so already-treated cohorts never serve as controls
+    \item CS requires parallel trends only between each cohort group and the never-treated, with no extrapolation across cohort groups
+    \item TWFE is retained as a baseline comparator; de Chaisemartin and D'Haultf\oe uille (dCDH, 2021) as a second heterogeneity-robust estimator
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Results}
+
+\begin{frame}{Event studies: health and cognition}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{center}
+        \includegraphics[width=\linewidth,height=0.50\textheight,keepaspectratio]{../paper/figures/event_study_CS_health_index.pdf}
+
+        \tabnote{Health index}
+      \end{center}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{center}
+        \includegraphics[width=\linewidth,height=0.50\textheight,keepaspectratio]{../paper/figures/event_study_CS_cognition_index.pdf}
+
+        \tabnote{Cognition index}
+      \end{center}
+    \end{column}
+  \end{columns}
+  {\footnotesize Pre-period coefficients overlap zero. Joint Wald test of $\delta_{-4}=\delta_{-2}=0$ (plain-TWFE event study, 2 df) fails to reject at $\alpha=0.05$ for all four outcomes; the smallest $p$ is 0.079 (health). Event time $-3$ excluded (thin cells). \hyperlink{app-pretrend}{\beamergotobutton{pre-trend tests}}}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Event studies: depression and socioemotional}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{center}
+        \includegraphics[width=\linewidth,height=0.50\textheight,keepaspectratio]{../paper/figures/event_study_CS_depression_index.pdf}
+
+        \tabnote{Depression index (higher = better)}
+      \end{center}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{center}
+        \includegraphics[width=\linewidth,height=0.50\textheight,keepaspectratio]{../paper/figures/event_study_CS_bigfive_index.pdf}
+
+        \tabnote{Socioemotional index}
+      \end{center}
+    \end{column}
+  \end{columns}
+  {\footnotesize Neither index traces a detectable post-treatment response: depression is flat and the socioemotional path runs slightly negative across post-treatment event times, mirroring the pooled coefficients.}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Main results}
+  \begin{center}
+    \resizebox*{!}{0.60\textheight}{\input{tables/main_results.tex}}
+  \end{center}
+  \tabnote{Coefficients in SD units; control means in raw units of each index's anchor variable. CS: dynamic ATT, event times 0--3, never-treated controls. Estimation N = 3,625 of the \NPrimary\ primary sample. Clustered SEs (community of birth). $^{*}\,p<0.10$.}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Reading the main results}
+  \begin{itemize}[<+->]
+    \item \textbf{Health:} +\CoefHealthCS\ SD (SE \SEHealthCS), marginal at the 10\% level; on the order of a \alert{2 cm shift in adult height} (height SD $\approx$ 8 cm carries the largest index weight)
+    \item \textbf{Cognition:} +\CoefCogCS\ SD (SE \SECogCS), also marginal at the 10\% level; both magnitudes sit within the range of comparable long-horizon interventions (Duflo 2001; Maccini and Yang 2009; Ahsan et al.\ 2021)
+    \item \textbf{Depression and socioemotional:} small, statistically indistinguishable from zero
+    \item dCDH agrees in sign and magnitude on health (0.240): the positive estimates reflect the heterogeneity-robust family, not one aggregation rule
+    \item \textbf{Estimator choice matters:} pooled TWFE on the same sample gives \alert{$\CoefHealthTWFE$ SD} on health (SE \SEHealthTWFE), the opposite sign, consistent with staggered-rollout bias
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Robustness: sensitivity to alternative specifications}
+  \begin{center}
+    \resizebox*{!}{0.46\textheight}{\input{../paper/tables/robustness.tex}}
+  \end{center}
+  \tabnote{CS dynamic ATT over event times 0--3. R1: inverse-propensity-weighted. R2: PKK rollout year. R3: preceding-wave birthplace. R4: mother-never-mover birthplace. $^{*}\,p<0.10$, $^{**}\,p<0.05$.}
+
+  {\footnotesize Health and cognition stay positive in all four variants; the mother-never-mover sample sharpens both cognition (0.354, 5\% level) and the negative socioemotional estimate ($-0.270$, 10\% level).}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Robustness: alternative-cohort placebos}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \begin{center}
+        \resizebox{\linewidth}{!}{\input{../paper/tables/placebo_alt_cohorts.tex}}
+      \end{center}
+      \tabnote{P1: rollout shifted five years earlier, CS refit. P2: aged 11--15 at arrival, TWFE. $^{**}\,p<0.05$.}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{itemize}[<+->]
+        \item \textbf{P2, older cohort} (aged 11--15 at arrival): all four null, $|t|<1$, consistent with an early-life biological channel
+        \item \textbf{P1, earlier rollout} (shifted 5 years back): passes on three outcomes; cognition turns \alert{significantly negative} ($-0.253$, SE 0.102)
+        \item The one caveat in the suite: cohorts born just before arrival in eventually-treated villages appear to have slightly lower adult cognition
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Robustness: within-mother comparison, the hardest test}
+  \begin{center}
+    \resizebox*{!}{0.46\textheight}{\input{tables/sibling_fe.tex}}
+  \end{center}
+  \vspace{0.2em}
+  {\footnotesize
+  \begin{itemize}[<+->]
+    \item Sibling FE absorb every time-invariant family and village characteristic; identification from siblings differentially exposed by birth timing
+    \item Health turns negative ($-0.16$ to $-0.26$ SD) but all $|t|<1.6$, and SEs roughly double: a \alert{precision collapse around zero} on a much smaller subsample, not evidence of harm
+    \item \textbf{Fertility check:} midwife arrival did not shift mothers' birth counts (+\CoefFert, SE \SEFert), ruling out selective birth timing
+  \end{itemize}}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Heterogeneity by sex}
+  \begin{center}
+    \resizebox*{!}{0.52\textheight}{\input{tables/main_results_by_sex.tex}}
+  \end{center}
+  \tabnote{TWFE with controls, estimated separately by subsample. Clustered SEs. $^{**}\,p<0.05$.}
+  \vspace{0.2em}
+  {\footnotesize
+  \begin{itemize}[<+->]
+    \item No robust gender-specific effect; the lone significant cell (socioemotional, boys, $-0.306$) is one of eight tests and would not survive multiple-comparison adjustment \hyperlink{app-mult}{\beamergotobutton{Romano-Wolf}}
+    \item The split uses TWFE because CS has no natural by-sex decomposition under dynamic aggregation
+  \end{itemize}}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Heterogeneity by mother's education, age, and region}
+  \begin{center}
+    \resizebox{0.70\textwidth}{!}{\input{../paper/tables/heterogeneity_combined.tex}}
+  \end{center}
+  {\footnotesize
+  \begin{itemize}[<+->]
+    \item \textbf{Mother's age:} health near zero for births to mothers under 26 (+0.027) versus $-0.240$ (SE 0.129) at 26 and over, consistent with younger and first-time mothers benefiting most
+    \item \textbf{Mother's education:} a nominally significant negative on the high-education cell ($-0.454$, SE 0.186), plausibly prior urban access to skilled care; no regional gradient
+  \end{itemize}\vspace{-0.4em}
+  \muted{\scriptsize All splits are TWFE-based: read them as differences between cells, not standalone treatment effects.}}
+\end{frame}
+
+% =====================================================================
+\section{Mechanisms}
+
+\begin{frame}{Mediators: what did the program actually change?}
+  Five mother-reported mediators from IFLS pregnancy histories, in-utero exposure indicator, births 1989 onward:
+  \begin{center}
+    \small
+    \input{../paper/tables/mechanism_first_stage.tex}
+  \end{center}
+  \tabnote{Each row a separate TWFE regression with community-of-birth, birth-year, survey-wave FE and mother controls. Clustered SEs. $^{*}\,p<0.10$.}
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Mechanism: composition, not volume}
+  \begin{itemize}[<+->]
+    \item Only the \alert{village-midwife-specific} attendance margin moves: +4.5 pp on a baseline of 8.3\% ($p\approx0.08$)
+    \item Aggregate skilled attendance, prenatal care (near ceiling at 94\%), breastfeeding, and birth weight are all unchanged
+    \item Consistent with substitution from other delivery attendants; the flat aggregate keeps the net reallocation within skilled care
+    \item These mediators cover the \alert{at-birth margin only}: the postnatal ages 0--3 bundle (home visits, immunization referral, micronutrients) is unmeasured in the pregnancy histories
+    \item The first stage is marginal and 10-to-13-year recall may attenuate it; I do not pursue a formal mediation decomposition
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+  \begin{itemize}[<+->]
+    \item Children exposed to a village midwife in utero or before age three score \alert{+\CoefHealthCS\ SD} higher on adult health and \alert{+\CoefCogCS\ SD} on cognition a generation later, both marginal at the 10\% level and best read as suggestive
+    \item No detectable movement in adult depression or socioemotional traits: clinical maternal-care bundles should not be expected to deliver mental-health gains automatically
+    \item The most plausible proximate channel is village-midwife-specific birth attendance, a composition shift within skilled care
+    \item \textbf{Policy:} village-level professional cadres may yield modest lasting physical-health and cognition returns, reinforcing the first-thousand-days case; socioemotional margins need directly targeted interventions
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+\begin{frame}[standout]
+  Thank you
+  \vspace{1em}
+
+  {\normalsize wangwanzi2811@gmail.com}
+\end{frame}
+
+% =====================================================================
+\appendix
+
+\begin{frame}[label=app-sarpkk]{Backup: SAR vs.\ PKK rollout measures}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{center}
+        \footnotesize
+        \input{../paper/tables/rollout_sar_vs_pkk.tex}
+      \end{center}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item The two community-informant sources disagree on 83\% of communities where both are recorded; the mean absolute gap is 4.35 years
+        \item Main analysis uses SAR; the PKK swap is sensitivity column R2
+        \item Under PKK, health is 0.173 (SE 0.149) and cognition 0.077 (SE 0.134): positive but attenuated, as timing misassignment would predict
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[label=app-pretrend]{Backup: pre-trend Wald tests}
+  \begin{center}
+    \small
+    \input{../paper/tables/event_study_pretrend_tests.tex}
+  \end{center}
+  \tabnote{Joint test of $\delta_{-4}=\delta_{-2}=0$ in the plain-TWFE event study, 2 df. Event time $-3$ dropped: only children born in or before $\text{start}_c-4$ contribute to that lead, so the cells are thin and the coefficient is noise rather than pre-trend evidence.}
+\end{frame}
+
+\begin{frame}[label=app-mult]{Backup: multiple inference and alternative cognition outcome}
+  \begin{center}
+    \footnotesize
+    \input{../paper/tables/romano_wolf.tex}
+  \end{center}
+  \tabnote{Romano--Wolf stepdown on the TWFE-with-controls baseline, as a four-outcome diagnostic.}
+  \vspace{0.5em}
+  \begin{center}
+    \footnotesize
+    \input{../paper/tables/robustness_child_raven.tex}
+  \end{center}
+  \tabnote{Alternative cognition outcome: child Raven score (ages 7--14 at wave 5), TWFE, essentially zero.}
+\end{frame}
+
+\begin{frame}[label=app-map]{Backup: geographic rollout}
+  \begin{center}
+    \includegraphics[height=0.74\textheight]{../paper/figures/midwife_rollout_map.pdf}
+
+    \tabnote{Province-level midwife rollout across the IFLS sampling frame.}
+  \end{center}
+\end{frame}
+
 \end{document}

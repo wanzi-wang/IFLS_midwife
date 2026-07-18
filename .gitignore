@@ -88,3 +88,8 @@ old/
 
 # --- ~temp Office lock files ---
 ~$*
+
+# --- Slides: Quarto pilot build artifacts (design reference; regenerable) ---
+slides/pilot/*.html
+slides/pilot/figures/
+slides/*.pdf
